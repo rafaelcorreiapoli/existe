@@ -1,5 +1,6 @@
 const styles = {
   container: {
+    minWidth: 0,
     display: 'inline-flex',
     flex: 'auto',
     flexDirection: 'row',
@@ -8,6 +9,7 @@ const styles = {
 
   },
   mainContainer: {
+    minWidth: 0,
     flexGrow: 1,
     borderWidth: 2,
     borderRadius: 4,
@@ -36,7 +38,7 @@ const styles = {
     flexDirection: 'row'
   },
   image: {
-    width: 300,
+    width: '100%',
     height: 'auto'
   },
   colaboradores: {

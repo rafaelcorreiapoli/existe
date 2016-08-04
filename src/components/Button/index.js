@@ -3,20 +3,22 @@ import { Button as BSButton } from 'react-bootstrap';
 import Radium from 'radium'
 import styles from './styles'
 
+const RBSButton = Radium(BSButton);
 
 const Button = ({
   children,
+  style,
   ...props
 }) => {
   return (
-    <BSButton
+    <RBSButton
       bsStyle="primary"
       bsSize="large"
-      style={styles.button}
+      style={[styles.button, style]}
       {...props}
     >
       {children}
-    </BSButton>
+    </RBSButton>
   )
 }
 
