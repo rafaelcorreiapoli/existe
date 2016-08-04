@@ -52,6 +52,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "flexboxgrid": "^6.3.0",
     "lodash": "^4.14.1",
+    "material-ui": "^0.15.3",
     "radium": "^0.18.1",
     "rc-menu": "^4.13.0",
     "react": "^0.14.6",
@@ -61,6 +62,7 @@
     "react-fa": "^4.1.2",
     "react-flexbox-grid": "^0.10.2",
     "react-select": "^1.0.0-beta14",
-    "react-simple-dropdown": "^1.1.4"
+    "react-simple-dropdown": "^1.1.4",
+    "react-tap-event-plugin": "^0.2.2"
   }
 }

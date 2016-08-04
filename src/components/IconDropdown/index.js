@@ -69,11 +69,13 @@ class IconDropdown extends React.Component {
       open,
       handleToggle,
       selectedOption,
-      handleItemClick
+      handleItemClick,
+      style,
+      ...props
     } = this.props
 
     return (
-      <BSDropdown id="dropdown-custom-menu" open={open} onToggle={handleToggle}>
+      <BSDropdown id="dropdown-custom-menu" open={open} onToggle={handleToggle} style={style} {...props}>
         <CustomToggle bsRole="toggle">
           {selectedOption.icon && <Icon name={selectedOption.icon} style={styles.iconToggle} /> }
           {selectedOption.text || ' Selecione uma Opção '}
