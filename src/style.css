@@ -1,0 +1,23 @@
+/*.teste {
+  //background-color: red;
+}
+
+.dropdown-toggle > .caret {
+  float: right;
+  margin-top: 10px
+}
+.dropdown-menu {
+  box-shadow: none;
+  border: 2px solid black;
+  width: 100%;
+  border-radius: 0px;
+}
+
+
+.dropdown-menu > li > a {
+  line-height: 40px;
+}
+
+.btn-group.open .dropdown-toggle {
+  box-shadow: none;
+}*/
