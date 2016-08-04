@@ -5,7 +5,9 @@ import Radium from 'radium';
 import { Icon } from 'react-fa';
 import styles from './styles';
 import { Image } from 'react-bootstrap';
-
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
+import ActionAndroid from 'material-ui/svg-icons/content/add-circle-outline';
 
 const CRIACAO = 0;
 const DESENVOLVIMENTO = 1;
@@ -43,7 +45,7 @@ const ProjetoCard = ({
 
   return (
     <div style={[styles.container]}>
-      <div style={styles.iconsContainer}>
+      <div style={[styles.iconsContainer, {marginRight: 2}]}>
         <IconButton
           containerStyle={{borderBottomWidth: 0}}
           icon='circle'
@@ -110,7 +112,7 @@ const ProjetoCard = ({
         }
 
       </div>
-      <div style={styles.mainContainer}>
+      {/*<div style={styles.mainContainer}>
         <Image src={image} style={styles.image}/>
         <div style={styles.topAreaContainer}>
           <Icon name={iconStatus} />
@@ -139,8 +141,47 @@ const ProjetoCard = ({
             />
           </div>
         </div>
-      </div>
+      </div>*/}
+      <Card style={{minWidth: 0}}>
+        <CardMedia
+          overlay={
+            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingRight: 20}}>
+              <CardTitle
+                titleStyle={{color: 'white'}}
+                subtitleStyle={{color: 'white'}}
+                title={numeroColaboradores}
+                subtitle="Colaboradores" />
+              <ActionAndroid style={{color: 'white'}}/>
+            </div>
+          }
+        >
+          <img src={image} />
+        </CardMedia>
+        <CardTitle
+          title={nome}
+          titleStyle={{width: '100%', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'}}
+          subtitle={
+            <span>
+              <span style={{color: '#e36a55'}}>{nomeUsuario}</span>
 
+              <span> - {data}</span>
+            </span>} />
+        <CardActions style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+          <NumberIcon
+            icon="users"
+            number={numeroUsers}
+          />
+          <NumberIcon
+            icon="comment"
+            number={numeroComentarios}
+          />
+          <NumberIcon
+            icon="heart"
+            iconColor='#e36a55'
+            number={numeroLikes}
+          />
+        </CardActions>
+      </Card>
     </div>
   )
 }

@@ -4,6 +4,10 @@ import IconDropdown from '../IconDropdown';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import RemoveRedEye from 'material-ui/svg-icons/image/remove-red-eye';
+import RaisedButton from 'material-ui/RaisedButton';
+import Popover from 'material-ui/Popover';
+import Menu from 'material-ui/Menu';
+import ActionAndroid from 'material-ui/svg-icons/content/add-circle-outline';
 
 const options = [{
   icon: 'calendar-o',
@@ -32,28 +36,56 @@ const options = [{
 }];
 
 
-const OrdenarProjetos = ({
-  value,
-  ...props
-}) => {
-  return (
-<div>
-  <DropDownMenu
-    value={1}
-    autoWidth={false}
-  >
-    <MenuItem value={1} primaryText="Custom width" leftIcon={<RemoveRedEye />} />
-    <MenuItem value={2} primaryText="Every Night" />
-    <MenuItem value={3} primaryText="Weeknights" />
-    <MenuItem value={4} primaryText="Weekends" />
-    <MenuItem value={5} primaryText="Weekly" />
-  </DropDownMenu>
-</div>
-    // <IconDropdown
-    //   value={value}
-    //   options={options}
-    //   {...props} />
-    )
+export default class OrdenarProjetos extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      open: false,
+    };
   }
 
-  export default OrdenarProjetos
+  handleTouchTap = (event) => {
+    // This prevents ghost click.
+    event.preventDefault();
+
+    this.setState({
+      open: true,
+      anchorEl: event.currentTarget,
+    });
+  };
+
+  handleRequestClose = () => {
+    this.setState({
+      open: false,
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <RaisedButton
+          onTouchTap={this.handleTouchTap}
+          label="Click me"
+        />
+        <Popover
+          open={this.state.open}
+          anchorEl={this.state.anchorEl}
+          anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
+          targetOrigin={{horizontal: 'left', vertical: 'top'}}
+          onRequestClose={this.handleRequestClose}
+        >
+          <Menu>
+            <MenuItem primaryText="Refresh" leftIcon={<ActionAndroid />} />
+            <MenuItem primaryText="Help &amp; feedback" />
+            <MenuItem primaryText="Settings" />
+            <MenuItem primaryText="Sign out" />
+          </Menu>
+        </Popover>
+      </div>
+    );
+  }
+}
+
+export default OrdenarProjetos
