@@ -14,6 +14,8 @@ const DESENVOLVIMENTO = 1;
 const PRODUCAO = 2;
 const POS_PRODUCAO = 3;
 
+import { Likes, Usuarios, Trending, ExisteOficial, ComVagas, Colaborando, Seguindo, Favorito, Salvo, Marcacao, Convite, Comentarios } from '../../resources/icons';
+
 const ProjetoCard = ({
   temVagas,
   numeroColaboradores,
@@ -48,67 +50,60 @@ const ProjetoCard = ({
       <div style={[styles.iconsContainer, {marginRight: 2}]}>
         <IconButton
           containerStyle={{borderBottomWidth: 0}}
-          icon='circle'
+          icon={<ComVagas />}
           backgroundColor='white'
           iconColor={temVagas? '#e36a55' : 'black'} />
         <IconButton
           containerStyle={{borderBottomWidth: 0}}
-          icon='info-circle'
+          icon={<ExisteOficial />}
           backgroundColor='black'
           iconColor='white' />
         <IconButton
           containerStyle={{borderColor: 'black'}}
-          icon='home'
+          icon={<ExisteOficial />}
           backgroundColor='white'
           iconColor='black' />
         {
           trending && <IconButton
-          containerStyle={{borderBottomWidth: 0,borderColor: 'white'}}
-          icon='line-chart'
+          icon={<Trending />}
           backgroundColor='#e36a55'
           iconColor='white' />
         }
         {
           colaborando && <IconButton
-          containerStyle={{borderBottomWidth: 0,borderColor: 'white'}}
-          icon='refresh'
-          backgroundColor='#d3d3d3'
+          icon={ <Colaborando /> }
+          backgroundColor='#b4baba'
           iconColor='white' />
         }
         {
           seguindo && <IconButton
-          containerStyle={{borderBottomWidth: 0,borderColor: 'white'}}
-          icon='users'
-          backgroundColor='#d3d3d3'
+          icon={ <Seguindo /> }
+          backgroundColor='#b4baba'
           iconColor='white' />
         }
         {
           favoritou && <IconButton
-          containerStyle={{borderBottomWidth: 0,borderColor: 'white'}}
-          icon='star'
-          backgroundColor='#d3d3d3'
+          icon={ <Favorito /> }
+          backgroundColor='#b4baba'
           iconColor='white' />
         }
         {
           salvou && <IconButton
-          containerStyle={{borderBottomWidth: 0,borderColor: 'white'}}
-          icon='flag'
-          backgroundColor='#d3d3d3'
+          icon={ <Salvo /> }
+          backgroundColor='#b4baba'
           iconColor='white' />
         }
         {
           marcado && <IconButton
-            containerStyle={{borderBottomWidth: 0,borderColor: 'white'}}
-            icon='tag'
-            backgroundColor='#d3d3d3'
-            iconColor={marcadoNovo ? '#e36a55' : 'white'} />
+            icon={ <Marcacao /> }
+            backgroundColor='#f5f5f5'
+            iconColor={marcadoNovo ? '#e36a55' : '#b3baba'} />
         }
         {
           convidado && <IconButton
-            containerStyle={{borderColor: 'white'}}
-            icon='comment'
-            backgroundColor='#d3d3d3'
-            iconColor={convidadoNovo ? '#e36a55' : 'white'} />
+            icon={ <Convite /> }
+            backgroundColor='#f5f5f5'
+            iconColor={convidadoNovo ? '#e36a55' : '#b3baba'} />
         }
 
       </div>
@@ -142,7 +137,7 @@ const ProjetoCard = ({
           </div>
         </div>
       </div>*/}
-      <Card style={{minWidth: 0}}>
+      <Card style={{minWidth: 0, backgroundColor: '#fafafa'}}>
         <CardMedia
           overlay={
             <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingRight: 20}}>
@@ -168,15 +163,17 @@ const ProjetoCard = ({
             </span>} />
         <CardActions style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
           <NumberIcon
-            icon="users"
+            icon={ <Usuarios /> }
+            iconColor='#b4baba'
             number={numeroUsers}
           />
           <NumberIcon
-            icon="comment"
+            icon={ <Comentarios /> }
+            iconColor='#b4baba'
             number={numeroComentarios}
           />
           <NumberIcon
-            icon="heart"
+            icon={ <Likes /> }
             iconColor='#e36a55'
             number={numeroLikes}
           />

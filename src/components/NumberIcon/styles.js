@@ -5,10 +5,10 @@ const styles = {
     alignSelf: 'stretch'
   },
   icon: {
-    color: '#d3d3d3'
+    color: '#b4baba'
   },
   number: {
-    color: '#d3d3d3',
+    color: '#b4baba',
     marginRight: 10
   }
 }

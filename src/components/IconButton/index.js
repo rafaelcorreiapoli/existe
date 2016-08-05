@@ -6,6 +6,8 @@ import Paper from 'material-ui/Paper';
 
 const Icon = Radium(I);
 
+//const Paper = Radium(Paper);
+
 const IconButton = ({
   icon,
   iconColor,
@@ -15,14 +17,15 @@ const IconButton = ({
   ...props
 }) => {
   return (
-    <Paper style={{width: 30, height: 30, marginBottom: 2, display: 'flex', alignItems: 'center', justifyContent: 'center'}} zDepth={1}>
-      <Icon name={icon} style={[styles.icon, {color: 'black'}]} />
+    <Paper style={{...styles.container, backgroundColor: backgroundColor}} zDepth={1}>
+      {
+        React.cloneElement(icon, {
+          color: iconColor
+        })
+      }
     </Paper>
 
   )
 }
 
 export default Radium(IconButton)
-/*<div style={[styles.container, {backgroundColor}, containerStyle]} {...props}>
-
-</div>*/

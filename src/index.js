@@ -2,6 +2,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import Root from './components/Root';
+import asteroid from './asteroid';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Root />, document.getElementById('root'));

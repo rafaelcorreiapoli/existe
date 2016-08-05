@@ -2,15 +2,10 @@ const styles = {
   container: {
     width: 30,
     height: 30,
-    borderStyle: 'solid',
-    borderWidth: 1,
-    borderColor: 'black',
+    marginBottom: 2,
+    display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
-    display: 'flex'
-  },
-  icon: {
-    fontSize: 16
+    justifyContent: 'center'
   }
 };
 

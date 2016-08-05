@@ -12,7 +12,11 @@ const IconNumber = ({
   return (
     <div style={styles.container}>
       <span style={styles.number}>{number}</span>
-      <Icon name={icon} style={[styles.icon, iconColor && {color: iconColor}]}/>
+      {
+        React.cloneElement(icon, {
+          color: iconColor
+        })
+      }
     </div>
   )
 }
