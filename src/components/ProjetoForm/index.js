@@ -8,17 +8,27 @@ import Divider from 'material-ui/Divider';
 import styles from './styles';
 import PaperSelect from '../PaperSelect'
 import DatePicker from 'material-ui/DatePicker'
+import InputWrapper from '../InputWrapper';
 import TextFieldArray from '../TextFieldArray';
 import { OPCOES_OBJETIVOS, OPCOES_CATEGORIA, OPCOES_SUBCATEGORIA, OPCOES_LINGUAGEM_VISUAL, OPCOES_PROCURA, OPCOES_TEMPO_DE_DURACAO } from './opcoes';
 
-const InputWrapper = ({
+const VerticalDivider = () => (
+  <div style={{
+    width: 1,
+    alignSelf: 'stretch',
+    marginTop: 40,
+    marginBottom: 40,
+    backgroundColor: '#E8E8E8'}}
+  />
+)
+
+const Column = ({
   children
 }) => (
-  <div style={{paddingTop: 40, paddingBottom: 40}}>
+  <div style={{paddingLeft: 30, paddingRight: 30, width: '33%'}}>
     {children}
   </div>
 )
-
 class ProjetoForm extends React.Component {
   constructor(props) {
     super(props)
@@ -91,7 +101,7 @@ class ProjetoForm extends React.Component {
     return (
       <Paper style={{margin: 100, textAlign: 'center', flexDirection: 'row', display: 'flex'}}>
 
-        <div style={{width: '33%', marginLeft: 10, marginRight: 10}}>
+        <Column>
           <InputWrapper>
             <h4 style={styles.header}>OBJETIVO DO VIDEO</h4>
             <PaperSelect
@@ -128,11 +138,11 @@ class ProjetoForm extends React.Component {
               value={subcategoria}
               />
           </InputWrapper>
-        </div>
+        </Column>
 
-        <div style={{width: 1, alignSelf: 'stretch', marginTop: 40, marginBottom: 40, backgroundColor: '#E8E8E8'}} />
+        <VerticalDivider />
 
-        <div style={{width: '33%', marginLeft: 10, marginRight: 10}}>
+        <Column>
           <InputWrapper>
             <h4 style={styles.header}>LINGUAGEM VISUAL</h4>
             <PaperSelect
@@ -165,11 +175,11 @@ class ProjetoForm extends React.Component {
             <h4 style={styles.header}>PRAZO DE ENTREGA</h4>
             <DatePicker hintText="Prazo de entrega" textFieldStyle={styles.input} />
           </InputWrapper>
-        </div>
+        </Column>
 
-        <div style={{width: 1, alignSelf: 'stretch', marginTop: 40, marginBottom: 40, backgroundColor: '#E8E8E8'}} />
+        <VerticalDivider />
 
-        <div style={{width: '33%', marginLeft: 10, marginRight: 10}}>
+        <Column>
           <InputWrapper>
             <h4 style={styles.header}>QUANTO VOCÊ ESPERA GASTAR?</h4>
             <TextField hintText="R$ " style={styles.input}  />
@@ -214,8 +224,11 @@ class ProjetoForm extends React.Component {
               value={tempoDeDuracao}
               />
           </InputWrapper>
-        </div>
 
+          <InputWrapper>
+            <RaisedButton primary={true} label="SALVAR" />
+          </InputWrapper>
+        </Column>
       </Paper>
     )
   }

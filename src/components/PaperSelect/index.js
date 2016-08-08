@@ -30,7 +30,7 @@ const PaperSelect = ({
               }}
               style={
                 Object.assign({},
-                  {padding: 10, cursor: 'pointer', margin: 5},
+                  {padding: 10, cursor: 'pointer', margin: 10, marginLeft: 15, marginRight: 15},
                   isSelected && selectedStyle)
                 }>
               <span>
