@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react'
 import Paper from 'material-ui/Paper'
 import Radium from 'radium'
-
+import { ACCENT } from '../../resources/colors'
 const RadiumPaper = Radium(Paper);
 
 const selectedStyle = {
-  backgroundColor: '#e36a55',
+  backgroundColor: ACCENT,
   color: 'white'
 }
 
@@ -17,7 +17,7 @@ const PaperSelect = ({
 
 
   return (
-    <div style={{width: '100%', display: 'flex', 'flex-wrap': 'wrap', justifyContent: 'space-around'}}>
+    <div style={{width: '100%', display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
       {
         options.map(option => {
           const isSelected = value === option.value;

@@ -33,9 +33,9 @@ import {
 
 const muiTheme = getMuiTheme({
   palette: {
-    primary1Color: cyan500,
-    primary2Color: cyan700,
-    primary3Color: grey400,
+    primary1Color: '#e36a55',
+    primary2Color: 'green',
+    primary3Color: 'blue',
     accent1Color: '#e36a55',
     accent2Color: grey100,
     accent3Color: grey500,
@@ -44,7 +44,7 @@ const muiTheme = getMuiTheme({
     canvasColor: white,
     borderColor: grey300,
     disabledColor: fade(darkBlack, 0.3),
-    pickerHeaderColor: cyan500,
+    pickerHeaderColor: '#e36a55',
     clockCircleColor: fade(darkBlack, 0.07),
     shadowColor: fullBlack,
   },
@@ -65,6 +65,10 @@ const muiTheme = getMuiTheme({
   tab: {
     textColor: darkBlack,
     alternateTextColor: darkBlack,
+  },
+  datePicker: {
+    backgroundColor: 'red',
+    color: 'blue'
   }
 });
 
@@ -76,10 +80,10 @@ export default class App extends Component {
     return (
       <MuiThemeProvider  muiTheme={muiTheme}>
         <div>
-          <AppBar />
-          {/*<Login />
-          <CriarProjeto />*/}
-          <div>
+          {/*<AppBar />
+          <Login />*/}
+          <CriarProjeto />
+          {/*<div>
             <div style={{display: 'flex'}}>
               <SelecionarAreaHint />
               <FiltroArea />
@@ -92,7 +96,7 @@ export default class App extends Component {
               <FiltroOrdem />
             </div>
           </div>
-          <MuralProjetos />
+          <MuralProjetos />*/}
         </div>
       </MuiThemeProvider>
     );

@@ -26,6 +26,8 @@ import ChatBubble from 'material-ui/svg-icons/communication/chat-bubble-outline'
 import Save from 'material-ui/svg-icons/content/save';
 import Tags from 'react-icons/lib/fa/tags';
 import MailOutline from 'material-ui/svg-icons/communication/mail-outline';
+import AddCircleOutline from 'material-ui/svg-icons/content/add-circle-outline';
+import Delete from 'material-ui/svg-icons/action/delete';
 
 export const Texto = AudioTrack;
 export const Imagem = CameraAlt;
@@ -58,3 +60,6 @@ export const Marcacao = Tags;
 export const Convite = MailOutline;
 
 export const Comentarios = ChatBubble;
+
+export const Adicionar = AddCircleOutline;
+export const Deletar = Delete;

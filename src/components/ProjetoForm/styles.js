@@ -1,6 +1,7 @@
 const styles = {
   input: {
-    marginLeft: 20
+    //marginLeft: 20
+    width: '100%'
   },
   header: {
     textAlign: 'center'
