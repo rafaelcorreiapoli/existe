@@ -73,6 +73,7 @@ export default class ImmutableCollection {
     }
   }
 
+
   _setupReducer() {
     this.reducer = (state = Map(), action) => {
       switch (action.type) {

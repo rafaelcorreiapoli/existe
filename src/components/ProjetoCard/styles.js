@@ -66,7 +66,7 @@ const styles = {
       marginBottom: 5,
     },
     usuario: {
-      color: '#e36a55'
+      color: '#d3d3d3'
     },
     data: {
       alignSelf: 'flex-end'

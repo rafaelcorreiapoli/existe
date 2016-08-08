@@ -14,6 +14,8 @@ import FiltroCategoria from '../../containers/FiltroCategoria';
 import FiltroOrdem from '../../containers/FiltroOrdem';
 import FiltroStatus from '../../containers/FiltroStatus';
 import MuralProjetos from '../../containers/MuralProjetos';
+import Login from '../../containers/Login';
+import CriarProjeto from '../../containers/CriarProjeto';
 
 import BotaoNovoProjeto from '../BotaoNovoProjeto';
 import SelecionarAreaHint from '../SelecionarAreaHint';
@@ -75,6 +77,8 @@ export default class App extends Component {
       <MuiThemeProvider  muiTheme={muiTheme}>
         <div>
           <AppBar />
+          {/*<Login />
+          <CriarProjeto />*/}
           <div>
             <div style={{display: 'flex'}}>
               <SelecionarAreaHint />
