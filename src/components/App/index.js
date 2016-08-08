@@ -17,6 +17,7 @@ import MuralProjetos from '../../containers/MuralProjetos';
 import Login from '../../containers/Login';
 import CriarProjeto from '../../containers/CriarProjeto';
 import CadastroEmpresarial from '../../containers/CadastroEmpresarial';
+import CadastroPessoal from '../../containers/CadastroPessoal';
 
 import BotaoNovoProjeto from '../BotaoNovoProjeto';
 import SelecionarAreaHint from '../SelecionarAreaHint';
@@ -83,7 +84,7 @@ export default class App extends Component {
         <div>
           {/*<AppBar />
           <Login />*/}
-          <CadastroEmpresarial />
+          <CadastroPessoal />
           {/*<div>
             <div style={{display: 'flex'}}>
               <SelecionarAreaHint />
