@@ -3,6 +3,8 @@ import CameraAlt from 'material-ui/svg-icons/image/camera-alt';
 import ModeEdit from 'material-ui/svg-icons/editor/mode-edit';
 import Highlight from 'material-ui/svg-icons/editor/highlight';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+import StarHalf from 'material-ui/svg-icons/toggle/star-half';
+import Star from 'material-ui/svg-icons/toggle/star';
 
 import Loop from 'material-ui/svg-icons/av/loop';
 import Check from 'material-ui/svg-icons/navigation/check';
@@ -63,3 +65,7 @@ export const Comentarios = ChatBubble;
 
 export const Adicionar = AddCircleOutline;
 export const Deletar = Delete;
+
+export const FullStar = Star;
+export const EmptyStar = StarBorder;
+export const HalfStar = StarHalf;
