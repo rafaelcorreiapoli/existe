@@ -9,7 +9,10 @@ const CircleNumber = ({
   ...props
 }) => {
   return (
-    <RadiumPaper circle={true} style={{display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 30, height: 30, ...style}} >
+    <RadiumPaper
+      zDepth={1}
+      circle={true}
+      style={{display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 30, height: 30, ...style}} >
       <span style={{fontWeight: 'bold'}}>{number}</span>
     </RadiumPaper>
   )

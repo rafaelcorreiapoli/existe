@@ -87,31 +87,7 @@ export default class App extends Component {
         <div>
           {/*<AppBar />
           <Login />*/}
-          1 <RatingStars rating={1} /><br />
-          1.5 <RatingStars rating={1.5} /><br />
-          3.5 <RatingStars rating={3.5} /><br />
-          5 <RatingStars rating={5} /><br />
-          1.24 <RatingStars rating={1.24} /><br />
-          1.25 <RatingStars rating={1.25} /><br />
-          1.26 <RatingStars rating={1.26} /><br />
-          1.48 <RatingStars rating={1.48} /><br />
-          1.51 <RatingStars rating={1.51} /><br />
-          <UsuarioCard
-            foto={''}
-            nome={'Rafael Ribeiro Correia'}
-            area={'imagem'}
-            projetosFeitos={12}
-            cidade={'São Paulo'}
-            estado={'SP'}
-            seguindo={123}
-            mediaAvaliacao={3.74}
-            numeroAvaliacoes={12}
-            numeroSeguidores={100}
-            numeroProjetos={20}
-            cargo={'Roteirista'}
-            mostrarAvaliacoes={false}
-            mostrarSeguidores={false}
-            />
+          <CadastroPessoal />
           {/*<div>
             <div style={{display: 'flex'}}>
               <SelecionarAreaHint />

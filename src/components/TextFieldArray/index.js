@@ -10,6 +10,7 @@ const TextFieldArray = ({
   value = [],
   onChange
 }) => {
+  if (!Array.isArray(value)) value = [];
   return (
     <div style={styles.container}>
       {
