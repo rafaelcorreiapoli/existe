@@ -8,6 +8,7 @@ import IconButton from 'material-ui/IconButton';
 
 const TextFieldArray = ({
   value = [],
+  error,
   onChange
 }) => {
   if (!Array.isArray(value)) value = [];
@@ -18,6 +19,7 @@ const TextFieldArray = ({
           <div key={i} style={styles.valueRow}>
             <TextField
               name={`textfield_${i}`}
+              errorText={Array.isArray(error) && error[i]}
               onChange={(e, val) => {
                 const newVal = [
                   ...value.slice(0, i),
@@ -58,12 +60,7 @@ const TextFieldArray = ({
         icon={<Adicionar />}
       />
 
-      {/*<IconButton tooltip="Remover" iconStyle={styles.deleteIcon}>
-
-        <Adicionar
-          onClick
-          style={styles.addIcon} />
-      </IconButton>*/}
+    {error && !Array.isArray(error) && <span>{error}</span>}
     </div>
 
   )

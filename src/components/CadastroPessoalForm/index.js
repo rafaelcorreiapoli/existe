@@ -1,91 +1,83 @@
 import React, { PropTypes } from 'react'
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
-import Paper from 'material-ui/Paper';
-import DatePicker from 'material-ui/DatePicker'
-import Divider from 'material-ui/Divider';
-import PaperSelect from '../PaperSelect'
-import InputWrapper from '../InputWrapper';
-import TextFieldArray from '../TextFieldArray';
 import moment from 'moment';
-import MaskedTextField from '../MaskedTextField';
-import { reducer } from 'redux-form';
+import { reduxForm } from 'redux-form';
+import Joi from 'joi-browser';
+import objectPath from 'object-path';
 
 import {
+  TextField,
+  RaisedButton,
+  Paper,
+  DatePicker,
+  Divider,
   SelectField,
   MenuItem,
   Checkbox
 } from 'material-ui'
-import { reduxForm } from 'redux-form';
+
+import PaperSelect from '../PaperSelect'
+import InputWrapper from '../InputWrapper';
+import TextFieldArray from '../TextFieldArray';
+import MaskedTextField from '../MaskedTextField';
 
 import styles from './styles';
+
+const validate = values => {
+  const schema = Joi.object().keys({
+    usuario: Joi.string().alphanum().min(3).max(30).required(),
+    senha: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/),
+    nomeCompleto: Joi.string().required(),
+    dataNascimento: Joi.object().required(),
+    sitePessoal: Joi.string().required(),
+    email: Joi.string().email().required(),
+    telefone: Joi.string().required(),
+    celular: Joi.string().required(),
+    facebook: Joi.string().required(),
+    twitter: Joi.string().required(),
+    instagram: Joi.string().required(),
+    cpf: Joi.string().required(),
+    bio: Joi.string().required(),
+    portfolio: Joi.array().items(Joi.string()).min(2),
+    curriculo: Joi.string(),
+    profissao: Joi.string(),
+    empregador: Joi.string(),
+    funcoesExerce: Joi.array().items(Joi.string()),
+    funcoesToparia: Joi.array().items(Joi.string()),
+    fotos: Joi.array().items(Joi.string()),
+    videos: Joi.array().items(Joi.string()),
+    sitesReferencia: Joi.array().items(Joi.string()),
+    profissionalReferencia: Joi.string(),
+    aprendendoNoMomento: Joi.string(),
+    tecnicaArtistica: Joi.string(),
+    pagamentoPreferencial: Joi.string(),
+    altura: Joi.number(),
+    numeracaoBlusa: Joi.number().integer(),
+    numeracaoCalca: Joi.number().integer(),
+    numeracaoSapato: Joi.number().integer(),
+    corOlhos: Joi.string(),
+    corCabelo: Joi.string(),
+  });
+
+  const result = Joi.validate(values, schema, {abortEarly: false});  // err === null
+  const formErrors = {}
+  if (result.error) {
+    const { details } = result.error;
+
+    details.forEach(detail => {
+      objectPath.set(formErrors, detail.path, detail.message);
+    })
+    //console.log(o);
+    //console.log(formErrors);
+  } else {
+    console.log('check OK!');
+  }
+  return formErrors;
+}
+
+
 /**
-nome completo
-data de nascimento
-site pessoal
-email
-telefone para contato
-endereço de trabalho
-redes sociais
-*/
-
-/*
-cpf
-*/
-
-/*
-username
-senha
-*/
-
-/*
-bio
-*/
-
-/*
-portfolio -> até 5 links
-*/
-
-/*
-curriculo (PDF)
-*/
-
-/*
-profissao e empregador
--> deve procurar no existe a empresa para se associar
-*/
-
-/*
-funcoes que exerce
-(lista de funcoes)
-funcoes que toparia exercer
-(lista de funcoes)
-*/
-
-/*
-referencias técnicas e artisticas
--texto de até 1000 caracteres
--questionário existe
-- Cite pelo menos 3 sites em que você busca referências quando precisa.
-- Quem é sua maior referência em sua área de atuação profissional?
-- O que você está aprendendo no momento?
-- Com qual expressão ou técnica artística seu trabalho mais se parece?
-(minimalismo, realismo, expressionismo, surrealismo, pontilhismo, abstracionismo, cubismo, outro (especifique))
--3 links de fotos (com legenda de 150 caracteres)
--3 links de videos (com legenda de 150 caracteres)
-*/
-
-/*
-sistema de pgmto preferencial
-*/
-
-/*
-se for ator/atriz
-- altura
-- numercao (blusa, calça, sapato)
-- cor dos olhos
-- cor do cabelo
-*/
+ * HOC
+ */
 const DateInput = ({
   label,
   ...props
@@ -97,61 +89,28 @@ const DateInput = ({
     {...props}
     />
 )
+/**
+ * HOC
+ */
 const TextInput = ({
   label,
+  touched,
+  error,
   ...props
 }) => (
   <TextField
+    errorText={touched && error}
     fullWidth={true}
     floatingLabelText={label}
     floatingLabelFixed={true}
     {...props}
     />
 )
+
+
+
 class CadastroPessoalForm extends React.Component {
-
-  constructor(props) {
-    super(props)
-    // this.handleChangePortfolio = this.handleChangePortfolio.bind(this);
-    // this.handleChangeVideos = this.handleChangeVideos.bind(this);
-    // this.handleChangeFotos = this.handleChangeFotos.bind(this);
-    // this.handleChangeReferencias = this.handleChangeReferencias.bind(this)
-
-    // this.state = {
-    //   portfolio: [],
-    //   videos: [],
-    //   fotos: [],
-    //   referencias: []
-    // }
-  }
-  // handleChangePortfolio(portfolio) {
-  //   this.setState({
-  //     portfolio
-  //   })
-  // }
-  // handleChangeVideos(videos) {
-  //   this.setState({
-  //     videos
-  //   })
-  // }
-  // handleChangeFotos(fotos) {
-  //   this.setState({
-  //     fotos
-  //   })
-  // }
-  // handleChangeReferencias(referencias) {
-  //   this.setState({
-  //     referencias
-  //   })
-  // }
   render () {
-    // const {
-    //   portfolio,
-    //   fotos,
-    //   videos,
-    //   referencias
-    // } = this.state
-
     const {fields: {
       usuario,
       senha,
@@ -192,7 +151,9 @@ class CadastroPessoalForm extends React.Component {
         <form onSubmit={handleSubmit}>
           <h2 style={{textAlign: 'center'}}>Cadastro Pessoal</h2>
           <InputWrapper>
-            <TextInput {...usuario} label="Usuário" />
+            <TextInput
+              {...usuario}
+              label="Usuário" />
             <TextInput {...senha} label="Senha" type="password" />
           </InputWrapper>
           <InputWrapper>
@@ -254,25 +215,15 @@ class CadastroPessoalForm extends React.Component {
           <InputWrapper>
             <TextInput {...bio} label="BIO" rows={4} />
             <h5>3 Links de fotos</h5>
-            <TextFieldArray
-              {...fotos}
-              //onChange={this.handleChangeFotos}
-              //value={fotos}
-              />
+            <TextFieldArray {...fotos} />
             <h5>3 Links de vídeos</h5>
-            <TextFieldArray
-              {...videos}
-              //onChange={this.handleChangeVideos}
-              //value={videos}
-              />
+            <TextFieldArray {...videos} />
           </InputWrapper>
 
           <InputWrapper>
             <span>Cite pelo menos 3 sites em que você busca referências quando precisa.</span>
             <TextFieldArray
               {...sitesReferencia}
-              //onChange={this.handleChangeReferencias}
-              //value={referencias}
               disableAdd={true}
               maxItems={3}
               />
@@ -367,7 +318,8 @@ CadastroPessoalForm = reduxForm({
   'numeracaoSapato',
   'corOlhos',
   'corCabelo'
-  ]
+  ],
+  validate
 })(CadastroPessoalForm);
 
 export default CadastroPessoalForm;
