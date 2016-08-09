@@ -1,23 +1,16 @@
-const INSERT = 'INSERT';
-const REMOVE = 'REMOVE';
-const UPDATE = 'UPDATE';
+const INSERT = 'immutable-collection/INSERT';
+const REMOVE = 'immutable-collection/REMOVE';
+const UPDATE = 'immutable-collection/UPDATE';
 import { Map } from 'immutable';
 export default class ImmutableCollection {
-  constructor(name, asteroid, store) {
-    this.name = name;
+  constructor(collection, asteroid, store) {
+    this.collection = collection;
     this.asteroid = asteroid;
     this.store = store;
-    //this._setupDdpListeners();
-    this._setupActionTypes();
     this._setupReducer();
 
   }
 
-  _setupActionTypes() {
-    this.insertAT = `INSERT_${this.name}`;
-    this.updateAT = `UPDATE_${this.name}`;
-    this.removeAT = `REMOVE_${this.name}`;
-  }
 
   setDispatchFunction(dispatch) {
     this.dispatch = dispatch;
@@ -25,19 +18,19 @@ export default class ImmutableCollection {
   }
   _setupDdpListeners() {
     this.asteroid.ddp.on('added', ({collection, id, fields}) => {
-      if (collection === this.name) {
+      if (collection === this.collection) {
         this.dispatch(this._insertDoc({...fields, id}))
       }
     });
 
     this.asteroid.ddp.on('removed', ({collection, id}) => {
-      if (collection === this.name) {
+      if (collection === this.collection) {
         this.dispatch(this._removeDoc(id))
       }
     });
 
     this.asteroid.ddp.on('changed', ({collection, id, fields}) => {
-      if (collection === this.name) {
+      if (collection === this.collection) {
         this.dispatch(this._updateDoc(id, fields));
       }
     });
@@ -46,8 +39,9 @@ export default class ImmutableCollection {
 
   _insertDoc(doc) {
     return {
-      type: this.insertAT,
+      type: INSERT,
       payload: {
+        collection: this.collection,
         doc
       }
     }
@@ -56,8 +50,9 @@ export default class ImmutableCollection {
 
   _removeDoc(id) {
     return {
-      type: this.removeAT,
+      type: REMOVE,
       payload: {
+        collection: this.collection,
         id
       }
     }
@@ -65,8 +60,9 @@ export default class ImmutableCollection {
 
   _updateDoc(id, fields) {
     return {
-      type: this.updateAT,
+      type: UPDATE,
       payload: {
+        collection: this.collection,
         id,
         fields
       }
@@ -76,15 +72,19 @@ export default class ImmutableCollection {
 
   _setupReducer() {
     this.reducer = (state = Map(), action) => {
+
+      if ((action.payload && action.payload.collection) !== this.collection || !action.payload) {
+        return state
+      }
       switch (action.type) {
-        case this.insertAT:
+        case INSERT:
           const id = action.payload.doc.id;
           return state.set(id, Map(action.payload.doc));
         break;
-        case this.removeAT:
+        case REMOVE:
           return state.delete(action.payload.id)
         break;
-        case this.updateAT:
+        case UPDATE:
           return state.update(action.payload.id, doc => doc.merge(action.payload.fields))
         break;
         default:

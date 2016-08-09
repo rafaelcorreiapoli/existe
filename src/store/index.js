@@ -6,7 +6,9 @@ import projetos from '../models/projetos';
 import areas from '../models/areas';
 import cargos from '../models/cargos';
 
-const loggerMiddleware = createLogger();
+const loggerMiddleware = createLogger({
+  predicate: (getState, action) => !/redux-form|immutable-collection/.test(action.type)
+});
 const store = createStore(
   app,
   applyMiddleware(
