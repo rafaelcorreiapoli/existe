@@ -6,7 +6,7 @@ import DatePicker from 'material-ui/DatePicker'
 import Divider from 'material-ui/Divider';
 import PaperSelect from '../PaperSelect'
 import InputWrapper from '../InputWrapper';
-import TextFieldArray from '../TextFieldArray';
+
 import {
   SelectField,
   MenuItem,

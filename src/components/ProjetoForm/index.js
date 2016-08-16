@@ -9,7 +9,6 @@ import styles from './styles';
 import PaperSelect from '../PaperSelect'
 import DatePicker from 'material-ui/DatePicker'
 import InputWrapper from '../InputWrapper';
-import TextFieldArray from '../TextFieldArray';
 import { OPCOES_OBJETIVOS, OPCOES_CATEGORIA, OPCOES_SUBCATEGORIA, OPCOES_LINGUAGEM_VISUAL, OPCOES_PROCURA, OPCOES_TEMPO_DE_DURACAO } from './opcoes';
 
 const VerticalDivider = () => (

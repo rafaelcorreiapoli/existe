@@ -23,4 +23,5 @@ projetos.setDispatchFunction(store.dispatch)
 areas.setDispatchFunction(store.dispatch)
 cargos.setDispatchFunction(store.dispatch)
 
+window.store= store;
 export default store;

@@ -9,7 +9,8 @@ import IconButton from 'material-ui/IconButton';
 const TextFieldArray = ({
   value = [],
   error,
-  onChange
+  onChange,
+  onClickAddField
 }) => {
   if (!Array.isArray(value)) value = [];
   return (
@@ -48,11 +49,12 @@ const TextFieldArray = ({
         ))
       }
       <FlatButton
-        onClick={() => {
-          const newVal = value.concat('');
-          console.log(newVal);
-          onChange(newVal);
-        }}
+        //onClick={() => {
+        //  const newVal = value.concat('');
+        //  console.log(newVal);
+        //  onChange(newVal);
+        //}}
+        onClick={onClickAddField}
         label="Adicionar"
         labelPosition="before"
         primary={true}
