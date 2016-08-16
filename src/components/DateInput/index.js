@@ -12,6 +12,12 @@ const DateInput = ({
   ...props
 }) => (
   <DatePicker
+    dialogContainerStyle={{
+      color: 'yellow',
+      //backgroundColor: 'purple'
+    }}
+    container="inline"
+    mode="landscape"
     fullWidth={true}
     floatingLabelText={label}
     floatingLabelFixed={true}

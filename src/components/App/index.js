@@ -28,6 +28,7 @@ import SelecionarAreaHint from '../SelecionarAreaHint';
 import AppBar from '../AppBar';
 
 import './style.css'
+import { ACCENT } from '../../resources/colors'
 
 import {
   cyan500, cyan700,
@@ -38,7 +39,7 @@ import {
 
 const muiTheme = getMuiTheme({
   palette: {
-    primary1Color: '#e36a55',
+    primary1Color: ACCENT,
     primary2Color: 'green',
     primary3Color: 'blue',
     accent1Color: '#e36a55',
@@ -73,8 +74,7 @@ const muiTheme = getMuiTheme({
     alternateTextColor: darkBlack,
   },
   datePicker: {
-    backgroundColor: 'red',
-    color: 'blue'
+    selectColor: ACCENT
   }
 });
 
