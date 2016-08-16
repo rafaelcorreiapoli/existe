@@ -54,8 +54,6 @@ const validate = values => {
     profissao: Joi.string().label('Profissão'),
     empregador: Joi.string().label('Empregador'),
     funcoes: Joi.object().required(),
-    //funcoesExerce: Joi.array().items(Joi.string()).label('Funções que exerce'),
-    //funcoesToparia: Joi.array().items(Joi.string()).label('Funções que toparia'),
     fotos: Joi.array().items(Joi.string().required().options(langFactory('!!Coloque o link para uma foto'))).label('Fotos').sparse(),
     videos: Joi.array().items(Joi.string().required().options(langFactory('!!Coloque o link para um vídeo'))).label('Vídeos').sparse(),
     sitesReferencia: Joi.array().items(Joi.string().required().options(langFactory('!!Coloque o link para um site de referência'))).label('Sites de Referência').sparse(),

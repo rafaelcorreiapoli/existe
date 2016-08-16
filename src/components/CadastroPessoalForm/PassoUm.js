@@ -17,22 +17,7 @@ import {
   celularRegex,
   cpfRegex
 } from '../../utils/regex';
-//
-// const fields = [
-//   'usuario',
-//   'senha',
-//   'nomeCompleto',
-//   'dataNascimento',
-//   'sitePessoal',
-//   'email',
-//   'celular',
-//   'telefone',
-//   'facebook',
-//   'twitter',
-//   'instagram',
-//   'cpf',
-//   'bio',
-// ]
+
 
 const schema = Joi.object().keys({
   usuario: Joi.string().alphanum().min(3).max(30).required().label('Usuário'),
@@ -87,7 +72,7 @@ const PassoUm = ({
           name="cpf"
         />
         <Field
-          label="Bio"
+          label="Biografia"
           component={TextInput}
           name="bio"
           rows={3}

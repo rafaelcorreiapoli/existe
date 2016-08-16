@@ -86,8 +86,7 @@ export default class App extends Component {
     return (
       <MuiThemeProvider  muiTheme={muiTheme}>
         <div>
-          {/*<AppBar />
-          <Login />*/}
+          <AppBar />
           <CadastroPessoal />
           {/*<div>
             <div style={{display: 'flex'}}>

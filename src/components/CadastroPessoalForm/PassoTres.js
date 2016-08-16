@@ -2,8 +2,8 @@ import React, { PropTypes } from 'react'
 import { reduxForm, Field } from 'redux-form';
 import Joi from 'joi-browser';
 import InputWrapper from '../InputWrapper';
-import { deserializeFormErrors } from '../../utils/form_errors';
 import SelectInput from '../SelectInput'
+import { deserializeFormErrors } from '../../utils/form_errors';
 import { PAGAMENTO_PREFERENCIAL } from '../../resources/options'
 import {
   SelectField,

@@ -34,59 +34,6 @@ import PassoDois from './PassoDois'
 import PassoTres from './PassoTres'
 import Concluir from './Concluir'
 
-// const validate = values => {
-//   const schema = Joi.object().keys({
-//     usuario: Joi.string().alphanum().min(3).max(30).required(),
-//     senha: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/),
-//     nomeCompleto: Joi.string().required(),
-//     dataNascimento: Joi.object().required(),
-//     sitePessoal: Joi.string().regex(urlRegex()).required(),
-//     email: Joi.string().email().required(),
-//     telefone: Joi.string().regex(/\([0-9]{2}\) ([0-9]{4})-[0-9]{4}/).required(),
-//     celular: Joi.string().regex(/\([0-9]{2}\) ([0-9]{4,5})-[0-9]{4}/).required(),
-//     facebook: Joi.string().regex(urlRegex()),
-//     twitter: Joi.string().regex(urlRegex()),
-//     instagram: Joi.string().regex(urlRegex()),
-//     cpf: Joi.string().regex(/[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}/).required(),
-//     bio: Joi.string().required(),
-//     portfolio: Joi.array().items(Joi.string()).min(2),
-//     curriculo: Joi.string(),
-//     profissao: Joi.string(),
-//     empregador: Joi.string(),
-//     funcoesExerce: Joi.array().items(Joi.string()),
-//     funcoesToparia: Joi.array().items(Joi.string()),
-//     fotos: Joi.array().items(Joi.string()),
-//     videos: Joi.array().items(Joi.string()),
-//     sitesReferencia: Joi.array().items(Joi.string()),
-//     profissionalReferencia: Joi.string(),
-//     aprendendoNoMomento: Joi.string(),
-//     tecnicaArtistica: Joi.string(),
-//     pagamentoPreferencial: Joi.string(),
-//     altura: Joi.number(),
-//     numeracaoBlusa: Joi.number().integer(),
-//     numeracaoCalca: Joi.number().integer(),
-//     numeracaoSapato: Joi.number().integer(),
-//     corOlhos: Joi.string(),
-//     corCabelo: Joi.string(),
-//   });
-//
-//   const result = Joi.validate(values, schema, {abortEarly: false});  // err === null
-//   const formErrors = {}
-//   if (result.error) {
-//     const { details } = result.error;
-//
-//     details.forEach(detail => {
-//       objectPath.set(formErrors, detail.path, detail.message);
-//     })
-//     //console.log(o);
-//     //console.log(formErrors);
-//   } else {
-//     console.log('check OK!');
-//   }
-//   return formErrors;
-// }
-
-
 const errorsInFields = (array, fields) => {
   return !!fields.find(field => array[field].error)
 }
@@ -115,57 +62,6 @@ class CadastroPessoalForm extends React.Component {
     }
   };
 
-
-  // checkForErrors(step) {
-  //   const { fields } = this.props
-  //
-  //   switch (step) {
-  //     case 0:
-  //     return errorsInFields(fields, [
-  //       'usuario',
-  //       'senha',
-  //       'nomeCompleto',
-  //       'dataNascimento',
-  //       'sitePessoal',
-  //       'email',
-  //       'telefone',
-  //       'celular',
-  //       'facebook',
-  //       'twitter',
-  //       'instagram',
-  //       'cpf',
-  //       'bio'
-  //     ])
-  //     case 1:
-  //     return errorsInFields(fields, [
-  //       'portfolio',
-  //       'curriculo',
-  //       'profissao',
-  //       'empregador',
-  //       'funcoesExerce',
-  //       'funcoesToparia',
-  //       'fotos',
-  //       'videos',
-  //       'sitesReferencia',
-  //       'profissionalReferencia',
-  //       'aprendendoNoMomento',
-  //       'tecnicaArtistica',
-  //       'pagamentoPreferencial',
-  //       'altura',
-  //       'numeracaoBlusa',
-  //       'numeracaoCalca',
-  //       'numeracaoSapato',
-  //       'corOlhos',
-  //       'corCabelo'
-  //     ])
-  //     case 2:
-  //     return errorsInFields(fields, [
-  //       'pagamentoPreferencial'
-  //     ])
-  //   }
-  //   return false
-  // }
-
   render () {
     const { handleSubmit} = this.props;
     const { stepIndex, finished} = this.state;
@@ -173,7 +69,7 @@ class CadastroPessoalForm extends React.Component {
       <Paper style={{margin: 100, padding: 20}}>
         <Stepper activeStep={stepIndex}>
           <Step>
-            <StepLabel>Informações Pessoais</StepLabel>
+            <StepLabel>Informações Pessoaiss</StepLabel>
           </Step>
           <Step>
             <StepLabel>Informações Profissionais</StepLabel>
@@ -191,7 +87,7 @@ class CadastroPessoalForm extends React.Component {
                 {stepIndex === 2 && <PassoTres onSubmit={this.handleNext} onPrevious={this.handlePrev}/>}
                 {stepIndex === 3 && <Concluir onSubmit={() => console.log('finish!')} onPrevious={this.handlePrev}/>}
               </div>
-              <FlatButton
+              {/*<FlatButton
                 label="Voltar"
                 disabled={stepIndex === 0}
                 onTouchTap={this.handlePrev}
@@ -199,11 +95,10 @@ class CadastroPessoalForm extends React.Component {
               />
               <RaisedButton
                 label={stepIndex === 2 ? 'Concluir' : 'Próximo'}
-                //disabled={this.checkForErrors(stepIndex)}
                 disabled={false}
                 primary={true}
                 onTouchTap={this.handleNext}
-              />
+              />*/}
             </div>
           }
         </div>
@@ -211,56 +106,5 @@ class CadastroPessoalForm extends React.Component {
     )
   }
 }
-
-
-// CadastroPessoalForm = reduxForm({
-//   form: 'cadastroPessoal',
-//   fields: [
-//   'usuario',
-//   'senha',
-//   'nomeCompleto',
-//   'dataNascimento',
-//   'sitePessoal',
-//   'email',
-//   'telefone',
-//   'celular',
-//   'facebook',
-//   'twitter',
-//   'instagram',
-//   'cpf',
-//   'bio',
-//   'portfolio[]',
-//   'curriculo',
-//   'profissao',
-//   'empregador',
-//   'funcoesExerce',
-//   'funcoesToparia',
-//   'fotos[]',
-//   'videos[]',
-//   'sitesReferencia[]',
-//   'profissionalReferencia',
-//   'aprendendoNoMomento',
-//   'tecnicaArtistica',
-//   'pagamentoPreferencial',
-//   'altura',
-//   'numeracaoBlusa',
-//   'numeracaoCalca',
-//   'numeracaoSapato',
-//   'corOlhos',
-//   'corCabelo'
-//   ],
-//   validate
-// },
-// state => {
-//   return {
-//     initialValues: {
-//       fotos: ['', '', ''],
-//       videos: ['', '', ''],
-//       sitesReferencia: ['', '', '']
-//     }
-//   }
-//
-// })(CadastroPessoalForm);
-
 
 export default CadastroPessoalForm;

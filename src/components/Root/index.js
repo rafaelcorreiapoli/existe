@@ -5,12 +5,16 @@ import App from '../App';
 
 import store from '../../store';
 
-const Root = () => {
-  return (
-    <Provider store={store}>
-      <App />
-    </Provider>
-  )
+
+
+class Root extends React.Component {
+  render () {
+    return (
+      <Provider store={store}>
+        <App />
+      </Provider>
+    )
+  }
 }
 
 
