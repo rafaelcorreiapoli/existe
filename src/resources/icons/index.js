@@ -31,6 +31,9 @@ import MailOutline from 'material-ui/svg-icons/communication/mail-outline';
 import AddCircleOutline from 'material-ui/svg-icons/content/add-circle-outline';
 import Delete from 'material-ui/svg-icons/action/delete';
 
+export Facebook from 'react-icons/lib/fa/facebook';
+export Linkedin from 'react-icons/lib/fa/linkedin';
+
 export const Texto = AudioTrack;
 export const Imagem = CameraAlt;
 export const Audio = AudioTrack;

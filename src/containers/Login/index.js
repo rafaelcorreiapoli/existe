@@ -3,6 +3,7 @@ import { setLoginEmail, setLoginPassword, loginRequest } from '../../actions'
 import LoginForm from '../../components/LoginForm'
 
 const mapStateToProps = (state) => {
+  console.log(state.login.get('error'))
   return {
     email: state.login.get('email'),
     password: state.login.get('password'),

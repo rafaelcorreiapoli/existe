@@ -11,6 +11,7 @@ import FuncoesCheckTable from '../FuncoesCheckTable';
 import { areas } from '../../resources/areas'
 import language from '../../lib/joi/language'
 import { EXPRESSOES_ARTISTICAS, COR_CABELOS, COR_OLHOS } from '../../resources/options'
+import SectionHeader from '../SectionHeader'
 
 import {
   SelectField,
@@ -69,7 +70,7 @@ const validate = values => {
   });
 
   const result = Joi.validate(values, schema, {abortEarly: false, language});
-  return deserializeFormErrors(result, ['fotos', 'videos', 'sitesReferencia'])
+  return deserializeFormErrors(result, ['portfolio', 'fotos', 'videos', 'sitesReferencia'])
 }
 
 const PassoDois = ({
@@ -82,7 +83,7 @@ const PassoDois = ({
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <InputWrapper>
-        <h3>Carreira</h3>
+        <SectionHeader text={'Carreira'} />
         <FieldArray
           label='Portfolio (máximo 5 items)'
           name='portfolio'
@@ -91,9 +92,6 @@ const PassoDois = ({
           maxItems={5}
           component={TextInputArray}
         />
-      </InputWrapper>
-
-      <InputWrapper>
         <Field
           label="Currículo"
           component={TextInput}
@@ -112,6 +110,7 @@ const PassoDois = ({
       </InputWrapper>
 
       <InputWrapper>
+        <SectionHeader text={'Funções'} />
         <Field
           options={areas}
           component={FuncoesCheckTable}
@@ -122,7 +121,7 @@ const PassoDois = ({
       {
       atorOuAtriz &&
       <InputWrapper>
-        <h3>Se você é ator ou atriz...</h3>
+        <SectionHeader text={'Se é ator ou atriz'} />
         <Field
           label="Altura"
           component={TextInput}
@@ -159,6 +158,7 @@ const PassoDois = ({
       }
 
       <InputWrapper>
+        <SectionHeader text={'Referências'} />
         <FieldArray
           label='3 links de fotos'
           itemLabel='Foto'
@@ -167,8 +167,6 @@ const PassoDois = ({
           maxItems={3}
           component={TextInputArray}
         />
-      </InputWrapper>
-      <InputWrapper>
         <FieldArray
           label='3 links de videos'
           itemLabel='Vídeo'
@@ -180,6 +178,7 @@ const PassoDois = ({
       </InputWrapper>
 
       <InputWrapper>
+        <SectionHeader text={'Questionário EXISTE'} />
         <FieldArray
           label='Cite pelo menos 3 sites em que você busca referências quando precisa.'
           itemLabel='Site'

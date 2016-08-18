@@ -25,7 +25,7 @@ const login = (state = Map({email: '', password: '', isLoggingIn: false, error: 
     case LOGIN_ERROR:
       return state.merge({
         isLoggingIn: false,
-        error: action.payload.reason,
+        error: action.payload.error.error,
         success: false
       });
     break;

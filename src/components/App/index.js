@@ -21,6 +21,8 @@ import CadastroPessoal from '../../containers/CadastroPessoal';
 
 import RatingStars from '../../components/RatingStars';
 import UsuarioCard from '../../components/UsuarioCard';
+import CadastroCTA from '../../components/CadastroCTA';
+import ResetPasswordForm from '../../components/ResetPasswordForm';
 
 import BotaoNovoProjeto from '../BotaoNovoProjeto';
 import SelecionarAreaHint from '../SelecionarAreaHint';
@@ -87,7 +89,10 @@ export default class App extends Component {
       <MuiThemeProvider  muiTheme={muiTheme}>
         <div>
           <AppBar />
-          <CadastroPessoal />
+          <Login />
+          <ResetPasswordForm />
+          <CadastroCTA />
+          {/*<CadastroPessoal />*/}
           {/*<div>
             <div style={{display: 'flex'}}>
               <SelecionarAreaHint />

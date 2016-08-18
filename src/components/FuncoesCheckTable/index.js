@@ -23,7 +23,7 @@ const FuncoesCheckTable = ({
     <Table>
         <TableHeader adjustForCheckbox={false} displaySelectAll={false} selectable={false}>
           <TableRow>
-            <TableHeaderColumn>Função</TableHeaderColumn>
+            <TableHeaderColumn></TableHeaderColumn>
             <TableHeaderColumn style={{textAlign: 'center'}}>Exerce</TableHeaderColumn>
             <TableHeaderColumn style={{textAlign: 'center'}}>Toparia Exercer</TableHeaderColumn>
 

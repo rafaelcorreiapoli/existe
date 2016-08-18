@@ -6,7 +6,7 @@ const AppBar = () => (
     titleStyle={{
       textAlign: 'center'
     }}
-    title="EXISTEsssssasdsdssssssadsssdsffffss"
+    title="EXISTE"
     style={{color: 'black'}}
     iconClassNameRight="muidocs-icon-navigation-expand-more"
     />

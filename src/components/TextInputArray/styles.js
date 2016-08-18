@@ -2,6 +2,7 @@ import { ACCENT } from '../../resources/colors';
 
 const styles = {
   container: {
+    marginBottom: 20,
     display: 'flex',
     alignItems: 'stretch',
     flexDirection: 'column'

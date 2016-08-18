@@ -1,19 +1,9 @@
-const styles = {
+export default {
   container: {
     padding: 10,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center'
-  },
-  error: {
-    //backgroundColor: 'red'
-    color: 'red'
-  },
-  loading: {
-    backgroundColor: 'yellow'
-  },
-  success: {
-    color: 'green'
   },
   form: {
     width: 400,
@@ -22,5 +12,3 @@ const styles = {
     alignItems: 'center'
   }
 }
-
-export default styles;

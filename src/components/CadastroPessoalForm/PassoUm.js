@@ -9,7 +9,7 @@ import { deserializeFormErrors } from '../../utils/form_errors';
 import moment from 'moment';
 import language from '../../lib/joi/language'
 import { telefone, celular, cpf } from '../../utils/patterns'
-
+import SectionHeader from '../SectionHeader'
 import {
   urlRegex,
   passwordRegex,
@@ -40,6 +40,7 @@ const validate = values => {
   return deserializeFormErrors(result)
 }
 
+
 const PassoUm = ({
   handleSubmit,
   onSubmit,
@@ -48,7 +49,7 @@ const PassoUm = ({
   return (
      <form onSubmit={handleSubmit(onSubmit)}>
       <InputWrapper>
-        <h3>Perfil</h3>
+        <SectionHeader text={'Perfil'} />
         <Field
           label="Usuário"
           component={TextInput}
@@ -81,7 +82,7 @@ const PassoUm = ({
         />
       </InputWrapper>
       <InputWrapper>
-        <h3>Contato</h3>
+        <SectionHeader text={'Contato'} />
         <Field
           label="Site Pessoal"
           component={TextInput}
@@ -106,7 +107,7 @@ const PassoUm = ({
         />
       </InputWrapper>
       <InputWrapper>
-        <h3>Redes Sociais</h3>
+        <SectionHeader text={'Redes Sociais'} />
         <Field
           label="Facebook"
           component={TextInput}
