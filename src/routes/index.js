@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import { Router, IndexRoute, Route, browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
+
 import App from '../containers/AppContainer';
 import WelcomePage from '../pages/WelcomePage'
 import CadastroRapidoPage from '../pages/CadastroRapidoPage'
@@ -12,11 +13,9 @@ import ComunidadePage from '../pages/ComunidadePage'
 import Login from '../containers/Login'
 import RecuperarSenha from '../containers/RecuperarSenha'
 
-const history = syncHistoryWithStore(browserHistory, store)
-
 const Routes = () => {
   return (
-    <Router history={history}>
+    <Router history={syncHistoryWithStore(browserHistory, store)}>
       <Route path="/" component={App}>
         <Route component={WelcomePage}>
           <IndexRoute component={Login} />
