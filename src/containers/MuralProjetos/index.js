@@ -6,7 +6,7 @@ import GridProjetos from '../../components/GridProjetos'
 
 const mapStateToProps = (state) => {
   return {
-    projetos: state.collections.projetos
+    projetos: []
   }
 }
 

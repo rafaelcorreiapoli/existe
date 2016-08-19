@@ -19,10 +19,10 @@ const GridProjetos = ({
       easing="ease-out"
     >
       {
-        projetos.entrySeq().map(([key, projeto]) => (
+        projetos.map(([key, projeto]) => (
           <div style={{display: 'inline-flex', width: 300}} key={key}>
             <ProjetoCard
-              {...projeto.toObject()}
+              {...projeto}
               />
           </div>
         ))

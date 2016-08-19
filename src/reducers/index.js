@@ -2,13 +2,14 @@ import { combineReducers } from 'redux';
 import mural from './mural/index';
 import collections from './collections'
 import login from './login'
+import app from './app'
 import criarProjeto from './criar_projeto'
 import { reducer as formReducer} from 'redux-form';
 import { routerReducer } from 'react-router-redux'
 
-const app = combineReducers({
+const rootReducer = combineReducers({
+  app,
   mural,
-  collections,
   login,
   criarProjeto,
   form: formReducer,
@@ -16,4 +17,4 @@ const app = combineReducers({
 });
 
 
-export default app
+export default rootReducer

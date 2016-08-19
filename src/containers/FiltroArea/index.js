@@ -40,12 +40,12 @@ const buildTree = (areas, cargos) => {
         }
       }).toArray()
     }
-  }).toArray()
+  })
 }
 const mapStateToProps = (state) => {
   return {
     value: state.mural.filtros.area,
-    options: buildTree(state.collections.areas, state.collections.cargos)
+    options: buildTree([], [])
   }
 }
 
