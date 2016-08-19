@@ -7,6 +7,8 @@ import store from '../../store';
 import WelcomePage from '../../pages/WelcomePage'
 import CadastroRapidoPage from '../../pages/CadastroRapidoPage'
 import MuralPage from '../../pages/MuralPage'
+import BuscaPage from '../../pages/BuscaPage'
+import ComunidadePage from '../../pages/ComunidadePage'
 import Login from '../../containers/Login'
 import RecuperarSenha from '../../containers/RecuperarSenha'
 
@@ -24,6 +26,8 @@ class Root extends React.Component {
             </Route>
             <Route path="/cadastro" component={CadastroRapidoPage} />
             <Route path="/mural" component={MuralPage} />
+            <Route path="/comunidade" component={ComunidadePage} />
+            <Route path="/busca" component={BuscaPage} />
           </Route>
 
         </Router>
