@@ -8,9 +8,8 @@ import { deserializeFormErrors } from '../../utils/form_errors';
 import TextInputArray from '../TextInputArray';
 import SelectInput from '../SelectInput';
 import FuncoesCheckTable from '../FuncoesCheckTable';
-import { areas } from '../../resources/areas'
 import language from '../../lib/joi/language'
-import { EXPRESSOES_ARTISTICAS, COR_CABELOS, COR_OLHOS } from '../../resources/options'
+import { EXPRESSOES_ARTISTICAS, COR_CABELOS, COR_OLHOS, AREAS_E_FUNCOES } from '../../resources/options'
 import SectionHeader from '../SectionHeader'
 
 import {
@@ -112,7 +111,7 @@ const PassoDois = ({
       <InputWrapper>
         <SectionHeader text={'Funções'} />
         <Field
-          options={areas}
+          options={AREAS_E_FUNCOES}
           component={FuncoesCheckTable}
           name="funcoes"
         />
@@ -224,8 +223,6 @@ const PassoDois = ({
 PassoDois.propTypes = {
   handleSubmit: PropTypes.func.isRequired
 }
-
-
 
 const PassoDoisRedux = reduxForm(
   {

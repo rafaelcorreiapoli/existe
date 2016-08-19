@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Drawer, MenuItem } from 'material-ui';
 
 import RaisedButton from 'material-ui/RaisedButton';
 
@@ -9,11 +10,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Button from '../Button'
 import ProjetoCard from '../ProjetoCard'
 
-import FiltroArea from '../../containers/FiltroArea';
-import FiltroCategoria from '../../containers/FiltroCategoria';
-import FiltroOrdem from '../../containers/FiltroOrdem';
-import FiltroStatus from '../../containers/FiltroStatus';
-import MuralProjetos from '../../containers/MuralProjetos';
+
 import Login from '../../containers/Login';
 import CriarProjeto from '../../containers/CriarProjeto';
 import CadastroEmpresarial from '../../containers/CadastroEmpresarial';
@@ -22,14 +19,21 @@ import CadastroPessoal from '../../containers/CadastroPessoal';
 import RatingStars from '../../components/RatingStars';
 import UsuarioCard from '../../components/UsuarioCard';
 import CadastroCTA from '../../components/CadastroCTA';
-import ResetPasswordForm from '../../components/ResetPasswordForm';
+import { Link } from 'react-router'
 
-import BotaoNovoProjeto from '../BotaoNovoProjeto';
-import SelecionarAreaHint from '../SelecionarAreaHint';
+
+import {
+  Todos,
+  EmCriacao,
+  EmDesenvolvimento,
+  EmProducao,
+  Busca
+} from '../../resources/icons'
 
 import AppBar from '../AppBar';
 
 import './style.css'
+import 'flexboxgrid/css/flexboxgrid.css'
 import { ACCENT } from '../../resources/colors'
 
 import {
@@ -48,7 +52,7 @@ const muiTheme = getMuiTheme({
     accent2Color: grey100,
     accent3Color: grey500,
     textColor: darkBlack,
-    alternateTextColor: 'white',
+    alternateTextColor: darkBlack,
     canvasColor: white,
     borderColor: grey300,
     disabledColor: fade(darkBlack, 0.3),
@@ -84,14 +88,40 @@ const muiTheme = getMuiTheme({
 
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {open: false};
+  }
+
+  handleToggle = () => this.setState({open: !this.state.open});
+
   render() {
+    console.log(this.props.children);
     return (
-      <MuiThemeProvider  muiTheme={muiTheme}>
+      <MuiThemeProvider muiTheme={muiTheme}>
         <div>
+          <Drawer docked={false} open={this.state.open} onRequestChange={(open) => this.setState({open})}>
+            <Link to='/busca'>
+              <MenuItem leftIcon={<Busca />}>Busca</MenuItem>
+            </Link>
+            <Link to='/comunidade'>
+              <MenuItem leftIcon={<Todos />}>Comunidade</MenuItem>
+            </Link>
+            <Link to='/mural'>
+              <MenuItem leftIcon={<Todos />}>Mural</MenuItem>
+            </Link>
+          </Drawer>
+          <AppBar onClickToggleMenu={this.handleToggle} />
+          <div>
+            {React.cloneElement(this.props.children)}
+          </div>
+        </div>
+        {/*<div>
           <AppBar />
           <Login />
           <ResetPasswordForm />
-          <CadastroCTA />
+          <CadastroCTA />*/}
+          {/*<CadastroEmpresarial />*/}
           {/*<CadastroPessoal />*/}
           {/*<div>
             <div style={{display: 'flex'}}>
@@ -107,7 +137,7 @@ export default class App extends Component {
             </div>
           </div>
           <MuralProjetos />*/}
-        </div>
+        {/*</div>*/}
       </MuiThemeProvider>
     );
   }

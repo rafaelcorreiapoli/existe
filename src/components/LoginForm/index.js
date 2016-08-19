@@ -8,6 +8,8 @@ import MDSpinner from 'react-md-spinner';
 import styles from './styles';
 import { Facebook, Linkedin } from '../../resources/icons'
 import OrSeparator from '../OrSeparator'
+import Radium from 'radium'
+
 const hideAutoFillColorStyle = {
   WebkitBoxShadow: '0 0 0 1000px white inset'
 };
@@ -20,14 +22,17 @@ const LoginForm = ({
   onLogin,
   error,
   success,
-  isLoggingIn
+  isLoggingIn,
+  style,
+  onClickRecuperarSenha,
+  ...props
 }) => {
   return (
-    <div style={styles.container}>
+    <div style={[style,styles.container]} {...props}>
       <h1 style={{fontWeight: 200}}>Login</h1>
 
       <RaisedButton
-        style={{ marginBottom: 20, width: 300}}
+        style={{ marginBottom: 20, minWidth: 300, width: '50%'}}
         labelPosition="after"
         label="LOGIN COM FACEBOOK"
         icon={<Facebook size={24} />}
@@ -35,14 +40,14 @@ const LoginForm = ({
         labelColor="white" />
 
       <RaisedButton
-        style={{width: 300}}
+        style={{minWidth: 300, width: '50%'}}
         labelPosition="after"
         label="LOGIN COM LINKEDIN"
         icon={<Linkedin size={24} style={{marginBottom: 4}} />}
         backgroundColor='#007bb5'
         labelColor="white" />
 
-      <OrSeparator style={{marginTop: 20, marginBottom: 20, width: 500}}/>
+      <OrSeparator style={{marginTop: 20, marginBottom: 20, alignSelf: 'stretch'}}/>
       <form autoComplete='off' autoFill='off' style={styles.form}>
         {error &&
           <span style={styles.error}>
@@ -80,18 +85,19 @@ const LoginForm = ({
         />
 
         <RaisedButton
-          style={{width: 300, marginBottom: 10}}
+          style={{minWidth: 300, width: '50%', marginTop: 30, marginBottom: 10}}
           onClick={() => onLogin(email, password)}
           label="LOGIN"
           primary={true} />
 
         <FlatButton
-          style={{width: 300}}
+          style={{minWidth: 300, width: '50%'}}
           label="Esqueceu a senha?"
+          onClick={onClickRecuperarSenha}
           />
       </form>
     </div>
   )
 }
 
-export default LoginForm
+export default Radium(LoginForm)

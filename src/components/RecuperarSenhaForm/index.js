@@ -4,10 +4,11 @@ import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import styles from './styles'
 
-const ResetPasswordForm = ({
+const RecuperarSenhaForm = ({
   email,
   onChangeEmail,
-  onRecuperarSenha
+  onRecuperarSenha,
+  onClickLogin
 }) => {
   return (
     <div style={styles.container}>
@@ -31,6 +32,7 @@ const ResetPasswordForm = ({
 
         <FlatButton
           style={{width: 300}}
+          onClick={onClickLogin}
           label="FAZER LOGIN"
         />
       </form>
@@ -38,4 +40,4 @@ const ResetPasswordForm = ({
   )
 }
 
-export default ResetPasswordForm
+export default RecuperarSenhaForm

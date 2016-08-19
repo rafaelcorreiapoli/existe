@@ -369,17 +369,21 @@ const options = [
 const SelecionarArea = ({
   options,
   value,
-  onChange
+  onChange,
+  style,
+  ...props
 }) => {
   return (
     <ButtonPopover
+      style={style}
       customButton={FlatButton}
       customButtonStyle={{width: 300, height: 72}}
       defaultText={'FILTRAR POR ÁREA'}
       options={options}
       onChange={onChange}
-      value={value}>
-    </ButtonPopover>
+      value={value}
+      {...props}
+    />
   )
 }
 

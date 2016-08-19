@@ -31,6 +31,12 @@ import MailOutline from 'material-ui/svg-icons/communication/mail-outline';
 import AddCircleOutline from 'material-ui/svg-icons/content/add-circle-outline';
 import Delete from 'material-ui/svg-icons/action/delete';
 
+export Perfil from 'material-ui/svg-icons/social/person'
+export Busca from 'material-ui/svg-icons/action/search'
+export Adicionar from 'material-ui/svg-icons/content/add-circle-outline';
+export Logout from 'material-ui/svg-icons/action/exit-to-app'
+export Ajuda from 'material-ui/svg-icons/action/help-outline'
+export Menu from 'material-ui/svg-icons/navigation/more-vert'
 export Facebook from 'react-icons/lib/fa/facebook';
 export Linkedin from 'react-icons/lib/fa/linkedin';
 

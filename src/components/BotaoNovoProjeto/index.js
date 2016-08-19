@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import AddCircleOutline from 'material-ui/svg-icons/content/add-circle-outline';
+import { Adicionar } from '../../resources/icons'
 import FlatButton from 'material-ui/FlatButton';
 import { connect } from 'react-redux'
 import { addProjeto } from '../../actions'
@@ -26,15 +26,18 @@ const fakeProject = {
 }
 
 const Botao = ({
-  onClick
+  onClick,
+  style,
+  props
 }) => {
   return (
     <FlatButton
       onClick={() => onClick(fakeProject)}
-      style={{marginRight: 40}}
+      style={style}
       label="CRIAR NOVO PROJETO"
       secondary={true}
-      icon={<AddCircleOutline />}
+      icon={<Adicionar />}
+      {...props}
     />
 
   )

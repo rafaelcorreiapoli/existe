@@ -11,3 +11,4 @@ export const celular = value => {
 
 }
 export const cpf = value => value && VMasker.toPattern(value, '999.999.999-99');
+export const cnpjNormalizer = value => value && VMasker.toPattern(value, '9999.9999.9999.9999');

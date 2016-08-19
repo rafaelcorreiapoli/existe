@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import CadastroEmpresarialForm from '../../components/CadastroEmpresarialForm'
+import CadastroRapidoForm from '../../components/CadastroRapidoForm'
 
 
 const mapStateToProps = (state) => {
   return {
-    values: state.form.cadastroEmpresarial.values
+    
   }
 }
 
@@ -17,9 +17,9 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const CadastroEmpresarial = connect(
+const CadastroRapido = connect(
   mapStateToProps,
   mapDispatchToProps
-)(CadastroEmpresarialForm)
+)(CadastroRapidoForm)
 
-export default CadastroEmpresarial
+export default CadastroRapido

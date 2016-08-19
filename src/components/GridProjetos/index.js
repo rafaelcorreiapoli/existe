@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import ProjetoCard from '../ProjetoCard';
 import { CSSGrid , makeResponsive } from 'react-stonecutter';
 
-const Grid = makeResponsive(CSSGrid, { maxWidth: 1920 });
+const Grid = makeResponsive(CSSGrid, { maxWidth: 1600 });
 
 const GridProjetos = ({
   projetos

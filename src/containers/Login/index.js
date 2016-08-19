@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import { setLoginEmail, setLoginPassword, loginRequest } from '../../actions'
 import LoginForm from '../../components/LoginForm'
+import { push } from 'react-router-redux';
 
 const mapStateToProps = (state) => {
   console.log(state.login.get('error'))
@@ -23,6 +24,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     onLogin(email, password) {
       dispatch(loginRequest(email, password));
+    },
+    onClickRecuperarSenha() {
+      dispatch(push('/recuperar-senha'))
     }
   }
 }

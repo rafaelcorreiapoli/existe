@@ -16,10 +16,11 @@ const styles = {
     color: 'green'
   },
   form: {
-    width: 400,
+    //width: 400,
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center'
+    alignItems: 'center',
+    alignSelf: 'stretch'
   }
 }
 
