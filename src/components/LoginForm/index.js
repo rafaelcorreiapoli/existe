@@ -51,7 +51,8 @@ const LoginForm = ({
       <form autoComplete='off' autoFill='off' style={styles.form}>
         {error &&
           <span style={styles.error}>
-            { error === 403 && 'Usuário ou senha incorretos'}
+            { error.status === 401 && 'Senha incorreta'}
+            { error.status === 404 && 'Usuário não encontrado'}
           </span>
         }
         {isLoggingIn &&

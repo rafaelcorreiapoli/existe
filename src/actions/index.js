@@ -14,6 +14,8 @@ export const CRIAR_PROJETO_SUCCESS = 'CRIAR_PROJETO_SUCCESS';
 export const CRIAR_PROJETO_ERRO = 'CRIAR_PROJETO_ERRO';
 export const START_CRIAR_PROJETO = 'START_CRIAR_PROJETO';
 
+import api from '../api'
+
 export function setFiltroCategoria(categoria) {
   return {
     type: SET_FILTRO_CATEGORIA,
@@ -131,17 +133,13 @@ export function loginRequest(email, password) {
   return (dispatch) => {
     dispatch(startLogin(email, password));
 
-    return asteroid.loginWithPassword({ email, password})
-    .then(result => {
-        console.log('Success');
-        console.log(result);
-        dispatch(loginSuccess(result));
+    api.login({email, password}, (err, res) => {
+      if (err) {
+        dispatch(loginError(err));
+      } else {
+        dispatch(loginSuccess());
+      }
     })
-    .catch(error => {
-        console.log('Error');
-        console.error(error);
-        dispatch(loginError(error));
-    });
   }
 }
 

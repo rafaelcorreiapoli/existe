@@ -3,6 +3,7 @@ import { setLoginEmail, setLoginPassword, loginRequest } from '../../actions'
 import LoginForm from '../../components/LoginForm'
 import { push } from 'react-router-redux';
 
+
 const mapStateToProps = (state) => {
   console.log(state.login.get('error'))
   return {

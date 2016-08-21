@@ -23,11 +23,7 @@ const login = (state = Map({email: '', password: '', isLoggingIn: false, error: 
       })
     break;
     case LOGIN_ERROR:
-      return state.merge({
-        isLoggingIn: false,
-        error: action.payload.error.error,
-        success: false
-      });
+      return state.set('error', action.payload.error).set('isLoggingIn', false).set('success', false)
     break;
     default:
       return state;
