@@ -128,7 +128,7 @@ export function loginError(error) {
 }
 
 export function loginRequest(email, password) {
-  return (dispatch) => {
+  return (dispatch, getState, asteroid) => {
     dispatch(startLogin(email, password));
 
     return asteroid.loginWithPassword({ email, password})
@@ -170,7 +170,7 @@ export function startCreateProjeto() {
 }
 
 export function createProjeto(projeto) {
-  return (dispatch) => {
+  return (dispatch, getState, asteroid) => {
     dispatch(startCreateProjeto())
     return asteroid.call('projetos.add', projeto)
     .then(result => {

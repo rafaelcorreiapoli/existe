@@ -51,7 +51,8 @@ const LoginForm = ({
       <form autoComplete='off' autoFill='off' style={styles.form}>
         {error &&
           <span style={styles.error}>
-            { error === 403 && 'Usuário ou senha incorretos'}
+            { (error.error === 403 && error.reason === 'User not found') && 'Usuário não encontrado'}
+            { (error.error === 403 && error.reason === 'Incorrect password') && 'Senha incorreta'}
           </span>
         }
         {isLoggingIn &&
@@ -84,10 +85,14 @@ const LoginForm = ({
           type="password"
         />
 
+
+
         <RaisedButton
           style={{minWidth: 300, width: '50%', marginTop: 30, marginBottom: 10}}
           onClick={() => onLogin(email, password)}
           label="LOGIN"
+          labelPosition="after"
+          labelColor="white"
           primary={true} />
 
         <FlatButton
