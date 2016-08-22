@@ -28,6 +28,14 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(setDrawerOpen(false))
       dispatch(push('/comunidade'))
     },
+    onClickCadastroPessoal() {
+      dispatch(setDrawerOpen(false))
+      dispatch(push('/cadastro/pessoal'))
+    },
+    onClickCadastroEmpresarial() {
+      dispatch(setDrawerOpen(false))
+      dispatch(push('/cadastro/empresarial'))
+    },
     onClickMuralLink() {
       dispatch(setDrawerOpen(false))
       dispatch(push('/mural'))

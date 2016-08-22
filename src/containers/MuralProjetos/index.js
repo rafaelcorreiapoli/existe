@@ -22,9 +22,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         name: 'projetos',
         publication: 'projetos',
       })
-    },
-    teste() {
-      unsubscribe('projetos')
     }
   }
 }
@@ -32,10 +29,6 @@ class MuralProjetos extends React.Component {
   componentDidMount() {
     const { onComponentDidMount, teste } = this.props
     onComponentDidMount();
-
-    setTimeout(() => {
-      teste()
-    }, 5000)
   }
 
   render() {

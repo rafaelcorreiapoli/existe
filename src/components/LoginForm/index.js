@@ -39,6 +39,12 @@ const LoginForm = ({
         backgroundColor='#3b5998'
         labelColor="white" />
 
+      <FacebookLogin
+        appId="1215728311791052"
+        autoLoad={true}
+        fields="name,email,picture"
+        callback={(e) => console.log(e)} />
+
       <RaisedButton
         style={{minWidth: 300, width: '50%'}}
         labelPosition="after"

@@ -33,9 +33,9 @@ export const unregisterComponent = (componentId) => {
   return (dispatch, getState, asteroid) => {
     const state = getState()
 
-    const component = state.client.subscriptions.get(componentId);
+    const component = state.ddp.components.get(componentId);
     component.forEach(handlerId => {
-      if (state.client.handlers.getIn([handlerId, 'counter']) === 1) {
+      if (state.ddp.handlers.getIn([handlerId, 'counter']) === 1) {
         asteroid.unsubscribe(handlerId)
         dispatch(unregisterHandler(handlerId))
       } else {
