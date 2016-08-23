@@ -1,3 +1,6 @@
+import axios from 'axios';
+import { showPopup } from '../utils/browser'
+
 export const SET_FILTRO_CATEGORIA = 'SET_FILTRO_CATEGORIA';
 export const SET_FILTRO_ORDEM = 'SET_FILTRO_ORDEM';
 export const SET_FILTRO_STATUS = 'SET_FILTRO_STATUS';
@@ -28,6 +31,32 @@ export function loginWithFacebook(email, password) {
       }).catch(err => {
         console.log(err)
       })
+    })
+  }
+}
+
+export function loginWithLinkedin(email, password) {
+  return (dispatch, getState, asteroid) => {
+    var url = 'https://www.linkedin.com/oauth/v2/authorization'
+    + '?response_type=code&client_id=777mhuxbercoo8'
+    + '&redirect_uri=http://localhost:4000/_oauth/linkedin?close'
+    + '&state=23132132131'
+    showPopup(url)
+
+    // const get = axios.get('https://www.linkedin.com/oauth/v2/authorization', {
+    //   query: {
+    //     response_type: 'code',
+    //     client_id: '777mhuxbercoo8',
+    //     redirect_uri: 'http://localhost:3000/_oauth/linkedin?close',
+    //     state: '12312321321212211'
+    //   }
+    // })
+    console.log(get);
+    get.then(res => {
+      console.log(res);
+    })
+    .catch(err => {
+      console.log(err)
     })
   }
 }
