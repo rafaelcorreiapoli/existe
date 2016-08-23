@@ -5,7 +5,6 @@ import CadastroEmpresarialForm from '../../components/CadastroEmpresarialForm'
 
 const mapStateToProps = (state) => {
   return {
-    values: state.form.cadastroEmpresarial.values
   }
 }
 

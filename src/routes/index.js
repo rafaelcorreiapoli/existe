@@ -8,6 +8,8 @@ import CadastroRapidoPage from '../pages/CadastroRapidoPage'
 import MuralPage from '../pages/MuralPage'
 import BuscaPage from '../pages/BuscaPage'
 import NovoProjetoPage from '../pages/NovoProjetoPage'
+import CadastroEmpresarialPage from '../pages/CadastroEmpresarialPage'
+import CadastroPessoalPage from '../pages/CadastroPessoalPage'
 import PerfilPage from '../pages/PerfilPage'
 import ComunidadePage from '../pages/ComunidadePage'
 import Login from '../containers/Login'
@@ -21,7 +23,11 @@ const Routes = () => {
           <IndexRoute component={Login} />
           <Route path="recuperar-senha" component={RecuperarSenha}/>
         </Route>
-        <Route path="/cadastro" component={CadastroRapidoPage} />
+        <Route path="/cadastro">
+          <IndexRoute component={CadastroRapidoPage} />
+          <Route path="pessoal" component={CadastroPessoalPage}/>
+          <Route path="empresarial" component={CadastroEmpresarialPage}/>
+        </Route>
         <Route path="/mural" component={MuralPage} />
         <Route path="/comunidade" component={ComunidadePage} />
         <Route path="/busca" component={BuscaPage} />

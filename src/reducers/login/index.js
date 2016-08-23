@@ -23,7 +23,9 @@ const login = (state = Map({email: '', password: '', isLoggingIn: false, error: 
       })
     break;
     case LOGIN_ERROR:
-      return state.set('error', action.payload.error).set('isLoggingIn', false).set('success', false)
+      return state.withMutations(map => {
+        map.set('isLoggingIn', false).set('error', action.payload.error).set('success', false)
+      })
     break;
     default:
       return state;

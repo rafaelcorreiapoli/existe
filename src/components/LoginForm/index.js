@@ -3,7 +3,6 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import Paper from 'material-ui/Paper';
-import FacebookLogin from 'react-facebook-login';
 import MDSpinner from 'react-md-spinner';
 import styles from './styles';
 import { Facebook, Linkedin } from '../../resources/icons'
@@ -25,6 +24,8 @@ const LoginForm = ({
   isLoggingIn,
   style,
   onClickRecuperarSenha,
+  onLoginWithFacebook,
+  onLoginWithLinkedin,
   ...props
 }) => {
   return (
@@ -34,6 +35,7 @@ const LoginForm = ({
       <RaisedButton
         style={{ marginBottom: 20, minWidth: 300, width: '50%'}}
         labelPosition="after"
+        onClick={onLoginWithFacebook}
         label="LOGIN COM FACEBOOK"
         icon={<Facebook size={24} />}
         backgroundColor='#3b5998'
@@ -42,6 +44,7 @@ const LoginForm = ({
       <RaisedButton
         style={{minWidth: 300, width: '50%'}}
         labelPosition="after"
+        onClick={onLoginWithLinkedin}
         label="LOGIN COM LINKEDIN"
         icon={<Linkedin size={24} style={{marginBottom: 4}} />}
         backgroundColor='#007bb5'
@@ -51,8 +54,8 @@ const LoginForm = ({
       <form autoComplete='off' autoFill='off' style={styles.form}>
         {error &&
           <span style={styles.error}>
-            { error.status === 401 && 'Senha incorreta'}
-            { error.status === 404 && 'Usuário não encontrado'}
+            { (error.error === 403 && error.reason === 'User not found') && 'Usuário não encontrado'}
+            { (error.error === 403 && error.reason === 'Incorrect password') && 'Senha incorreta'}
           </span>
         }
         {isLoggingIn &&
@@ -85,10 +88,14 @@ const LoginForm = ({
           type="password"
         />
 
+
+
         <RaisedButton
           style={{minWidth: 300, width: '50%', marginTop: 30, marginBottom: 10}}
           onClick={() => onLogin(email, password)}
           label="LOGIN"
+          labelPosition="after"
+          labelColor="white"
           primary={true} />
 
         <FlatButton

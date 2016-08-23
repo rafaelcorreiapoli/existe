@@ -13,6 +13,26 @@ export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const CRIAR_PROJETO_SUCCESS = 'CRIAR_PROJETO_SUCCESS';
 export const CRIAR_PROJETO_ERRO = 'CRIAR_PROJETO_ERRO';
 export const START_CRIAR_PROJETO = 'START_CRIAR_PROJETO';
+export const LOGIN_WITH_FACEBOOK = 'LOGIN_WITH_FACEBOOK';
+export const LOGIN_WITH_LINKEDIN = 'LOGIN_WITH_LINKEDIN';
+import { push } from 'react-router-redux'
+
+export function loginWithFacebook(email, password) {
+  return (dispatch, getState, asteroid) => {
+    FB.login(fbResponse => {
+      console.log(fbResponse)
+      asteroid.call('login', {
+        facebook: fbResponse.authResponse
+      }).then(res => {
+        console.log(res)
+      }).catch(err => {
+        console.log(err)
+      })
+    })
+  }
+}
+
+
 
 import api from '../api'
 
@@ -130,15 +150,15 @@ export function loginError(error) {
 }
 
 export function loginRequest(email, password) {
-  return (dispatch) => {
+  return (dispatch, getState, asteroid) => {
     dispatch(startLogin(email, password));
 
-    api.login({email, password}, (err, res) => {
-      if (err) {
-        dispatch(loginError(err));
-      } else {
-        dispatch(loginSuccess());
-      }
+    return asteroid.loginWithPassword({ email, password})
+    .then(result => {
+        console.log('Success');
+        console.log(result);
+        dispatch(push('/busca'));
+        dispatch(loginSuccess(result));
     })
   }
 }
@@ -168,7 +188,7 @@ export function startCreateProjeto() {
 }
 
 export function createProjeto(projeto) {
-  return (dispatch) => {
+  return (dispatch, getState, asteroid) => {
     dispatch(startCreateProjeto())
     return asteroid.call('projetos.add', projeto)
     .then(result => {

@@ -17,7 +17,7 @@ export default getMuiTheme({
     accent2Color: grey100,
     accent3Color: grey500,
     textColor: darkBlack,
-    alternateTextColor: darkBlack,
+    alternateTextColor: 'white',
     canvasColor: white,
     borderColor: grey300,
     disabledColor: fade(darkBlack, 0.3),
@@ -27,6 +27,9 @@ export default getMuiTheme({
   },
 
   raisedButton: {
+    textColor: 'white'
+  },
+  button: {
     color: 'white'
   },
   appBar: {
