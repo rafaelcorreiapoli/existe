@@ -18,6 +18,7 @@ const TextInput = ({
       fullWidth={true}
       floatingLabelText={label}
       floatingLabelFixed={true}
+      autoComplete="off"
       {...input}
       {...props}
     />

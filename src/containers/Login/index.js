@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { setLoginEmail, setLoginPassword, loginRequest } from '../../actions'
+import { setLoginEmail, setLoginPassword, loginRequest, loginWithFacebook, loginWithLinkedin } from '../../actions'
 import LoginForm from '../../components/LoginForm'
 import { push } from 'react-router-redux';
 
@@ -24,6 +24,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     onLogin(email, password) {
       dispatch(loginRequest(email, password));
+    },
+    onLoginWithFacebook() {
+      dispatch(loginWithFacebook())
+    },
+    onLoginWithLinkedin() {
+      dispatch(loginWithLinkedin())
     },
     onClickRecuperarSenha() {
       dispatch(push('/recuperar-senha'))

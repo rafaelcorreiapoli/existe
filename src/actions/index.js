@@ -13,6 +13,26 @@ export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const CRIAR_PROJETO_SUCCESS = 'CRIAR_PROJETO_SUCCESS';
 export const CRIAR_PROJETO_ERRO = 'CRIAR_PROJETO_ERRO';
 export const START_CRIAR_PROJETO = 'START_CRIAR_PROJETO';
+export const LOGIN_WITH_FACEBOOK = 'LOGIN_WITH_FACEBOOK';
+export const LOGIN_WITH_LINKEDIN = 'LOGIN_WITH_LINKEDIN';
+import { push } from 'react-router-redux'
+
+export function loginWithFacebook(email, password) {
+  return (dispatch, getState, asteroid) => {
+    FB.login(fbResponse => {
+      console.log(fbResponse)
+      asteroid.call('login', {
+        facebook: fbResponse.authResponse
+      }).then(res => {
+        console.log(res)
+      }).catch(err => {
+        console.log(err)
+      })
+    })
+  }
+}
+
+
 
 export function setFiltroCategoria(categoria) {
   return {
@@ -135,6 +155,7 @@ export function loginRequest(email, password) {
     .then(result => {
         console.log('Success');
         console.log(result);
+        dispatch(push('/busca'));
         dispatch(loginSuccess(result));
     })
     .catch(error => {

@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "asteroid": "^2.0.2",
+    "asteroid-oauth-mixin": "^1.0.14",
     "bootstrap": "^3.3.7",
     "classnames": "^2.2.5",
     "extract-text-webpack-plugin": "^1.0.1",
@@ -56,6 +57,7 @@
     "immutable": "^3.8.1",
     "joi": "^9.0.4",
     "joi-browser": "^9.0.1",
+    "json-loader": "^0.5.4",
     "lodash": "^4.14.1",
     "material-ui": "^0.15.3",
     "moment": "^2.14.1",

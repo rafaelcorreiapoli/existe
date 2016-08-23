@@ -47,7 +47,7 @@ const PassoUm = ({
   invalid
 }) => {
   return (
-     <form onSubmit={handleSubmit(onSubmit)}>
+     <form onSubmit={handleSubmit(onSubmit)} autoFill="false">
       <InputWrapper>
         <SectionHeader text={'Perfil'} />
         <Field

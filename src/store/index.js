@@ -7,7 +7,7 @@ import rootReducer from '../reducers';
 import asteroid from '../asteroid'
 const routerMiddleware = createRouterMiddleware(browserHistory)
 const loggerMiddleware = createLogger({
-  predicate: (getState, action) => !/redux-form|immutable-collection/.test(action.type)
+  predicate: (getState, action) => !/redux-form|immutable-collection|ddp/.test(action.type)
 });
 
 const store = createStore(
