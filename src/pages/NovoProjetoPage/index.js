@@ -1,11 +1,12 @@
 import React, { PropTypes } from 'react'
+import NovoProjeto from '../../containers/NovoProjeto'
 
 const NovoProjetoPage = ({
 
 }) => {
   return (
     <div>
-      Novo projeto
+      <NovoProjeto />
     </div>
   )
 }

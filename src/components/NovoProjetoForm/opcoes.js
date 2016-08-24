@@ -1,3 +1,30 @@
+export const OPCOES_MEIOS_VEICULACAO = [
+  {
+    label: 'TV',
+    value: 'tv'
+  },
+  {
+    label: 'TV interna',
+    value: 'tv-interna'
+  },
+  {
+    label: 'DVD',
+    value: 'dvd'
+  },
+  {
+    label: 'Blu-ray',
+    value: 'blu-ray'
+  },
+  {
+    label: 'Cinema',
+    value: 'cinema'
+  },
+  {
+    label: 'Internet',
+    value: 'internet'
+  },
+]
+
 export const OPCOES_OBJETIVOS = [
   {
     label: 'Comunicação Interna',
