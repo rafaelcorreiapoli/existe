@@ -34,6 +34,8 @@ export function loginWithFacebook(email, password) {
 
 
 
+import api from '../api'
+
 export function setFiltroCategoria(categoria) {
   return {
     type: SET_FILTRO_CATEGORIA,
@@ -158,11 +160,6 @@ export function loginRequest(email, password) {
         dispatch(push('/busca'));
         dispatch(loginSuccess(result));
     })
-    .catch(error => {
-        console.log('Error');
-        console.error(error);
-        dispatch(loginError(error));
-    });
   }
 }
 
