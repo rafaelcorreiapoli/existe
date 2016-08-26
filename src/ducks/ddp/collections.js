@@ -2,7 +2,10 @@ import { Map } from 'immutable'
 const INSERT = 'ddp/collections/INSERT';
 const REMOVE = 'ddp/collections/REMOVE';
 const UPDATE = 'ddp/collections/UPDATE';
+
+
 import { setConnectionState } from './connection'
+import { userLoggedIn, userLoggedOut } from './user'
 
 const initialState = Map();
 
@@ -23,6 +26,7 @@ export default (state = initialState, { type, payload = {}}) => {
       return state;
   }
 }
+
 
 export const insertDoc = ({doc, id, collection}) => {
   return {
@@ -84,5 +88,15 @@ export const setupDdpListeners = () =>
 
     asteroid.ddp.on('connected', (e) => {
       dispatch(setConnectionState(true));
+    })
+
+    asteroid.on('loggedIn', (userId) => {
+      dispatch(userLoggedIn(userId))
+    })
+
+    asteroid.on('loggedOut', (e) => {
+      console.log(e)
+      console.log(asteroid.userId)
+      dispatch(userLoggedOut(asteroid.userId))
     })
   }

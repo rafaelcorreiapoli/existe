@@ -50,6 +50,16 @@ const PassoDois = ({
     <form onSubmit={handleSubmit(onSubmit)} autoFill="false">
       <InputWrapper>
         <Field
+          label="Público"
+          component={TextInput}
+          name="publico"
+        />
+        <Field
+          label="Prazo de Entrega"
+          component={DateInput}
+          name="prazoEntrega"
+        />
+        <Field
           label="Linguagem Visual"
           component={PaperSelect}
           name="linguagemVisual"
@@ -62,11 +72,6 @@ const PassoDois = ({
           options={OPCOES_PROCURA}
         />
         <Field
-          label="Público"
-          component={TextInput}
-          name="publico"
-        />
-        <Field
           label="Meios de veiculação"
           component={PaperSelect}
           name="meiosVeiculacao"
@@ -77,11 +82,6 @@ const PassoDois = ({
           component={PaperSelect}
           name="tempoDuracao"
           options={OPCOES_TEMPO_DE_DURACAO}
-        />
-        <Field
-          label="Prazo de Entrega"
-          component={DateInput}
-          name="prazoEntrega"
         />
       </InputWrapper>
       <InputWrapper>

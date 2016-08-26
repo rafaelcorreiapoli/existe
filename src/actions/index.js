@@ -20,42 +20,33 @@ export const LOGIN_WITH_FACEBOOK = 'LOGIN_WITH_FACEBOOK';
 export const LOGIN_WITH_LINKEDIN = 'LOGIN_WITH_LINKEDIN';
 import { push } from 'react-router-redux'
 
-export function loginWithFacebook(email, password) {
+
+
+export function loginWithFacebook(redirect) {
   return (dispatch, getState, asteroid) => {
-    FB.login(fbResponse => {
-      console.log(fbResponse)
-      asteroid.call('login', {
-        facebook: fbResponse.authResponse
-      }).then(res => {
-        console.log(res)
-      }).catch(err => {
-        console.log(err)
-      })
+    asteroid.loginWithFacebook()
+    .then(res => {
+      dispatch(push(redirect))
+    })
+    .catch(err => {
+      console.log(err)
     })
   }
 }
 
-export function loginWithLinkedin(email, password) {
+
+
+export function loginWithLinkedin(redirect) {
   return (dispatch, getState, asteroid) => {
-      IN.User.authorize((res) => {
-        asteroid.call('login', {
-          linkedin: {
-            code: IN.ENV.auth.oauth_token
-          }
-        })
-        .then(res => {
-          console.log(res);
-        })
-        .catch(err => {
-          console.log(err);
-        })
-      });
-    }
+    asteroid.loginWithLinkedin()
+    .then(res => {
+      dispatch(push(redirect))
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
 }
-
-
-
-import api from '../api'
 
 export function setFiltroCategoria(categoria) {
   return {
@@ -170,16 +161,16 @@ export function loginError(error) {
   }
 }
 
-export function loginRequest(email, password) {
+export function loginRequest(email, password, redirect) {
   return (dispatch, getState, asteroid) => {
     dispatch(startLogin(email, password));
 
     return asteroid.loginWithPassword({ email, password})
     .then(result => {
-        console.log('Success');
-        console.log(result);
-        dispatch(push('/busca'));
-        dispatch(loginSuccess(result));
+      dispatch(push(redirect));
+    })
+    .catch(err => {
+      dispatch(loginError(err))
     })
   }
 }

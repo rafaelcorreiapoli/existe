@@ -45,6 +45,16 @@ const PassoUm = ({
     <form onSubmit={handleSubmit(onSubmit)} autoFill="false">
       <InputWrapper>
         <Field
+          label="Nome do Cliente"
+          component={TextInput}
+          name="nomeCliente"
+        />
+        <Field
+          label="Segmento de atuação"
+          component={TextInput}
+          name="segmentoAtuacao"
+        />
+        <Field
           label="Objetivo"
           component={PaperSelect}
           name="objetivo"
@@ -55,16 +65,6 @@ const PassoUm = ({
           component={PaperSelect}
           name="categoria"
           options={OPCOES_CATEGORIA}
-        />
-        <Field
-          label="Nome do Cliente"
-          component={TextInput}
-          name="nomeCliente"
-        />
-        <Field
-          label="Segmento de atuação"
-          component={TextInput}
-          name="segmentoAtuacao"
         />
         <Field
           label="Subcategoria"

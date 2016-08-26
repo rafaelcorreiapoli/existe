@@ -5,7 +5,6 @@ import { push } from 'react-router-redux';
 
 
 const mapStateToProps = (state) => {
-  console.log(state.login.get('error'))
   return {
     email: state.login.get('email'),
     password: state.login.get('password'),
@@ -27,7 +26,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(loginRequest(email, password));
     },
     onLoginWithFacebook() {
-      dispatch(loginWithFacebook())
+      const { location: { query: { redirect = '/busca'} } } = ownProps
+      dispatch(loginWithFacebook(redirect))
     },
     onLoginWithLinkedin() {
       dispatch(loginWithLinkedin())
