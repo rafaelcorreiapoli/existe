@@ -1,4 +1,6 @@
 import React from 'react'
+import  { Grid, Row, Col } from 'react-flexbox-grid/lib/index'
+
 import PerfilInfo from '../../components/PerfilInfo'
 import PerfilMenu from '../../components/PerfilMenu'
 
@@ -33,25 +35,29 @@ export default ({
   ...props
 }) => {
   return (
-    <div style={styles.container}>
-      <div style={styles.leftContainer}>
-        <PerfilInfo
-          nome='Marcelo Fernandez'
-          area='imagem'
-          image='http://placehold.it/300x300'
-          textoCount={3}
-          imagemCount={3}
-          audioCount={3}
-          cenaCount={3}
-          producaoCount={3}
-        />
-        <PerfilMenu
-          active={routes[4].path}
-        />
-      </div>
-      <div style={styles.rightContainer}>
-        {children}
-      </div>
-    </div>
+    <Grid>
+      <Row>
+        <Col xs={12} md={4}>
+          <PerfilInfo
+            nome='Marcelo Fernandez'
+            area='imagem'
+            image='http://placehold.it/300x300'
+            textoCount={3}
+            imagemCount={3}
+            audioCount={3}
+            cenaCount={3}
+            producaoCount={3}
+            />
+          <div>
+          <PerfilMenu
+            active={routes[4].path}
+            />
+          </div>
+        </Col>
+        <Col xs={12} md={8}>
+          {children}
+        </Col>
+      </Row>
+    </Grid>
   )
 }

@@ -9,7 +9,7 @@ const AuthenticatedLayout = ({
     <div>
       <DrawerContainer />
       <AppBarContainer />
-      <div>
+      <div style={{marginTop: 120}}>
         {children}
       </div>
     </div>

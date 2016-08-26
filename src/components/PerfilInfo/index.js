@@ -14,12 +14,14 @@ const styles = {
   rightInfoContainer: {
     display: 'flex',
     flexDirection: 'column',
-    padding: 10
+    padding: 10,
+    flexGrow: 1
   },
   circleRow: {
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'space-around'
+    alignItems: 'space-around',
+    flexWrap: 'wrap'
   },
   circleNumber: {
     marginRight: 5
