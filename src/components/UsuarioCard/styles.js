@@ -11,10 +11,6 @@ const styles = {
     overflow: 'hidden',
     textOverflow: 'ellipsis'
   },
-  areaIndicator: {
-    height: 20,
-    backgroundColor: ACCENT
-  }
 }
 
 export default styles;

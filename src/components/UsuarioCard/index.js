@@ -5,7 +5,7 @@ import { Usuarios } from '../../resources/icons';
 import CircleNumber from '../CircleNumber';
 import RatingStars from '../RatingStars';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-
+import UsuarioAvatar from '../UsuarioAvatar'
 
 const Subtitle = ({
   numeroProjetos,
@@ -43,12 +43,12 @@ const UsuarioCard = ({
   return (
     <Card style={{minWidth: 0, width: 300, backgroundColor: '#fafafa'}}>
       <CardMedia>
-        <img
-          src={'http://www.naturaloil.ph/wp-content/uploads/2015/11/John_Doe.jpg'}
-          style={styles.foto}
-          />
+        <UsuarioAvatar
+          image={foto}
+          area={area}
+        />
       </CardMedia>
-      <div style={styles.areaIndicator} />
+
       <CardTitle
         title={nome}
         titleStyle={styles.title}

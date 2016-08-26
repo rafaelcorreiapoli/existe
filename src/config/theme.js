@@ -42,6 +42,7 @@ export default getMuiTheme({
     backgroundColor: 'white',
     textColor: darkBlack,
     alternateTextColor: darkBlack,
+    selectedTextColor: darkBlack
   },
   tab: {
     textColor: darkBlack,

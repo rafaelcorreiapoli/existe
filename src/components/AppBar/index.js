@@ -9,7 +9,7 @@ import IconMenu from 'material-ui/IconMenu'
 import { Menu, Adicionar, Logout, Ajuda, Perfil } from '../../resources/icons'
 import { Link } from 'react-router'
 const AppBar = ({
-  onClickToggleMenu,
+  onChangeDrawerState,
   onClickPerfilLink,
   onClickNovoProjetoLink,
   onClickAjudaLink,
@@ -21,7 +21,7 @@ const AppBar = ({
     }}
     title="EXISTE"
     style={{color: 'black'}}
-    onLeftIconButtonTouchTap={onClickToggleMenu}
+    onLeftIconButtonTouchTap={() => onChangeDrawerState(true)}
     iconElementRight={
       <IconMenu
         iconButtonElement={
