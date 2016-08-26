@@ -6,14 +6,29 @@ import { ACCENT } from '../../../resources/colors'
 export Feed from './Feed'
 export Pessoas from './Pessoas'
 export Projetos from './Projetos'
+
 const styles = {
   title: {
-    textAlign: 'center'
+    textAlign: 'center',
+    marginTop: 30
+  },
+  titleContainer: {
+    height: 120,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   container: {
     width: '100%',
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+  },
+  header: {
+    position: 'relative'
+  },
+  tabs: {
+    height: 50,
+    width: '100%'
   }
 }
 
@@ -39,13 +54,18 @@ const Seguindo = ({
 }) => {
   return (
     <div style={styles.container}>
-      <h1 style={styles.title}>Seguindo</h1>
-      <Tabs style={{width: '100%'}} value={routes[routes.length - 1].path}>
-        <Tab label={<TabLabel label={'Feed'} number={feedCount} />} onActive={onFeedClick} value="feed" />
-        <Tab label={<TabLabel label={'Projetos'} number={projetosCount} />} onActive={onProjetosClick} value="projetos" />
-        <Tab label={<TabLabel label={'Pessoas'} number={pessoasCount} />} onActive={onPessoasClick} value="pessoas" />
-      </Tabs>
-      <div>
+      <div style={styles.header}>
+        <div style={styles.titleContainer}>
+          <h1 style={styles.title}>Seguindo</h1>
+        </div>
+
+        <Tabs style={styles.tabs} value={routes[routes.length - 1].path}>
+          <Tab label={<TabLabel label={'Feed'} number={feedCount} />} onActive={onFeedClick} value="feed" />
+          <Tab label={<TabLabel label={'Projetos'} number={projetosCount} />} onActive={onProjetosClick} value="projetos" />
+          <Tab label={<TabLabel label={'Pessoas'} number={pessoasCount} />} onActive={onPessoasClick} value="pessoas" />
+        </Tabs>
+      </div>
+      <div style={{height: '100%', padding: 50}}>
         {children}
       </div>
   </div>

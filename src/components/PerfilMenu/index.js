@@ -30,16 +30,15 @@ class CustomMenuItem extends React.Component {
       onClick
     } = this.props
     const style = Object.assign({}, styles.menuItem,
-      active === id ? styles.menuItemActive : {}
+      active ? styles.menuItemActive : {}
     )
-    const innerDivStyle = active === id ? styles.innerDivActive : null
-
+    const innerDivStyle = active ? styles.innerDivActive : null
     return (
       <MenuItem
         innerDivStyle={innerDivStyle}
         primaryText={label}
         style={style}
-        onClick={() => onClick(id)}
+        onTouchTap={() => !active && onClick(id)}
       />
     )
   }
@@ -51,16 +50,16 @@ const PerfilMenu = ({
 }) => {
   return (
     <div style={{display:'flex'}}>
-    <Menu style={{width: '100%'}}>
-      <CustomMenuItem label="Notificações" id="notificacoes" onClick={onMenuItemClick} active={active}/>
-      <CustomMenuItem label="Colaborando" id={'colaborando'} onClick={onMenuItemClick} active={active} />
-      <CustomMenuItem label="Seguindo" id={'seguindo'} onClick={onMenuItemClick} active={active} />
-      <CustomMenuItem label="Seguidores" id={'seguidores'} onClick={onMenuItemClick} active={active} />
-      <CustomMenuItem label="Salvos" id={'salvos'} onClick={onMenuItemClick} active={active} />
-      <CustomMenuItem label="Favoritos" id={'favoritos'} onClick={onMenuItemClick} active={active} />
-      <CustomMenuItem label="Histórico" id={'historico'} onClick={onMenuItemClick} active={active} />
-      <CustomMenuItem label="Avaliação" id={'avaliacoes'} onClick={onMenuItemClick} active={active} />
-      <CustomMenuItem label="Editar Perfil" id={'editar'} onClick={onMenuItemClick} active={active} />
+    <Menu style={{width: '100%'}} listStyle={{paddingTop: 0, paddingBottom: 0}}>
+      <CustomMenuItem label="Notificações" id="notificacoes" onClick={onMenuItemClick} active={active === 'notificacoes'}/>
+      <CustomMenuItem label="Colaborando" id={'colaborando'} onClick={onMenuItemClick} active={active === 'colaborando'} />
+      <CustomMenuItem label="Seguindo" id={'seguindo'} onClick={onMenuItemClick} active={active === 'seguindo'} />
+      <CustomMenuItem label="Seguidores" id={'seguidores'} onClick={onMenuItemClick} active={active === 'seguidores'} />
+      <CustomMenuItem label="Salvos" id={'salvos'} onClick={onMenuItemClick} active={active === 'salvos'} />
+      <CustomMenuItem label="Favoritos" id={'favoritos'} onClick={onMenuItemClick} active={active === 'favoritos'} />
+      <CustomMenuItem label="Histórico" id={'historico'} onClick={onMenuItemClick} active={active === 'historico'} />
+      <CustomMenuItem label="Avaliação" id={'avaliacoes'} onClick={onMenuItemClick} active={active === 'avaliacoes'} />
+      <CustomMenuItem label="Editar Perfil" id={'editar'} onClick={onMenuItemClick} active={active === 'editar'} />
     </Menu>
     </div>
   )

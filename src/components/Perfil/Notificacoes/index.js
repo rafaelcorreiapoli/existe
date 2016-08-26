@@ -7,17 +7,31 @@ import { ACCENT } from '../../../resources/colors'
 export Convites from './Convites'
 export Marcacoes from './Marcacoes'
 
+
 const styles = {
   title: {
-    textAlign: 'center'
+    textAlign: 'center',
+    marginTop: 30
+  },
+  titleContainer: {
+    height: 120,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   container: {
     width: '100%',
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+  },
+  header: {
+    position: 'relative'
+  },
+  tabs: {
+    height: 50,
+    width: '100%'
   }
 }
-
 const TabLabel = ({
   label,
   number
@@ -38,12 +52,16 @@ const Notificacoes = ({
 }) => {
   return (
     <div style={styles.container}>
-      <h1 style={styles.title}>Avaliações</h1>
-      <Tabs style={{width: '100%'}} value={routes[routes.length - 1].path}>
-        <Tab label={<TabLabel label={'Marcacoes'} number={marcacoesCount} />} onActive={onMarcacoesClick} value="marcacoes" />
-        <Tab label={<TabLabel label={'Convites'} number={convitesCount} />} onActive={onConvitesClick} value="convites" />
-      </Tabs>
-      <div>
+      <div style={styles.header}>
+        <div style={styles.titleContainer}>
+          <h1 style={styles.title}>Notificações</h1>
+        </div>
+        <Tabs style={{width: '100%'}} value={routes[routes.length - 1].path}>
+          <Tab label={<TabLabel label={'Marcacoes'} number={marcacoesCount} />} onActive={onMarcacoesClick} value="marcacoes" />
+          <Tab label={<TabLabel label={'Convites'} number={convitesCount} />} onActive={onConvitesClick} value="convites" />
+        </Tabs>
+      </div>
+      <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%'}}>
         {children}
       </div>
   </div>

@@ -4,9 +4,10 @@ const FeedList = ({
   feeds
 }) => {
   return (
-    <div>
-      {feeds && feeds.map(feed => (
+    <div style={{width: '100%'}}>
+      {feeds && feeds.map((feed, i) => (
         <FeedItem
+          key={i}
           {...feed}
           style={{marginBottom: 40}}
         />

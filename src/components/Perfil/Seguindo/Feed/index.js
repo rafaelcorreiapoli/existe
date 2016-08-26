@@ -1,8 +1,28 @@
 import React, { PropTypes } from 'react'
+import FeedList from '../../../FeedList'
+import { Texto } from '../../../../resources/icons'
 
 const Feed = (props) => {
   return (
-    <div>Feed</div>
+    <div style={{width: '100%'}}>
+      <FeedList feeds={[
+          {
+            image: 'http://placehold.it/100x100',
+            iconElement: <Texto />,
+            title: 'NOME DO USUÁRIO',
+            subtitle: 'Começou a colaborar no NOME DO PROJETO',
+            date: new Date()
+          },
+          {
+            image: 'http://placehold.it/100x100',
+            iconElement: <Texto />,
+            title: 'NOME DO USUÁRIO',
+            subtitle: 'Começou a colaborar no NOME DO PROJETO',
+            date: new Date()
+          }
+        ]}
+      />
+    </div>
   )
 }
 
