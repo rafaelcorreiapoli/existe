@@ -38,6 +38,8 @@ export Logout from 'material-ui/svg-icons/action/exit-to-app'
 export Ajuda from 'material-ui/svg-icons/action/help-outline'
 export Menu from 'material-ui/svg-icons/navigation/more-vert'
 export Facebook from 'react-icons/lib/fa/facebook';
+export Twitter from 'react-icons/lib/fa/twitter';
+export Instagram from 'react-icons/lib/fa/instagram';
 export Linkedin from 'react-icons/lib/fa/linkedin';
 
 export const Texto = AudioTrack;

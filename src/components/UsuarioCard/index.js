@@ -15,10 +15,10 @@ const Subtitle = ({
 }) => (
   <div styles={styles.row}>
     <CircleNumber
-      style={{marginRight: 20}}
+      style={{marginRight: 10}}
       number={numeroProjetos} />
-    <span>{cargo}</span>
-    <span style={{marginLeft: 20, marginRight: 20}}>{'|'}</span>
+    <span style={styles.cargo}>{cargo}</span>
+    <span style={{marginLeft: 10, marginRight: 10}}>{'|'}</span>
     <span style={styles.cidade}>
       {cidade}, {estado}
     </span>
@@ -38,10 +38,12 @@ const UsuarioCard = ({
   numeroSeguidores,
   mostrarAvaliacoes,
   mostrarSeguidores,
-  cargo
+  cargo,
+  style,
+  ...props
 }) => {
   return (
-    <Card style={{minWidth: 0, width: 300, backgroundColor: '#fafafa'}}>
+    <Card style={Object.assign({},{ width: '100%' }, style)} zDepth={0} {...props}>
       <CardMedia>
         <UsuarioAvatar
           image={foto}
@@ -51,6 +53,7 @@ const UsuarioCard = ({
 
       <CardTitle
         title={nome}
+        style={{paddingTop: 10, paddingLeft: 0, paddingRight: 0, paddingBottom: 0}}
         titleStyle={styles.title}
         subtitle={
           <Subtitle
@@ -62,11 +65,9 @@ const UsuarioCard = ({
         <CardActions style={{}}>
         {
           mostrarAvaliacoes ?
-          <div style={{textAlign: 'center', marginBottom: 20}}>
-            <RatingStars
-              rating={mediaAvaliacao}
-              />
-            <span>{numeroAvaliacoes} Avaliações</span>
+          <div style={{textAlign: 'center', marginBottom: 15}}>
+            <RatingStars rating={mediaAvaliacao} style={{marginBottom: 5}}/>
+            <span>{numeroAvaliacoes} AVALIAÇÕES</span>
           </div>
           : null
         }

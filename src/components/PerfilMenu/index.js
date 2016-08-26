@@ -1,48 +1,8 @@
 import React, { PropTypes } from 'react'
 import Menu from 'material-ui/Menu';
-import MenuItem from 'material-ui/MenuItem';
-import { ACCENT } from '../../resources/colors'
-import Radium from 'radium'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
-const styles = {
-  menuItem: {
-    textAlign: 'right'
-  },
-  menuItemActive: {
-    color: ACCENT
-  },
-  innerDivActive: {
-    borderRightWidth: 2,
-    borderRightColor: ACCENT,
-    borderRightStyle: 'solid'
-  }
-}
-
-const RadiumMenuItem = Radium(MenuItem)
-
-class CustomMenuItem extends React.Component {
-  render() {
-    const {
-      label,
-      active,
-      id,
-      onClick
-    } = this.props
-    const style = Object.assign({}, styles.menuItem,
-      active ? styles.menuItemActive : {}
-    )
-    const innerDivStyle = active ? styles.innerDivActive : null
-    return (
-      <MenuItem
-        innerDivStyle={innerDivStyle}
-        primaryText={label}
-        style={style}
-        onTouchTap={() => !active && onClick(id)}
-      />
-    )
-  }
-}
+import CustomMenuItem from '../CustomMenuItem'
 
 const PerfilMenu = ({
   active,

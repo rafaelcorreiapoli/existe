@@ -7,10 +7,19 @@ const styles = {
   },
   title: {
     width: '100%',
+    marginBottom: 10,
+    textAlign: 'center',
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis'
   },
+  cargo: {
+    fontSize: 14,
+    textTransform: 'uppercase'
+  },
+  cidade: {
+    fontSize: 14
+  }
 }
 
 export default styles;

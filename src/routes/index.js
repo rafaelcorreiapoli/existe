@@ -20,6 +20,8 @@ import OAuth from '../components/OAuth'
 import { clearLogoutRequest } from '../ducks/ddp/user'
 
 
+import UsuarioPage, * as Usuario from '../components/Usuario'
+
 import PerfilPage, * as Perfil  from '../components/Perfil'
 import * as Avaliacoes from '../components/Perfil/Avaliacoes'
 import * as Notificacoes from '../components/Perfil/Notificacoes'
@@ -90,7 +92,18 @@ const Routes = () => {
             <Route path="/mural" component={MuralPage} />
             <Route path="/comunidade" component={ComunidadePage} />
             <Route path="/busca" component={BuscaPage} />
+            <Route path="/usuario/:userId" component={UsuarioPage}>
+              <IndexRedirect to="info" />
+              <Route path="info" component={Usuario.Info} />
+              <Route path="portfolio" component={Usuario.Portfolio} />
+              <Route path="experiencia" component={Usuario.Experiencia} />
+              <Route path="funcoes" component={Usuario.Funcoes} />
+              <Route path="historico" component={Usuario.Historico} />
+              <Route path="avaliacoes" component={Usuario.Avaliacoes} />
+              <Route path="seguidores" component={Usuario.Seguidores} />
+            </Route>
             <Route path="/perfil" component={PerfilPage}>
+              <IndexRedirect to="notificacoes" />
               <Route path={"notificacoes"} component={Perfil.Notificacoes}>
                 <IndexRedirect to="marcacoes" />
                 <Route path="marcacoes" component={Notificacoes.Marcacoes} />

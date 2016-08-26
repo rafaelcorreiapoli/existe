@@ -3,11 +3,13 @@ import _ from 'lodash';
 import { FullStar, HalfStar, EmptyStar } from '../../resources/icons';
 
 const RatingStars = ({
-  rating
+  rating,
+  style,
+  ...props
 }) => {
   const halfs = rating - ((rating % 0.5) < 0.25 ? (rating % 0.5) : -(0.5 - (rating % 0.5)));
   return (
-    <div>
+    <div style={style} {...props}>
       {
         _.range(5).map(i => {
           if (i < halfs - 0.5) {
