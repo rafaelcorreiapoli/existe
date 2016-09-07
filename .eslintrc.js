@@ -18,8 +18,11 @@ const config = {
     "global-require": 0,
     "no-param-reassign": 1, // allow to change input parameters
     "semi": 0,
+    "arrow-body-style": 0,
     "no-case-declarations": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "import/no-extraneous-dependencies": 0,
+    "import/no-unresolved": 0,
     "new-cap": ["error",
     {"capIsNewExceptions": [
       "CatchPokemon",

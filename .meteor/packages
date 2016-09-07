@@ -30,3 +30,7 @@ service-configuration
 accounts-base
 alanning:roles
 pauli:accounts-linkedin
+zimme:collection-timestampable
+aldeed:simple-schema
+aldeed:collection2
+mdg:validated-method

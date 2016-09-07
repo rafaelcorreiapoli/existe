@@ -9,6 +9,8 @@ const routerMiddleware = createRouterMiddleware(browserHistory)
 const loggerMiddleware = createLogger({
   predicate: (getState, action) => !/redux-form|immutable-collection/.test(action.type),
 });
+import Immutable from 'immutable'
+
 
 const store = createStore(
   rootReducer,
@@ -18,7 +20,26 @@ const store = createStore(
     loggerMiddleware,
     routerMiddleware
     ),
-    window.devToolsExtension ? window.devToolsExtension() : f => f
+    window.devToolsExtension ? window.devToolsExtension({
+      deserializeState: (state) => ({
+        ...state,
+        app: Immutable.fromJS(state.app),
+        login: Immutable.fromJS(state.login),
+        form: {
+          cadastroEmpresarial: {
+            values: {
+              profile: {
+                dataNascimento: new Date(state.form.cadastroEmpresarial.values.profile.dataNascimento),
+                ...state.form.cadastroEmpresarial.values.profile
+              },
+              ...state.form.cadastroEmpresarial.values
+            },
+            ...state.form.cadastroEmpresarial
+          },
+          ...state.form
+        },
+      })
+    }) : f => f
   )
 )
 

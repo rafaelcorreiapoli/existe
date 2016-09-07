@@ -15,9 +15,6 @@ class AuthenticatedLayout extends React.Component {
     insertBotDialogOpen: PropTypes.bool,
     handleRequestClose: PropTypes.func,
   }
-  componentDidMount() {
-    //console.log(this.refs.insertBotForm.getWrappedInstance())
-  }
 
   render() {
     const {

@@ -4,12 +4,16 @@ import { syncHistoryWithStore, replace } from 'react-router-redux'
 import store from '../store'
 import AppContainer from '@containers/AppContainer';
 import AuthenticatedLayout from '@components/AuthenticatedLayout'
-import Welcome from '@pages/Welcome'
+import WelcomePage from '@pages/WelcomePage'
 import LoginScreen from '@pages/LoginScreen'
+import RecuperarSenha from '@containers/RecuperarSenha'
+import Login from '@containers/Login'
+import BuscaPage from '@pages/BuscaPage'
 import { UserAuthWrapper } from 'redux-auth-wrapper'
 import { clearLogoutRequest } from '@ducks/login'
 import { Meteor } from 'meteor/meteor'
-
+import CadastroRapidoPage from '@pages/CadastroRapidoPage'
+import CadastroEmpresarialPage from '@pages/CadastroEmpresarialPage'
 const Loading = ({
   children
 }) => {
@@ -18,6 +22,9 @@ const Loading = ({
       User is authenticating...
     </div>
   )
+}
+Loading.propTypes = {
+  children: PropTypes.node,
 }
 
 const userIsAuthenticated = UserAuthWrapper({
@@ -40,10 +47,83 @@ const Routes = () => (
   <Router history={syncHistoryWithStore(browserHistory, store)}>
     <Route path="/" component={AppContainer}>
       <Route component={userIsAuthenticated(AuthenticatedLayout)}>
+        <IndexRoute component={BuscaPage} />
+      </Route>
+      <Route component={WelcomePage}>
+        <Route path="/login" component={Login} />
+        <Route path="/recuperar-senha" component={RecuperarSenha} />
+      </Route>
+
+
+      <Route path="cadastro">
+        <IndexRoute component={CadastroRapidoPage} />
+        <Route path="empresarial" component={CadastroEmpresarialPage} />
+      </Route>
+    </Route>
+
+
+
+      {/* <Route component={Authenticated}>
+        <Route component={AuthenticatedLayout}>
+          <Route path="/completar-cadastro">
+            <Route path="pessoal" component={CadastroPessoalPage}/>
+          </Route>
+
+          <Route path="/mural" component={MuralPage} />
+          <Route path="/comunidade" component={ComunidadePage} />
+          <Route path="/busca" component={BuscaPage} />
+          <Route path="/usuario/:userId" component={UsuarioPage}>
+            <IndexRedirect to="info" />
+            <Route path="info" component={Usuario.Info} />
+            <Route path="portfolio" component={Usuario.Portfolio} />
+            <Route path="experiencia" component={Usuario.Experiencia} />
+            <Route path="funcoes" component={Usuario.Funcoes} />
+            <Route path="historico" component={Usuario.Historico} />
+            <Route path="avaliacoes" component={Usuario.Avaliacoes} />
+            <Route path="seguidores" component={Usuario.Seguidores} />
+          </Route>
+          <Route path="/perfil" component={PerfilPage}>
+            <IndexRedirect to="notificacoes" />
+            <Route path={"notificacoes"} component={Perfil.Notificacoes}>
+              <IndexRedirect to="marcacoes" />
+              <Route path="marcacoes" component={Notificacoes.Marcacoes} />
+              <Route path="convites" component={Notificacoes.Convites} />
+            </Route>
+            <Route path={"avaliacoes"} component={Perfil.Avaliacoes}>
+              <IndexRedirect to="recebidas" />
+              <Route path="recebidas" component={Avaliacoes.Recebidas} />
+              <Route path="feitas" component={Avaliacoes.Feitas} />
+            </Route>
+            <Route path={"seguindo"} component={Perfil.Seguindo} teste="x">
+              <IndexRedirect to="feed" />
+              <Route path="feed" component={Seguindo.Feed} />
+              <Route path="projetos" component={Seguindo.Projetos} />
+              <Route path="pessoas" component={Seguindo.Pessoas} />
+            </Route>
+            <Route path={"salvos"} component={Perfil.Salvos}>
+              <IndexRedirect to="videos" />
+              <Route path="videos" component={Salvos.Videos} />
+              <Route path="projetos" component={Salvos.Projetos} />
+            </Route>
+            <Route path={"favoritos"} component={Perfil.Favoritos}>
+              <IndexRedirect to="videos" />
+              <Route path="videos" component={Favoritos.Videos} />
+              <Route path="projetos" component={Favoritos.Projetos} />
+            </Route>
+            <Route path={"historico"} component={Perfil.Historico} />
+            <Route path={"seguidores"} component={Perfil.Seguidores} />
+            <Route path={"colaborando"} component={Perfil.Colaborando} />
+            <Route path={"editar"} component={Perfil.Editar} />
+          </Route>
+          <Route path="/novo-projeto" component={NovoProjetoPage} />
+        </Route>
+        {/*
+    <Route path="/" component={AppContainer}>
+      <Route component={userIsAuthenticated(AuthenticatedLayout)}>
         <IndexRoute component={Welcome} />
       </Route>
       <Route path="login" component={LoginScreen} />
-    </Route>
+    </Route> */}
   </Router>
 )
 

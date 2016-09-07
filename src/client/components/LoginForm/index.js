@@ -43,11 +43,10 @@ class LoginForm extends React.Component {
       onLoginWithFacebook,
       onLoginWithLinkedin,
       redirect,
-      ...props,
     } = this.props
 
     return (
-      <div style={[style, styles.container]} {...props}>
+      <div style={[style, styles.container]}>
         <h1 style={{ fontWeight: 200 }}>Login</h1>
 
         <RaisedButton

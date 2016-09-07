@@ -1,11 +1,16 @@
-import { Meteor } from 'meteor/meteor'
-
-import './server/publications'
-import './lib/methods'
-import './server/methods'
+//
+//  Config
+//
 import './server/config/services'
+//
+//  Publications
+//
+import './server/publications'
+//
+//  Methods
+//
+import './server/methods'
+//
+//  Boot
+//
 import './server/boot'
-
-Meteor.startup(() => {
-
-})

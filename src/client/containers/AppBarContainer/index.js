@@ -4,7 +4,6 @@ import { push } from 'react-router-redux';
 import { setDrawerOpen, setInsertBotDialogOpen } from '@ducks/layout'
 import { logout } from '@ducks/login'
 import AppBar from '@components/AppBar'
-import Bots from '@collections/bots'
 import { Meteor } from 'meteor/meteor'
 import { composeWithTracker } from 'react-komposer'
 import { call } from '@ducks/methods'

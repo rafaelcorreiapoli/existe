@@ -5,6 +5,8 @@
     "start": "meteor --settings ./settings/settings.development.json"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
+    "flexboxgrid": "^6.3.1",
     "geolib": "^2.0.21",
     "google-map-react": "^0.19.0",
     "immutable": "^3.8.1",
@@ -19,6 +21,7 @@
     "react": "^15.0.0",
     "react-addons-pure-render-mixin": "^15.0.0",
     "react-dom": "^15.0.0",
+    "react-flexbox-grid": "^0.10.2",
     "react-google-maps": "^4.11.0",
     "react-google-places-suggest": "^1.0.1",
     "react-icons": "^2.2.1",
