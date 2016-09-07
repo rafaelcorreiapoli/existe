@@ -5,8 +5,9 @@ import { CSSGrid , makeResponsive } from 'react-stonecutter';
 const Grid = makeResponsive(CSSGrid, { maxWidth: 1600 });
 
 const GridProjetos = ({
-  projetos
+  projetos = [],
 }) => {
+  console.log(projetos)
   return (
     <Grid
       style={{margin: 'auto'}}
@@ -19,10 +20,10 @@ const GridProjetos = ({
       easing="ease-out"
     >
       {
-        projetos.map(projeto => {
+        projetos.map((projeto, i) => {
           return (
-            <div style={{display: 'inline-flex', width: 300}} key={projeto.get('id')}>
-              <ProjetoCard {...projeto.toObject()} />
+            <div style={{display: 'inline-flex', width: 300}} key={i}>
+              <ProjetoCard {...projeto} />
             </div>
           )
         })

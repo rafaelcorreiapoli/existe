@@ -99,6 +99,7 @@ const SelecionarCategoria = ({
   style,
   ...props
 }) => {
+  console.log(value)
   return (
     <ButtonPopover
       style={style}

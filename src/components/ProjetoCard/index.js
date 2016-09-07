@@ -159,7 +159,7 @@ const ProjetoCard = ({
             <span>
               <span style={{color: '#e36a55'}}>{nomeUsuario}</span>
 
-              <span> - {data}</span>
+              <span> - {'27/07/2009'}</span>
             </span>} />
         <CardActions style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
           <NumberIcon

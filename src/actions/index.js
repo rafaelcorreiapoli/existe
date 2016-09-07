@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { showPopup } from '../utils/browser'
 
 export const SET_FILTRO_CATEGORIA = 'SET_FILTRO_CATEGORIA';
