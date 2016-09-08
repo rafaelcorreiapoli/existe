@@ -95,6 +95,17 @@ const Routes = () => (
           <Route path={"colaborando"} component={Perfil.Colaborando} />
           <Route path={"editar"} component={Perfil.Editar} />
         </Route>
+
+        <Route path="/usuario/:userId" component={UsuarioPage}>
+          <IndexRedirect to="info" />
+          <Route path="info" component={Usuario.Info} />
+          <Route path="portfolio" component={Usuario.Portfolio} />
+          <Route path="experiencia" component={Usuario.Experiencia} />
+          <Route path="funcoes" component={Usuario.Funcoes} />
+          <Route path="historico" component={Usuario.Historico} />
+          <Route path="avaliacoes" component={Usuario.Avaliacoes} />
+          <Route path="seguidores" component={Usuario.Seguidores} />
+        </Route>
       </Route>
 
       <Route component={WelcomePage}>

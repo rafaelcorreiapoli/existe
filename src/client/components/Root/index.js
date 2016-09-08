@@ -5,6 +5,9 @@ import store from '../../store';
 import Routes from '../../routes'
 import muiTheme from '@config/theme'
 import MeteorProvider from '@components/MeteorProvider'
+
+
+
 class Root extends React.Component {
   render() {
     return (

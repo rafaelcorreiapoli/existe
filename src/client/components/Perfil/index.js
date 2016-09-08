@@ -14,28 +14,26 @@ export Seguidores from './Seguidores'
 export Seguindo from './Seguindo'
 export Editar from './Editar'
 
-const styles = {
-  container: {
-    display: 'flex',
-    flexDirection: 'row',
-  },
-  leftContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    width: 450,
-  },
-  rightContainer: {
-    display: 'flex',
-    flexGrow: 1,
-  },
-}
+// const styles = {
+//   container: {
+//     display: 'flex',
+//     flexDirection: 'row',
+//   },
+//   leftContainer: {
+//     display: 'flex',
+//     flexDirection: 'column',
+//     width: 450,
+//   },
+//   rightContainer: {
+//     display: 'flex',
+//     flexGrow: 1,
+//   },
+// }
 export default ({
   children,
   routes,
   ...props,
 }) => {
-  console.log(routes)
-  console.log(props)
   return (
     <Grid>
       <Row>
@@ -51,9 +49,9 @@ export default ({
             producaoCount={3}
           />
           <div>
-          <PerfilMenu
-            active={routes[3].path}
-          />
+            <PerfilMenu
+              active={routes[3].path}
+            />
           </div>
         </Col>
         <Col xs={12} md={8}>
