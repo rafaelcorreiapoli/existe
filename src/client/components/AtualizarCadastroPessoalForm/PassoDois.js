@@ -330,8 +330,8 @@ export default connect(
           exerce: [],
         },
         ator: {
-          corCabelo: 'castanhos',
-          corOlhos: 'castanhos',
+          corCabelo: 'castanho-claro',
+          corOlhos: 'azul',
         },
         ...state.form.cadastroPessoal.values,
       },

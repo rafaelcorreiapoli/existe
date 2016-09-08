@@ -276,26 +276,42 @@ export const PAGAMENTO_PREFERENCIAL = [
 
 export const COR_OLHOS = [
   {
-    label: 'Castanhos',
-    value: 'castanhos',
+    label: 'Azul',
+    value: 'azul',
   },
   {
-    label: 'Claros',
-    value: 'claros',
+    label: 'Castanho',
+    value: 'castanho',
+  },
+  {
+    label: 'Preto',
+    value: 'preto',
+  },
+  {
+    label: 'Verde',
+    value: 'verde',
   },
 ]
 
 export const COR_CABELOS = [
   {
-    label: 'Louros',
-    value: 'louros',
+    label: 'Castanho claro',
+    value: 'castanho-claro',
   },
   {
-    label: 'Castanhos',
-    value: 'castanhos',
+    label: 'Castanho escuro',
+    value: 'castranho-escuro',
   },
   {
-    label: 'Ruivos',
-    value: 'ruivos',
+    label: 'Loiro',
+    value: 'loiro',
+  },
+  {
+    label: 'Preto',
+    value: 'preto',
+  },
+  {
+    label: 'Ruivo',
+    value: 'ruivo',
   },
 ]
