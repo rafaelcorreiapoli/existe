@@ -10,7 +10,7 @@ export Seguidores from './Seguidores'
 import UsuarioCard from '../UsuarioCard'
 import  { Grid, Row, Col } from 'react-flexbox-grid/lib/index'
 import RaisedButton from 'material-ui/RaisedButton'
-import { Adicionar } from '../../resources/icons'
+import { Adicionar } from '@resources/icons'
 const styles = {
   container: {
     display: 'flex',

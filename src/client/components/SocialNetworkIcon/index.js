@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import IconButton from 'material-ui/IconButton'
 import FontIcon from 'material-ui/FontIcon';
-import { Facebook, Twitter, Instagram } from '../../resources/icons'
+import { Facebook, Twitter, Instagram } from '@resources/icons'
 
 const styles = {
   icon: {

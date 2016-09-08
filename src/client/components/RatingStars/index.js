@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import _ from 'lodash';
-import { FullStar, HalfStar, EmptyStar } from '../../resources/icons';
+import { FullStar, HalfStar, EmptyStar } from '@resources/icons';
 
 const RatingStars = ({
   rating,

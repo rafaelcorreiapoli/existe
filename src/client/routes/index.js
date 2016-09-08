@@ -15,6 +15,18 @@ import { Meteor } from 'meteor/meteor'
 import CadastroRapidoPage from '@pages/CadastroRapidoPage'
 import CadastroEmpresarialPage from '@pages/CadastroEmpresarialPage'
 import AtualizarCadastroPessoalPage from '@pages/AtualizarCadastroPessoalPage'
+
+import UsuarioPage, * as Usuario from '@components/Usuario'
+import PerfilPage, * as Perfil  from '@components/Perfil'
+import * as Avaliacoes from '@components/Perfil/Avaliacoes'
+import * as Notificacoes from '@components/Perfil/Notificacoes'
+import * as Seguindo from '@components/Perfil/Seguindo'
+import Colaborando from '@components/Perfil/Colaborando'
+import Favoritos from '@components/Perfil/Favoritos'
+import Historico from '@components/Perfil/Historico'
+import Salvos from '@components/Perfil/Salvos'
+import Seguidores from '@components/Perfil/Seguidores'
+
 const Loading = ({
   children
 }) => {
@@ -50,8 +62,40 @@ const Routes = () => (
       <Route component={userIsAuthenticated(AuthenticatedLayout)}>
         <IndexRoute component={BuscaPage} />
         <Route path="atualizar-cadastro-pessoal" component={AtualizarCadastroPessoalPage} />
+        <Route path="/perfil" component={PerfilPage}>
+          <IndexRedirect to="notificacoes" />
+          <Route path={"notificacoes"} component={Perfil.Notificacoes}>
+            <IndexRedirect to="marcacoes" />
+            <Route path="marcacoes" component={Notificacoes.Marcacoes} />
+            <Route path="convites" component={Notificacoes.Convites} />
+          </Route>
+          <Route path={"avaliacoes"} component={Perfil.Avaliacoes}>
+            <IndexRedirect to="recebidas" />
+            <Route path="recebidas" component={Avaliacoes.Recebidas} />
+            <Route path="feitas" component={Avaliacoes.Feitas} />
+          </Route>
+          <Route path={"seguindo"} component={Perfil.Seguindo} teste="x">
+            <IndexRedirect to="feed" />
+            <Route path="feed" component={Seguindo.Feed} />
+            <Route path="projetos" component={Seguindo.Projetos} />
+            <Route path="pessoas" component={Seguindo.Pessoas} />
+          </Route>
+          <Route path={"salvos"} component={Perfil.Salvos}>
+            <IndexRedirect to="videos" />
+            <Route path="videos" component={Salvos.Videos} />
+            <Route path="projetos" component={Salvos.Projetos} />
+          </Route>
+          <Route path={"favoritos"} component={Perfil.Favoritos}>
+            <IndexRedirect to="videos" />
+            <Route path="videos" component={Favoritos.Videos} />
+            <Route path="projetos" component={Favoritos.Projetos} />
+          </Route>
+          <Route path={"historico"} component={Perfil.Historico} />
+          <Route path={"seguidores"} component={Perfil.Seguidores} />
+          <Route path={"colaborando"} component={Perfil.Colaborando} />
+          <Route path={"editar"} component={Perfil.Editar} />
+        </Route>
       </Route>
-
 
       <Route component={WelcomePage}>
         <Route path="/login" component={Login} />

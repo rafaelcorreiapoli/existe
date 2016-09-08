@@ -50,12 +50,14 @@ const validate = values => {
   }).required()
   const corOlhos = Joi.string().label('Cor dos olhos').required();
   const corCabelo = Joi.string().label('Cor do cabelo').required();
+  const cabeloPermiteMudanca = Joi.boolean().required()
 
   let ator = Joi.object({
     altura,
     numeracao,
     corOlhos,
     corCabelo,
+    cabeloPermiteMudanca,
   })
 
   if (atorOuAtriz) {

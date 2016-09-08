@@ -1,4 +1,4 @@
-import { ACCENT } from '../../resources/colors'
+import { ACCENT } from '@resources/colors'
 const styles = {
   row: {
     display: 'flex',

@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import Menu from 'material-ui/Menu';
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
-import CustomMenuItem from '../CustomMenuItem'
+import CustomMenuItem from '@components/CustomMenuItem'
 
 const styles = {
   menuItem: {

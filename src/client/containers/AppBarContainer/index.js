@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(setDrawerOpen(true))
     },
     onClickProfileLink() {
-      dispatch(push('/profile'))
+      dispatch(push('/perfil'))
     },
     onClickAdd() {
       dispatch(setInsertBotDialogOpen(true))

@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import styles from './styles'
 import { Paper } from 'material-ui';
-import { Usuarios } from '../../resources/icons';
+import { Usuarios } from '@resources/icons';
 import CircleNumber from '../CircleNumber';
 import RatingStars from '../RatingStars';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';

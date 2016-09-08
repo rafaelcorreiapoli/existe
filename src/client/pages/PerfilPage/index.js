@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 
-import { ACCENT } from '../../resources/colors'
+import { ACCENT } from '@resources/colors'
 import UsuarioCard from '../../components/UsuarioCard'
 import UsuarioAvatar from '../../components/UsuarioAvatar'
 import CircleNumber from '../../components/CircleNumber'
@@ -8,7 +8,7 @@ import PerfilInfo from '../../components/PerfilInfo'
 import PerfilMenu from '../../components/PerfilMenu'
 import FeedList from '../../components/FeedList'
 import { getColorForArea } from '../../utils/get_color'
-import { Texto } from '../../resources/icons'
+import { Texto } from '@resources/icons'
 
 
 const PerfilPage = ({
