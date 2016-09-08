@@ -14,6 +14,7 @@ import { clearLogoutRequest } from '@ducks/login'
 import { Meteor } from 'meteor/meteor'
 import CadastroRapidoPage from '@pages/CadastroRapidoPage'
 import CadastroEmpresarialPage from '@pages/CadastroEmpresarialPage'
+import AtualizarCadastroPessoalPage from '@pages/AtualizarCadastroPessoalPage'
 const Loading = ({
   children
 }) => {
@@ -48,13 +49,14 @@ const Routes = () => (
     <Route path="/" component={AppContainer}>
       <Route component={userIsAuthenticated(AuthenticatedLayout)}>
         <IndexRoute component={BuscaPage} />
+        <Route path="atualizar-cadastro-pessoal" component={AtualizarCadastroPessoalPage} />
       </Route>
+
+
       <Route component={WelcomePage}>
         <Route path="/login" component={Login} />
         <Route path="/recuperar-senha" component={RecuperarSenha} />
       </Route>
-
-
       <Route path="cadastro">
         <IndexRoute component={CadastroRapidoPage} />
         <Route path="empresarial" component={CadastroEmpresarialPage} />
@@ -66,7 +68,7 @@ const Routes = () => (
       {/* <Route component={Authenticated}>
         <Route component={AuthenticatedLayout}>
           <Route path="/completar-cadastro">
-            <Route path="pessoal" component={CadastroPessoalPage}/>
+            <Route path="pessoal" component={AtualizarCadastroPessoalPage}/>
           </Route>
 
           <Route path="/mural" component={MuralPage} />

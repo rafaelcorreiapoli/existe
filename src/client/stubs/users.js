@@ -6,8 +6,8 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema'
 Meteor.methods({
   'Users.methods.atualizarCadastroPessoal'(doc) {
     UserSchema.validate(doc)
+
     const userId = this.userId
-    Meteor.isDevelopment && Meteor._sleepForMs(1000)
     return Meteor.users.update(userId, {
       $set: {
         ...doc,

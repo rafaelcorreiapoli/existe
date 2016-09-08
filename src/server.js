@@ -14,3 +14,7 @@ import './server/methods'
 //  Boot
 //
 import './server/boot'
+//
+//  Models
+//
+import '@models'

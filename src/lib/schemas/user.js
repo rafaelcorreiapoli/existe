@@ -97,6 +97,12 @@ const ProfileSchema = new SimpleSchema({
   social: {
     type: SocialSchema,
   },
+  cpf: {
+    type: String,
+  },
+  bio: {
+    type: String,
+  },
 })
 const EmailSchema = new SimpleSchema({
   address: {

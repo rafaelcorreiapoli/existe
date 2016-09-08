@@ -21,24 +21,35 @@ const store = createStore(
     routerMiddleware
     ),
     window.devToolsExtension ? window.devToolsExtension({
-      deserializeState: (state) => ({
-        ...state,
-        app: Immutable.fromJS(state.app),
-        login: Immutable.fromJS(state.login),
-        form: {
-          cadastroEmpresarial: {
-            values: {
-              profile: {
-                dataNascimento: new Date(state.form.cadastroEmpresarial.values.profile.dataNascimento),
-                ...state.form.cadastroEmpresarial.values.profile
-              },
-              ...state.form.cadastroEmpresarial.values
+      deserializeState: (state) => {
+        const cadastroEmpresarial = state.form.cadastroEmpresarial ? {
+          values: {
+            profile: {
+              dataNascimento: new Date(state.form.cadastroEmpresarial.values.profile.dataNascimento),
+              ...state.form.cadastroEmpresarial.values.profile,
             },
-            ...state.form.cadastroEmpresarial
+            ...state.form.cadastroEmpresarial.values,
           },
-          ...state.form
-        },
-      })
+          ...state.form.cadastroEmpresarial,
+        } : null
+
+        const form = {}
+        if (cadastroEmpresarial) {
+          form.cadastroEmpresarial = cadastroEmpresarial
+        }
+
+        return {
+          ...state,
+          app: Immutable.fromJS(state.app),
+          login: Immutable.fromJS(state.login),
+          layout: Immutable.fromJS(state.layout),
+          methods: Immutable.fromJS(state.methods),
+          form: {
+            ...form,
+            ...state.form,
+          },
+        }
+      },
     }) : f => f
   )
 )

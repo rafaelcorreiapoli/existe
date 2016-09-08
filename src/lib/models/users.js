@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor'
-import { UserSchema } from '@schemas/user'
+import UserSchema from '@schemas/user'
 
 
 export default () => {
