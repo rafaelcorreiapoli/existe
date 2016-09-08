@@ -13,6 +13,7 @@ import { UserAuthWrapper } from 'redux-auth-wrapper'
 import { clearLogoutRequest } from '@ducks/login'
 import { Meteor } from 'meteor/meteor'
 import CadastroRapidoPage from '@pages/CadastroRapidoPage'
+import NovoProjetoPage from '@pages/NovoProjetoPage'
 import CadastroEmpresarialPage from '@pages/CadastroEmpresarialPage'
 import AtualizarCadastroPessoalPage from '@pages/AtualizarCadastroPessoalPage'
 
@@ -106,6 +107,8 @@ const Routes = () => (
           <Route path="avaliacoes" component={Usuario.Avaliacoes} />
           <Route path="seguidores" component={Usuario.Seguidores} />
         </Route>
+
+        <Route path="/novo-projeto" component={NovoProjetoPage} />
       </Route>
 
       <Route component={WelcomePage}>

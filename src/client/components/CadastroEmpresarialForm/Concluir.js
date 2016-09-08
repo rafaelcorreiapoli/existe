@@ -46,7 +46,6 @@ class Concluir extends React.Component {
       cadastroEmpresarialLoading,
       onSubmit,
     } = this.props
-    console.log(onSubmit)
     return (
       <div>
         <h5> Obrigado pelo cadastro. Confira abaixo se seus dados estão corretos: </h5>

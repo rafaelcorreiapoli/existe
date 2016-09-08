@@ -7,9 +7,9 @@ import TextInput from '@components/ReduxFormWidgets/TextInput';
 import SelectInput from '@components/ReduxFormWidgets/SelectInput';
 import FuncoesCheckTable from '@components/ReduxFormWidgets/FuncoesCheckTable';
 import SectionHeader from '@components/ReduxFormWidgets/SectionHeader'
-import { deserializeFormErrors } from '@utils/form_errors';
+
 import { cnpjNormalizer } from '@utils/patterns'
-import language from '@config/joi'
+import validator from '@utils/validator'
 import _ from 'lodash'
 import { TIPOS_EMPRESA, AREAS_E_FUNCOES } from '@resources/options'
 import {
@@ -44,20 +44,21 @@ const schema = Joi.object({
   .required(),
 });
 
-const validate = values => {
-  const interestingValues = _.pick(values, [
-    'tipoEmpresa',
-    'areaAtuacao',
-    'site',
-    'endereco',
-    'cnpj',
-    'bio',
-    'funcoes',
-  ])
+const validate = values => validator(values, schema)
 
-  const result = Joi.validate(interestingValues, schema, { abortEarly: false, language });
-  return deserializeFormErrors(result)
-}
+  // const interestingValues = _.pick(values, [
+  //   'tipoEmpresa',
+  //   'areaAtuacao',
+  //   'site',
+  //   'endereco',
+  //   'cnpj',
+  //   'bio',
+  //   'funcoes',
+  // ])
+  //
+  // const result = Joi.validate(interestingValues, schema, { abortEarly: false, language });
+  // return deserializeFormErrors(result)
+
 
 
 class PassoUm extends React.Component {

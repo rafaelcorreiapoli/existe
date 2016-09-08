@@ -1,5 +1,5 @@
 import { Projetos } from '@collections'
-import { ProjetoSchema } from '@schemas/projeto'
+import ProjetoSchema from '@schemas/projeto'
 
 
 export default () => {

@@ -1,5 +1,5 @@
 import { Areas } from '@collections'
-import { AreaSchema } from '@schemas/area'
+import AreaSchema from '@schemas/area'
 
 export default () => {
   Areas.attachSchema(AreaSchema)

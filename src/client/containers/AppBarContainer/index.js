@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(push('/perfil'))
     },
     onClickAdd() {
-      dispatch(setInsertBotDialogOpen(true))
+      dispatch(push('/novo-projeto'))
     },
     onClickHelpLink() {
       dispatch(push('/help'))

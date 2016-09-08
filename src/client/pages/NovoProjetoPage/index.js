@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import NovoProjeto from '../../containers/NovoProjeto'
+import NovoProjeto from '@containers/NovoProjeto'
 
 const NovoProjetoPage = ({
 

@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import Radium from 'radium'
 import UsuarioAvatar from '../../components/UsuarioAvatar'
 import CircleNumber from '../../components/CircleNumber'
-import { getColorForArea } from '../../utils/get_color'
+import { getColorForArea } from '@utils/get_color'
 const styles = {
   container: {
     display: 'flex',

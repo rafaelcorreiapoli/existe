@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import Radium from 'radium'
-import { getColorForArea } from '../../utils/get_color'
+import { getColorForArea } from '@utils/get_color'
 const styles = {
   image: {
     marginBottom: -4,
