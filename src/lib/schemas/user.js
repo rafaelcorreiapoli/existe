@@ -164,4 +164,31 @@ export default new SimpleSchema({
   pagamentoPreferencial: {
     type: String,
   },
+  count: {
+    type: Object,
+  },
+  'count.projetos': {
+    type: Object,
+  },
+  'count.projetos.texto': {
+    type: Number,
+  },
+  'count.projetos.imagem': {
+    type: Number,
+  },
+  'count.projetos.audio': {
+    type: Number,
+  },
+  'count.projetos.cena': {
+    type: Number,
+  },
+  'count.projetos.producao': {
+    type: Number,
+  },
+  'count.avaliacoes': {
+    type: Number,
+  },
+  'count.seguidores': {
+    type: Number,
+  },
 })

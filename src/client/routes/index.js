@@ -1,32 +1,34 @@
 import React, { PropTypes } from 'react'
 import { Router, IndexRoute, Route, browserHistory, IndexRedirect } from 'react-router'
 import { syncHistoryWithStore, replace } from 'react-router-redux'
-import store from '../store'
+
 import AppContainer from '@containers/AppContainer';
 import AuthenticatedLayout from '@components/AuthenticatedLayout'
 import WelcomePage from '@pages/WelcomePage'
-import LoginScreen from '@pages/LoginScreen'
 import RecuperarSenha from '@containers/RecuperarSenha'
 import Login from '@containers/Login'
 import BuscaPage from '@pages/BuscaPage'
 import { UserAuthWrapper } from 'redux-auth-wrapper'
 import { clearLogoutRequest } from '@ducks/login'
-import { Meteor } from 'meteor/meteor'
 import CadastroRapidoPage from '@pages/CadastroRapidoPage'
 import NovoProjetoPage from '@pages/NovoProjetoPage'
 import CadastroEmpresarialPage from '@pages/CadastroEmpresarialPage'
 import AtualizarCadastroPessoalPage from '@pages/AtualizarCadastroPessoalPage'
-
-import UsuarioPage, * as Usuario from '@components/Usuario'
-import PerfilPage, * as Perfil  from '@components/Perfil'
+import * as Usuario from '@components/Usuario'
+import UsuarioPage from '@pages/UsuarioPage'
+import * as Perfil from '@components/Perfil'
+import PerfilPage from '@pages/PerfilPage'
 import * as Avaliacoes from '@components/Perfil/Avaliacoes'
 import * as Notificacoes from '@components/Perfil/Notificacoes'
 import * as Seguindo from '@components/Perfil/Seguindo'
-import Colaborando from '@components/Perfil/Colaborando'
+
+// import Colaborando from '@components/Perfil/Colaborando'
 import Favoritos from '@components/Perfil/Favoritos'
-import Historico from '@components/Perfil/Historico'
+// import Historico from '@components/Perfil/Historico'
 import Salvos from '@components/Perfil/Salvos'
-import Seguidores from '@components/Perfil/Seguidores'
+// import Seguidores from '@components/Perfil/Seguidores'
+
+import store from '../store'
 
 const Loading = ({
   children

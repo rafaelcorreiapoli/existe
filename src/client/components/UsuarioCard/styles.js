@@ -13,7 +13,7 @@ const styles = {
     overflow: 'hidden',
     textOverflow: 'ellipsis'
   },
-  cargo: {
+  profissao: {
     fontSize: 14,
     textTransform: 'uppercase'
   },

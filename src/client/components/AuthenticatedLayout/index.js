@@ -25,38 +25,13 @@ class AuthenticatedLayout extends React.Component {
       invalid,
     } = this.props
 
-    const actions = [
-      <FlatButton
-        label="Cancel"
-        primary
-
-        onTouchTap={() => handleRequestClose(false)}
-      />,
-      <RaisedButton
-        label="Submit"
-        primary
-        keyboardFocused
-        disabled={invalid}
-        onTouchTap={() => this.refs.insertBotForm.getWrappedInstance().submit()}
-      />,
-    ];
-
     return (
       <div>
         <DrawerContainer />
         <AppBarContainer />
-        <div>
+        <div style={{ marginTop: 100 }}>
           {children}
         </div>
-        <Dialog
-          onRequestClose={handleRequestClose}
-          title="Create new Player"
-          modal={false}
-          open={insertBotDialogOpen}
-          actions={actions}
-          >
-          <InsertBotForm ref="insertBotForm" />
-        </Dialog>
       </div>
     )
   }
@@ -64,13 +39,13 @@ class AuthenticatedLayout extends React.Component {
 
 const mapStateToProps = state => ({
   insertBotDialogOpen: state.layout.get('insertBotDialogOpen'),
-  invalid: (state.form && state.form.newBot) && !!state.form.newBot.syncErrors || false
+  invalid: (state.form && state.form.newBot) && !!state.form.newBot.syncErrors || false,
 })
 const mapDispatchToProps = dispatch => ({
   handleRequestClose(open) {
     console.log('handle')
     dispatch(setInsertBotDialogOpen(open))
-  }
+  },
 })
 export default connect(
   mapStateToProps,
