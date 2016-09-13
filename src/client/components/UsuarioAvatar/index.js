@@ -3,12 +3,19 @@ import Radium from 'radium'
 import { getColorForArea } from '@utils/get_color'
 
 const styles = {
+  container: {
+    position: 'relative'
+  },
   image: {
     marginBottom: -4,
     width: '100%',
   },
   areaIndicator: {
-    height: 20,
+    height: 7,
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
+    left: 0,
   },
 }
 
@@ -28,7 +35,7 @@ class UsuarioAvatar extends React.Component {
     } = this.props
 
     return (
-      <div style={style} {...props}>
+      <div style={[styles.container, style]} {...props}>
         <img src={image || 'http://placehold.it/300x300'} style={styles.image} />
         <div style={[styles.areaIndicator, { backgroundColor: getColorForArea(area) }]} />
       </div>

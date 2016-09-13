@@ -10,7 +10,7 @@ const PerfilMenu = ({
 }) => {
   return (
     // <div style={{display:'flex'}}>
-    <Menu listStyle={{paddingTop: 0, paddingBottom: 0, display: 'block'}} autoWidth={false}>
+    <Menu listStyle={{paddingTop: 20, paddingBottom: 0, display: 'block'}} autoWidth={false}>
       <CustomMenuItem label="Notificações" id="notificacoes" onClick={onMenuItemClick} active={active === 'notificacoes'}/>
       <CustomMenuItem label="Colaborando" id={'colaborando'} onClick={onMenuItemClick} active={active === 'colaborando'} />
       <CustomMenuItem label="Seguindo" id={'seguindo'} onClick={onMenuItemClick} active={active === 'seguindo'} />

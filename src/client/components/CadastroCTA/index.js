@@ -44,7 +44,7 @@ class CadastroCTA extends React.Component {
 
     return (
       <div style={styles.container}>
-        <h3>Ainda não é membro?</h3>
+        <h3>AINDA NÃO É MEMBRO?</h3>
         <RaisedButton
           style={{ width: 300, marginBottom: 10 }}
           onClick={() => this.handleOpen(true)}

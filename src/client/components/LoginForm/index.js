@@ -12,6 +12,12 @@ const hideAutoFillColorStyle = {
   WebkitBoxShadow: '0 0 0 1000px white inset',
 };
 
+const BUTTON_WIDTH = 250
+const BUTTON_FONT_SIZE = '11pt'
+const ELEMENT_MARGIN = 22;
+const LOGIN_FONT_SIZE = '16pt'
+const OR_SEPARATOR_FONT_SIZE = '12pt'
+
 class LoginForm extends React.Component {
   static propTypes = {
     email: PropTypes.string,
@@ -47,32 +53,34 @@ class LoginForm extends React.Component {
 
     return (
       <div style={[style, styles.container]}>
-        <h1 style={{ fontWeight: 200 }}>Login</h1>
+        <h1 style={{ marginBottom: ELEMENT_MARGIN, fontSize: LOGIN_FONT_SIZE }}>Login</h1>
 
         <RaisedButton
-          style={{ marginBottom: 20, minWidth: 300, width: '50%' }}
+          style={{ marginBottom: ELEMENT_MARGIN, minWidth: BUTTON_WIDTH, width: '50%' }}
           labelPosition="after"
           onClick={onLoginWithFacebook}
           label="LOGIN COM FACEBOOK"
-          icon={<Facebook size={24} />}
+          icon={<Facebook size={16} />}
+          labelStyle={{ fontSize: BUTTON_FONT_SIZE }}
           backgroundColor="#3b5998"
           labelColor="white"
         />
 
         {onLoginWithLinkedin &&
           <RaisedButton
-            style={{ minWidth: 300, width: '50%' }}
+            style={{ minWidth: BUTTON_WIDTH, width: '50%' }}
             labelPosition="after"
             onClick={onLoginWithLinkedin}
             label="LOGIN COM LINKEDIN"
-            icon={<Linkedin size={24} style={{ marginBottom: 4 }} />}
+            icon={<Linkedin size={16} style={{ marginBottom: 4 }} />}
+            labelStyle={{ fontSize: BUTTON_FONT_SIZE }}
             backgroundColor="#007bb5"
             labelColor="white"
           />
         }
         {onLoginWithPassword &&
-          <div>
-            <OrSeparator style={{ marginTop: 20, marginBottom: 20, alignSelf: 'stretch' }} />
+          <div style={{width: '100%'}}>
+            <OrSeparator style={{ marginTop: ELEMENT_MARGIN, marginBottom: ELEMENT_MARGIN, alignSelf: 'stretch', fontSize: OR_SEPARATOR_FONT_SIZE }} />
             <form autoComplete="off" style={styles.form}>
               {error &&
                 <span style={styles.error}>
@@ -114,7 +122,7 @@ class LoginForm extends React.Component {
 
 
               <RaisedButton
-                style={{ minWidth: 300, width: '50%', marginTop: 30, marginBottom: 10 }}
+                style={{ minWidth: BUTTON_WIDTH, width: '50%', marginTop: ELEMENT_MARGIN, marginBottom: ELEMENT_MARGIN }}
                 onClick={() => onLoginWithPassword(email, password)}
                 label="LOGIN"
                 labelPosition="after"
@@ -123,8 +131,9 @@ class LoginForm extends React.Component {
               />
 
               <FlatButton
-                style={{ minWidth: 300, width: '50%' }}
+                style={{ minWidth: BUTTON_WIDTH, width: '50%' }}
                 label="Esqueceu a senha?"
+                labelStyle={{fontSize: '11pt'}}
                 onClick={onClickRecuperarSenha}
               />
             </form>

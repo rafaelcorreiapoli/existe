@@ -3,12 +3,26 @@ import { connect } from 'react-redux'
 import DrawerContainer from '@containers/DrawerContainer'
 import AppBarContainer from '@containers/AppBarContainer';
 import { setInsertBotDialogOpen } from '@ducks/layout'
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton'
-import RaisedButton from 'material-ui/RaisedButton'
-import InsertBotForm from '@components/InsertBotForm'
+import { Tabs, Tab } from 'material-ui/Tabs'
 
-
+const styles = {
+  container: {
+    maxWidth: 1200,
+    margin: 'auto',
+    //marginTop: 100,
+  },
+  tabsContainer: {
+    borderBottom: '1px solid #e5e5e5',
+  },
+  tabs: {
+    height: 48,
+    maxWidth: 1200,
+    margin: 'auto',
+  },
+  tab: {
+    fontSize: '12pt',
+  },
+}
 class AuthenticatedLayout extends React.Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
@@ -29,7 +43,27 @@ class AuthenticatedLayout extends React.Component {
       <div>
         <DrawerContainer />
         <AppBarContainer />
-        <div style={{ marginTop: 100 }}>
+        <div style={styles.tabsContainer}>
+          <Tabs style={styles.tabs}>
+            <Tab
+              style={styles.tab}
+              label="Comunidade"
+            />
+            <Tab
+              style={styles.tab}
+              label="Produções"
+            />
+            <Tab
+              style={styles.tab}
+              label="Mural"
+            />
+            <Tab
+              style={styles.tab}
+              label="Colaborar"
+            />
+          </Tabs>
+        </div>
+        <div style={styles.container}>
           {children}
         </div>
       </div>

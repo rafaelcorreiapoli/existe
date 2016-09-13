@@ -16,7 +16,7 @@ const styles = {
   },
   divider: {
     width: 1,
-    backgroundColor: '#eee',
+    backgroundColor: '#b5b5bb',
     position: 'absolute',
     top: 0,
     bottom: 0,
@@ -26,11 +26,14 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    //paddingRight: 117,
     position: 'relative',
   },
   columnRight: {
     display: 'flex',
+    //paddingTop: 25,
     alignItems: 'center',
+    paddingLeft: 117,
     justifyContent: 'center',
   },
 }
@@ -41,7 +44,7 @@ class WelcomePage extends React.Component {
   render() {
     const { children } = this.props
     return (
-      <Grid style={{ marginTop: 40 }}>
+      <Grid>
         <Row style={{ height: 800 }}>
           <Col xs={12} md={6} lg={6} style={styles.columnLeft}>
             <CadastroCTA md={6} />

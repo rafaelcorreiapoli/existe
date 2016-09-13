@@ -1,4 +1,4 @@
-html { font-family: 'Roboto', sans-serif; }
+
 
 a {
   text-decoration: none
@@ -12,3 +12,16 @@ body {
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
+
+/*@font-face {
+  font-family: 'Futura Lt BT Light';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Futura Lt BT Light'), url('./futura_lt_bt_light-webfont.woff') format('woff');
+}*/
+
+@font-face {
+  font-family: 'MyFont';
+  src:  url('./futura_lt_bt_light-webfont.woff') format('otf');
+}
+html { font-family: 'MyFont', sans-serif; }

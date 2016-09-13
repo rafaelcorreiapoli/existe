@@ -7,14 +7,15 @@ const styles = {
   container: {
     display: 'flex',
     flexDirection: 'row',
+    height: 120,
   },
   fotoContainer: {
-    width: 150,
+    //  width: 150,
   },
   rightInfoContainer: {
     display: 'flex',
     flexDirection: 'column',
-    padding: 10,
+    padding: 15,
     flexGrow: 1,
   },
   circleRow: {
@@ -22,6 +23,7 @@ const styles = {
     flexDirection: 'row',
     alignItems: 'space-around',
     flexWrap: 'wrap',
+    //marginBottom: 2,
   },
   circleNumber: {
     marginRight: 5,
@@ -29,6 +31,16 @@ const styles = {
   circleNumberLast: {
     marginRight: 15,
   },
+  nome: {
+    fontSize: '18px',
+    marginTop: 0,
+    marginBottom: 8,
+  },
+  username: {
+    fontSize: '12px',
+    marginTop: 0,
+    marginBottom: 16,
+  }
 }
 
 class PerfilInfo extends React.Component {
@@ -47,6 +59,7 @@ class PerfilInfo extends React.Component {
   }
 
   render() {
+    console.log(avatarStyle)
     const {
       textoCount = 0,
       imagemCount = 0,
@@ -66,13 +79,14 @@ class PerfilInfo extends React.Component {
       <div style={[styles.container, style]} {...props}>
         <div style={styles.fotoContainer}>
           <UsuarioAvatar
-            style={{ width: 150, ...avatarStyle }}
+            style={{ width: 120, ...avatarStyle }}
             image={image}
             area={area}
           />
         </div>
         <div style={styles.rightInfoContainer}>
-          <h3>{nome}</h3>
+          <h3 style={styles.nome}>{nome}</h3>
+          <h5 style={styles.username}>rafa93br</h5>
           <div style={styles.circleRow}>
             <CircleNumber
               borderColor={getColorForArea('texto')}

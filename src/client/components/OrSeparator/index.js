@@ -15,7 +15,8 @@ const styles = {
   },
   text: {
     whiteSpace: 'nowrap',
-    color: '#ddd'
+    color: '#ddd',
+    fontSize: '12pt',
   }
 }
 const OrSeparator = ({

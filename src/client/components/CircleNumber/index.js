@@ -9,12 +9,15 @@ const styles = {
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: 20,
-    height: 20,
+    width: 28,
+    height: 28,
     borderRadius: '50%',
     borderWidth: 2,
     borderStyle: 'solid',
     borderColor: 'black',
+  },
+  text: {
+    fontSize: '10pt',
   },
 }
 const CircleNumber = ({
@@ -27,7 +30,7 @@ const CircleNumber = ({
     <div
       style={[styles.container, { borderColor }, style]}
     >
-      <span style={{ fontWeight: 'bold' }}>{number}</span>
+      <span style={styles.text}>{number}</span>
     </div>
   )
 }

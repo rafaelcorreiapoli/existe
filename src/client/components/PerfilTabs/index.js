@@ -5,15 +5,17 @@ import { ACCENT } from '@resources/colors'
 const styles = {
   title: {
     textAlign: 'center',
-    marginTop: 30,
+    margin: 0,
+    fontSize: 18,
   },
   titleContainer: {
-    height: 118,
+    height: 70,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
   },
   container: {
+    height: 118,
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
@@ -23,7 +25,9 @@ const styles = {
   },
   tabs: {
     width: '100%',
-    borderBottom: '2px solid black',
+    paddingLeft: 20,
+    paddingRight: 20,
+    borderBottom: '1px solid #e5e5e5',
   },
 }
 
@@ -69,6 +73,7 @@ class PerfilTabs extends React.Component {
             {
               tabs.map(tab => (
                 <Tab
+                  style={styles.tab}
                   label={<TabLabel label={tab.label} number={tab.count} />}
                   onActive={tab.onClick} value={tab.value}
                 />

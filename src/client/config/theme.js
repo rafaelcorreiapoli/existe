@@ -16,6 +16,7 @@ export const AREA_PRODUCAO = '#e36954'
 
 
 export default getMuiTheme({
+  fontFamily: 'inherit',
   palette: {
     primary1Color: ACCENT,
     primary2Color: 'green',

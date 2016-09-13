@@ -4,6 +4,7 @@ import { syncHistoryWithStore, replace } from 'react-router-redux'
 
 import AppContainer from '@containers/AppContainer';
 import AuthenticatedLayout from '@components/AuthenticatedLayout'
+import GuestLayout from '@components/GuestLayout'
 import WelcomePage from '@pages/WelcomePage'
 import RecuperarSenha from '@containers/RecuperarSenha'
 import Login from '@containers/Login'
@@ -113,13 +114,15 @@ const Routes = () => (
         <Route path="/novo-projeto" component={NovoProjetoPage} />
       </Route>
 
-      <Route component={WelcomePage}>
-        <Route path="/login" component={Login} />
-        <Route path="/recuperar-senha" component={RecuperarSenha} />
-      </Route>
-      <Route path="cadastro">
-        <IndexRoute component={CadastroRapidoPage} />
-        <Route path="empresarial" component={CadastroEmpresarialPage} />
+      <Route component={GuestLayout}>
+        <Route component={WelcomePage}>
+          <Route path="/login" component={Login} />
+          <Route path="/recuperar-senha" component={RecuperarSenha} />
+        </Route>
+        <Route path="cadastro">
+          <IndexRoute component={CadastroRapidoPage} />
+          <Route path="empresarial" component={CadastroEmpresarialPage} />
+        </Route>
       </Route>
     </Route>
 

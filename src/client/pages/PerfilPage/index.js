@@ -4,6 +4,19 @@ import { Grid, Row, Col } from 'react-flexbox-grid/lib/index'
 import PerfilInfoContainer from '@containers/PerfilInfoContainer'
 import PerfilMenu from '@components/PerfilMenu'
 
+const styles = {
+  titleContainer: {
+    height: 128,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  title: {
+    textAlign: 'center',
+    fontSize: '24pt',
+    fontWeight: 200,
+  },
+}
 class Perfil extends React.Component {
   static propTypes = {
     children: PropTypes.node,
@@ -26,11 +39,16 @@ class Perfil extends React.Component {
 
     return (
       <Grid>
-        <Row style={{ borderTop: '2px solid black' }}>
-          <Col xs={12} md={4} style={{ padding: 0, borderRight: '2px solid black' }}>
-            <div style={{ borderBottom: '2px solid black' }}>
+        <Row>
+          <Col xs={12} style={styles.titleContainer}>
+            <h1 style={styles.title}>PERFIL</h1>
+          </Col>
+        </Row>
+        <Row style={{ borderTop: '1px solid #b5b5bb' }}>
+          <Col xs={12} md={4} style={{ padding: 0, borderRight: '1px solid #b5b5bb' }}>
+            <div style={{ borderBottom: '1px solid #e5e5e5' }}>
               <PerfilInfoContainer
-                style={{ marginBottom: -2, marginTop: -2 }}
+                style={{ marginBottom: -1, marginTop: -1 }}
               />
             </div>
             <div>
