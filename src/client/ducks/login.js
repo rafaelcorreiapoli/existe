@@ -51,22 +51,19 @@ export const loginWithFacebook = () => (dispatch, getState, Meteor) =>
     })
   })
 
-
-export const loginWithLinkedin = () => (dispatch, getState, Meteor) => {
-  dispatch(startLogin());
-  return new Promise((resolve, reject) => (
+export const loginWithLinkedin = () => (dispatch, getState, Meteor) =>
+  new Promise((resolve, reject) => {
+    dispatch(startLogin());
     Meteor.loginWithLinkedin({}, (err, res) => {
       if (err) {
-        console.log('er')
         dispatch(loginError(err))
         reject(err)
       }
-      console.log('suc')
       dispatch(loginSuccess(res))
       resolve(res)
     })
-  ))
-}
+  })
+
 
 export const loginWithPassword = (email, password) => (dispatch, getState, Meteor) => {
   console.log(email, password)

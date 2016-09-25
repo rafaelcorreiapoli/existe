@@ -1,22 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux';
-import Drawer from '@components/Drawer'
-import { setDrawerOpen } from '@ducks/layout'
+import TabNav from '@components/TabNav'
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+  console.log(ownProps)
   return {
-    drawerOpen: state.layout.get('drawerOpen'),
+    selectedTab: 'mural',
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onChangeDrawerState(open) {
-      dispatch(setDrawerOpen(open))
-    },
     navigate(to) {
-      dispatch(setDrawerOpen(false))
       dispatch(push(to))
     },
   }
@@ -25,4 +21,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Drawer)
+)(TabNav)

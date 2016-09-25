@@ -32,7 +32,7 @@ const styles = {
     marginRight: 15,
   },
   nome: {
-    fontSize: '18px',
+    fontSize: '18pt',
     marginTop: 0,
     marginBottom: 8,
   },

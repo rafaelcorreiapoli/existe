@@ -5,9 +5,10 @@ import { ACCENT } from '@resources/colors'
 const styles = {
   menuItem: {
     textAlign: 'right',
+    textTransform: 'uppercase',
   },
   menuItemActive: {
-    color: ACCENT
+    color: ACCENT,
   },
   innerDivActive: {
     borderRightWidth: 2,
@@ -16,7 +17,8 @@ const styles = {
   },
   innerDiv: {
     paddingRight: 40,
-  }
+    fontSize: '12pt',
+  },
 }
 
 class CustomMenuItem extends React.Component {

@@ -3,16 +3,14 @@ import { connect } from 'react-redux'
 import DrawerContainer from '@containers/DrawerContainer'
 import AppBarContainer from '@containers/AppBarContainer';
 import { setInsertBotDialogOpen } from '@ducks/layout'
-import { Tabs, Tab } from 'material-ui/Tabs'
+
+import TabNav from '@containers/TabNav'
 
 const styles = {
   container: {
     maxWidth: 1200,
     margin: 'auto',
     //marginTop: 100,
-  },
-  tabsContainer: {
-    borderBottom: '1px solid #e5e5e5',
   },
   tabs: {
     height: 48,
@@ -37,32 +35,18 @@ class AuthenticatedLayout extends React.Component {
       handleRequestClose,
       handleSubmit,
       invalid,
+      navigate,
+      selectedTab,
+      ...props
     } = this.props
+
+    console.log(props)
 
     return (
       <div>
         <DrawerContainer />
         <AppBarContainer />
-        <div style={styles.tabsContainer}>
-          <Tabs style={styles.tabs}>
-            <Tab
-              style={styles.tab}
-              label="Comunidade"
-            />
-            <Tab
-              style={styles.tab}
-              label="Produções"
-            />
-            <Tab
-              style={styles.tab}
-              label="Mural"
-            />
-            <Tab
-              style={styles.tab}
-              label="Colaborar"
-            />
-          </Tabs>
-        </div>
+        <TabNav />
         <div style={styles.container}>
           {children}
         </div>

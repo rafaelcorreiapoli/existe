@@ -15,6 +15,10 @@ import CadastroRapidoPage from '@pages/CadastroRapidoPage'
 import NovoProjetoPage from '@pages/NovoProjetoPage'
 import CadastroEmpresarialPage from '@pages/CadastroEmpresarialPage'
 import AtualizarCadastroPessoalPage from '@pages/AtualizarCadastroPessoalPage'
+import ComunidadePage from '@pages/ComunidadePage'
+import ProducoesPage from '@pages/ProducoesPage'
+import MuralPage from '@pages/MuralPage'
+import GuiaDePrecosPage from '@pages/GuiaDePrecosPage'
 import * as Usuario from '@components/Usuario'
 import UsuarioPage from '@pages/UsuarioPage'
 import * as Perfil from '@components/Perfil'
@@ -66,6 +70,13 @@ const Routes = () => (
       <Route component={userIsAuthenticated(AuthenticatedLayout)}>
         <IndexRoute component={BuscaPage} />
         <Route path="atualizar-cadastro-pessoal" component={AtualizarCadastroPessoalPage} />
+
+        <Route path="/comunidade" component={ComunidadePage} />
+        <Route path="/producoes" component={ProducoesPage} />
+        <Route path="/mural" component={MuralPage} />
+        <Route path="/guia-de-precos" component={GuiaDePrecosPage} />
+
+
         <Route path="/perfil" component={PerfilPage}>
           <IndexRedirect to="notificacoes" />
           <Route path={"notificacoes"} component={Perfil.Notificacoes}>

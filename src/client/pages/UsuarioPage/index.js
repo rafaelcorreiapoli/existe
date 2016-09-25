@@ -11,8 +11,7 @@ import UsuarioInfoContainer from '@containers/UsuarioInfoContainer'
 
 const styles = {
   container: {
-    display: 'flex',
-    flexDirection: 'row',
+    marginTop: 120,
   },
   leftContainer: {
     borderRightWidth: 2,
@@ -40,7 +39,7 @@ class UsuarioPage extends React.Component {
     } = this.props
 
     return (
-      <Grid>
+      <Grid style={styles.container}>
         <Row>
           <Col xs={3} style={styles.leftContainer}>
             <UsuarioInfoContainer

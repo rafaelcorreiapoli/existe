@@ -6,7 +6,7 @@ const styles = {
   title: {
     textAlign: 'center',
     margin: 0,
-    fontSize: 18,
+    fontSize: '18pt',
   },
   titleContainer: {
     height: 70,
@@ -29,6 +29,10 @@ const styles = {
     paddingRight: 20,
     borderBottom: '1px solid #e5e5e5',
   },
+  tab: {
+    fontSize: '10pt',
+    fontWeight: 600,
+  }
 }
 
 
