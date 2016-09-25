@@ -3,10 +3,11 @@ import { connect } from 'react-redux'
 import { push } from 'react-router-redux';
 import TabNav from '@components/TabNav'
 
-const mapStateToProps = (state, ownProps) => {
-  console.log(ownProps)
+const mapStateToProps = (state, { selectedTab }) => {
+  console.log(selectedTab)
+  
   return {
-    selectedTab: 'mural',
+    selectedTab,
   }
 }
 

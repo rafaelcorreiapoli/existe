@@ -1,4 +1,6 @@
 import { Map } from 'immutable'
+import { SET_USER } from './user'
+
 export const SET_LOGIN_EMAIL = 'login/SET_LOGIN_EMAIL';
 export const SET_LOGIN_PASSWORD = 'login/SET_LOGIN_PASSWORD';
 export const START_LOGIN = 'login/START_LOGIN';
@@ -7,7 +9,7 @@ export const LOGIN_ERROR = 'login/LOGIN_ERROR';
 export const LOGOUT_REQUEST = 'login/LOGOUT_REQUEST'
 export const CLEAR_LOGOUT_REQUEST = 'login/CLEAR_LOGOUT_REQUEST'
 export const SET_METEOR_USER_FETCHED = 'login/SET_METEOR_USER_FETCHED'
-import { SET_USER } from './user'
+
 export const setMeteorUserFetched = (fetched) => ({
   type: SET_METEOR_USER_FETCHED,
   payload: {
@@ -21,20 +23,20 @@ export function startLogin() {
   }
 }
 export function loginSuccess(userId) {
-    return {
-      type: LOGIN_SUCCESS,
-      payload: {
-        userId
-      }
-    }
+  return {
+    type: LOGIN_SUCCESS,
+    payload: {
+      userId,
+    },
+  }
 }
 
 export function loginError(error) {
   return {
     type: LOGIN_ERROR,
     payload: {
-      error
-    }
+      error,
+    },
   }
 }
 
@@ -66,16 +68,13 @@ export const loginWithLinkedin = () => (dispatch, getState, Meteor) =>
 
 
 export const loginWithPassword = (email, password) => (dispatch, getState, Meteor) => {
-  console.log(email, password)
   dispatch(startLogin());
   return new Promise((resolve, reject) => (
     Meteor.loginWithPassword(email, password, (err, res) => {
       if (err) {
-        console.log(err)
         dispatch(loginError(err))
         return reject(err)
       }
-      console.log(res)
       dispatch(loginSuccess(res))
       resolve(res)
     })
@@ -113,16 +112,16 @@ export function setLoginPassword(password) {
   }
 }
 
-export const logoutRequest = () => (dispatch, getState, asteroid) => {
+export const logoutRequest = () => (dispatch, getState, Meteor) => {
   dispatch({
-    type: LOGOUT_REQUEST
+    type: LOGOUT_REQUEST,
   })
-  asteroid.logout()
+  Meteor.logout()
 }
 
 export const clearLogoutRequest = () => {
   return {
-    type: CLEAR_LOGOUT_REQUEST
+    type: CLEAR_LOGOUT_REQUEST,
   }
 }
 const initialState = Map({

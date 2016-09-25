@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import DrawerContainer from '@containers/DrawerContainer'
 import AppBarContainer from '@containers/AppBarContainer';
-import { setInsertBotDialogOpen } from '@ducks/layout'
 
 import TabNav from '@containers/TabNav'
 
@@ -24,29 +23,26 @@ const styles = {
 class AuthenticatedLayout extends React.Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
-    insertBotDialogOpen: PropTypes.bool,
-    handleRequestClose: PropTypes.func,
+    location: PropTypes.object,
   }
 
   render() {
     const {
       children,
-      insertBotDialogOpen,
-      handleRequestClose,
-      handleSubmit,
-      invalid,
-      navigate,
-      selectedTab,
-      ...props
+      location: {
+        pathname,
+      },
     } = this.props
 
-    console.log(props)
+    const decideSelectedTab = (p) => {
+      return p.substr(0, 1) === '/' ? p.substr(1, p.length) : p
+    }
 
     return (
       <div>
         <DrawerContainer />
         <AppBarContainer />
-        <TabNav />
+        <TabNav selectedTab={decideSelectedTab(pathname)} />
         <div style={styles.container}>
           {children}
         </div>
@@ -56,14 +52,10 @@ class AuthenticatedLayout extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  insertBotDialogOpen: state.layout.get('insertBotDialogOpen'),
-  invalid: (state.form && state.form.newBot) && !!state.form.newBot.syncErrors || false,
+
 })
 const mapDispatchToProps = dispatch => ({
-  handleRequestClose(open) {
-    console.log('handle')
-    dispatch(setInsertBotDialogOpen(open))
-  },
+
 })
 export default connect(
   mapStateToProps,

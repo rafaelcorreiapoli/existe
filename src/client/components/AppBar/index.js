@@ -11,20 +11,14 @@ import { Menu, Add, Logout, Help, Profile } from '@resources/icons'
 class AppBar extends React.Component {
   static propTypes = {
     onClickToggleMenu: PropTypes.func,
-    onClickAdd: PropTypes.func,
-    onClickProfileLink: PropTypes.func,
-    onClickHelpLink: PropTypes.func,
-    onClickLogoutLink: PropTypes.func,
+    logout: PropTypes.func,
+    navigate: PropTypes.func,
   }
   render() {
     const {
       onClickToggleMenu,
-      onClickAdd,
-      onClickProfileLink,
-      onClickHelpLink,
-      onClickLogoutLink,
-      bots,
-      onClickBot
+      logout,
+      navigate,
     } = this.props
     return (
       <MUIAppBar
@@ -45,33 +39,28 @@ class AppBar extends React.Component {
             <MenuItem
               leftIcon={<Profile />}
               primaryText="Perfil"
-              onClick={onClickProfileLink}
+              onClick={() => navigate('perfil')}
             />
-            <Divider />
-            {bots && bots.map(bot => (
-              <MenuItem
-                disabled={bot.selected}
-                leftIcon={<Profile />}
-                key={bot._id}
-                primaryText={bot.nickname}
-                onClick={() => onClickBot(bot._id)}
-              />
-            ))}
             <Divider />
             <MenuItem
               leftIcon={<Add />}
+              primaryText="Projetos"
+              onClick={() => navigate('meus-projetos')}
+            />
+            <MenuItem
+              leftIcon={<Add />}
               primaryText="Novo Projeto"
-              onClick={onClickAdd}
+              onClick={() => navigate('novo-projeto')}
             />
             <MenuItem
               leftIcon={<Help />}
               primaryText="Ajuda"
-              onClick={onClickHelpLink}
+              onClick={() => navigate('ajuda')}
             />
             <MenuItem
               leftIcon={<Logout />}
               primaryText="Sair"
-              onClick={onClickLogoutLink}
+              onClick={logout}
             />
           </IconMenu>
         }
