@@ -1,8 +1,11 @@
 import React, { PropTypes } from 'react'
-import MiniFeedItem from '@components/MiniFeedItem'
-import ItemExpansivo from '@components/ItemExpansivo'
-import GridUsuariosPortrait from '@components/GridUsuariosPortrait'
-import { Texto } from '@resources/icons'
+// import MiniFeedItem from '@components/MiniFeedItem'
+// import ItemExpansivo from '@components/ItemExpansivo'
+// import GridUsuariosPortrait from '@components/GridUsuariosPortrait'
+import FeedItem from '@components/FeedItem'
+
+import { Audio } from '@resources/icons'
+import { composeWithTracker } from 'react-komposer'
 
 const usuarios = [
   {
@@ -73,48 +76,56 @@ const usuarios = [
 ]
 
 class Marcacoes extends React.Component {
+  static propTypes = {
+    feeds: PropTypes.array,
+  }
+
   render() {
+    const {
+      feeds,
+    } = this.props
+
     return (
       <div>
-
-        {/* <ItemExpansivo
-          badgeCount={5}
-          nome="NOME DO PROJETO"
-          nomeUsuario="NOMEDOUSUARIO"
-          imagem="http://placehold.it/400x400"
-          seguidoresCount={3}
-          data={new Date()}
-          deixarDeSeguir={() => console.log('deixar de seguir')}
-        >
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <MiniFeedItem
-            icon={<Texto />}
-            texto={'Esse é um texto'}
-            data={new Date()}
-          />
-          <MiniFeedItem
-            icon={<Texto />}
-            texto={'Esse é um texto'}
-            data={new Date()}
-          />
-          <MiniFeedItem
-            icon={<Texto />}
-            texto={'Esse é um texto'}
-            data={new Date()}
-          />
-        </div>
-        </ItemExpansivo> */}
-        <GridUsuariosPortrait
-          usuarios={usuarios}
-        />
-        {/* <UserPortrait
-          imagem={'http://placehold.it/300x300'}
-          nome={'RAFAEL RIBEIRO CORREIA'}
-          funcao={'ENGENHEIRO'}
-        /> */}
+        {
+          feeds.map((feed, i) => (
+            <FeedItem
+              key={i}
+              imagem={feed.imagem}
+              iconElement={feed.iconElement}
+              titulo={feed.titulo}
+              subtitulo={feed.subtitulo}
+              data={feed.data}
+              style={{ marginBottom: 20 }}
+            />
+          ))
+        }
       </div>
     )
   }
 }
 
-export default Marcacoes
+const composer = (props, onData) => {
+  onData(null, {
+    feeds: [{
+      imagem: 'http://placehold.it/400x400',
+      iconElement: <Audio />,
+      titulo: 'projeto 01',
+      subtitulo: 'projeto 01 subtitulo',
+      data: new Date(),
+    }, {
+      imagem: 'http://placehold.it/400x400',
+      iconElement: <Audio />,
+      titulo: 'projeto 01',
+      subtitulo: 'projeto 01 subtitulo',
+      data: new Date(),
+    }, {
+      imagem: 'http://placehold.it/400x400',
+      iconElement: <Audio />,
+      titulo: 'projeto 01',
+      subtitulo: 'projeto 01 subtitulo',
+      data: new Date(),
+    }],
+  })
+}
+export default composeWithTracker(composer)(Marcacoes);

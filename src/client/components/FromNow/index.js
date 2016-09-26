@@ -4,6 +4,7 @@ import moment from 'moment'
 const styles = {
   date: {
     color: 'gray',
+    whiteSpace: 'nowrap',
   },
 }
 

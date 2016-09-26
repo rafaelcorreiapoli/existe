@@ -7,6 +7,7 @@ export Salvos from './Salvos'
 export Seguidores from './Seguidores'
 export Seguindo from './Seguindo'
 export Editar from './Editar'
+export Projetos from './Projetos'
 
 // const styles = {
 //   container: {

@@ -75,8 +75,9 @@ class PerfilTabs extends React.Component {
 
           <Tabs style={styles.tabs} value={activeTab}>
             {
-              tabs.map(tab => (
+              tabs.map((tab, i) => (
                 <Tab
+                  key={i}
                   style={styles.tab}
                   label={<TabLabel label={tab.label} number={tab.count} />}
                   onActive={tab.onClick} value={tab.value}

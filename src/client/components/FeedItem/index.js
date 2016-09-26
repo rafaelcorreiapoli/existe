@@ -1,13 +1,14 @@
 import React, { PropTypes } from 'react'
 import moment from 'moment'
 import Radium from 'radium'
+
 const styles = {
   container: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'stretch',
   },
-  imageContainer: {
+  imagemContainer: {
     width: 100,
   },
   iconContainer: {
@@ -23,57 +24,72 @@ const styles = {
     flexGrow: 1,
     padding: 10,
   },
-  dateContainer: {
+  dataContainer: {
     display: 'flex',
     alignItems: 'center',
   },
-  image: {
+  imagem: {
     display: 'block',
+    width: 100,
+    height: 100,
   },
-  title: {
+  titulo: {
     marginTop: 0,
     marginBottom: 20,
     fontSize: 18,
   },
-  subtitle: {
+  subtitulo: {
     margin: 0,
     color: '#555',
   },
-  date: {
+  data: {
     color: 'gray',
   },
 }
-const FeedItem = ({
-  image,
-  iconElement,
-  title,
-  subtitle,
-  date,
-  style,
-  ...props,
-}) => {
-  return (
-    <div style={[styles.container, style]} {...props}>
-      <div style={styles.imageContainer}>
-        <img src={image} style={styles.image} />
+
+class FeedItem extends React.Component {
+  static propTypes = {
+    imagem: PropTypes.string,
+    iconElement: PropTypes.element,
+    titulo: PropTypes.string,
+    subtitulo: PropTypes.string,
+    data: PropTypes.object,
+    style: PropTypes.object,
+  }
+
+  render() {
+    const {
+      imagem,
+      iconElement,
+      titulo,
+      subtitulo,
+      data,
+      style,
+    } = this.props
+
+    return (
+      <div style={Object.assign({}, styles.container, style)}>
+        <div style={styles.imagemContainer}>
+          <img src={imagem} style={styles.imagem} />
+        </div>
+        <div style={styles.iconContainer}>
+          {React.cloneElement(iconElement, {
+            style: {
+              width: 40,
+              height: 40,
+            },
+          })}
+        </div>
+        <div style={styles.textContainer}>
+          <span style={styles.titulo}>{titulo}</span>
+          <span style={styles.subtitulo}>{subtitulo}</span>
+        </div>
+        <div style={styles.dataContainer}>
+          <span style={styles.data}>{moment(data).fromNow()}</span>
+        </div>
       </div>
-      <div style={styles.iconContainer}>
-        {React.cloneElement(iconElement, {
-          style: {
-            width: 40,
-            height: 40,
-          },
-        })}
-      </div>
-      <div style={styles.textContainer}>
-        <span style={styles.title}>{title}</span>
-        <span style={styles.subtitle}>{subtitle}</span>
-      </div>
-      <div style={styles.dateContainer}>
-        <span style={styles.date}>{moment(date).fromNow()}</span>
-      </div>
-    </div>
-  )
+    )
+  }
 }
 
-export default Radium(FeedItem)
+export default FeedItem

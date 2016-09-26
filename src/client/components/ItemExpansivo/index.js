@@ -30,10 +30,20 @@ const styles = {
     flexDirection: 'row',
     alignItems: 'center',
   },
-  nomeUsuarioContainer: {
+  subtituloContainer: {
     flexGrow: 1
   },
-  nome: {
+  bodyContainer: {
+    marginTop: 20,
+  },
+  bodyContainerContraido: {
+    maxWidth: 600,
+    display: 'block',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+  },
+  titulo: {
     marginRight: 10,
   },
   seguidores: {
@@ -55,11 +65,14 @@ const styles = {
 class ItemExpansivo extends React.Component {
   static propTypes = {
     badgeCount: PropTypes.number,
-    nome: PropTypes.string,
-    nomeUsuario: PropTypes.string,
+    titulo: PropTypes.string,
+    subtitulo: PropTypes.string,
     imagem: PropTypes.string,
     seguidoresCount: PropTypes.number,
     data: PropTypes.object,
+    hideSeguidores: PropTypes.bool,
+    hideDeixarDeSeguir: PropTypes.bool,
+    body: PropTypes.element,
 
     deixarDeSeguir: PropTypes.func,
     children: PropTypes.node,
@@ -86,7 +99,7 @@ class ItemExpansivo extends React.Component {
       expandido,
     } = this.state
 
-    if (expandido) {
+    if (!expandido) {
       return (
         <IconButton onTouchTap={this.toggleExpandido}>
           <SetaDireita />
@@ -103,13 +116,16 @@ class ItemExpansivo extends React.Component {
   render() {
     const {
       badgeCount,
-      nome,
-      nomeUsuario,
+      titulo,
+      subtitulo,
       imagem,
       seguidoresCount,
       deixarDeSeguir,
       data,
       children,
+      hideSeguidores,
+      hideDeixarDeSeguir,
+      body,
     } = this.props
     const {
       expandido,
@@ -122,7 +138,7 @@ class ItemExpansivo extends React.Component {
           <Badge
             primary
             badgeContent={badgeCount}
-            >
+          >
             <img src={imagem} style={styles.imagem} />
           </Badge>
         </div>
@@ -130,26 +146,43 @@ class ItemExpansivo extends React.Component {
         <div style={styles.mainContainer}>
 
           <div style={styles.textRow}>
-            <span style={styles.nome}>{nome}</span>
+            <span style={styles.titulo}>{titulo}</span>
             <VerticalDivider />
             {this.renderExpandidoToggle()}
             <VerticalDivider />
-            <span style={styles.seguidores}>
-              {seguidoresCount} SEGUIDORES
-            </span>
-            <VerticalDivider />
-            <span style={styles.deixarDeSeguir} onClick={deixarDeSeguir}>
-              DEIXAR DE SEGUIR
-            </span>
-            <VerticalDivider />
+            {
+              !hideSeguidores &&
+                <div>
+                  <span style={styles.seguidores}>
+                    {seguidoresCount} SEGUIDORES
+                  </span>
+                  <VerticalDivider />
+                </div>
+            }
+            {
+              !hideDeixarDeSeguir &&
+                <div>
+                  <span style={styles.deixarDeSeguir} onClick={deixarDeSeguir}>
+                    DEIXAR DE SEGUIR
+                  </span>
+                  <VerticalDivider />
+                </div>
+            }
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'row'}}>
-            <div style={styles.nomeUsuarioContainer}>
-              <span style={styles.nomeUsuario}>
-                {nomeUsuario}
+            <div style={styles.subtituloContainer}>
+              <span style={styles.subtitulo}>
+                {subtitulo}
               </span>
+              {
+                body &&
+                  <div style={Object.assign({}, styles.bodyContainer, expandido ? {} : styles.bodyContainerContraido)}>
+                    {body}
+                  </div>
+              }
             </div>
+
 
             <div style={styles.dateContainer}>
               <FromNow date={data} />
@@ -158,7 +191,7 @@ class ItemExpansivo extends React.Component {
 
           <div style={styles.children}>
             {
-              !expandido && children
+              expandido && children
             }
           </div>
         </div>
