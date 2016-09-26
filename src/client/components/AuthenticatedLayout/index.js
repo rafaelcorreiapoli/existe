@@ -7,7 +7,7 @@ import TabNav from '@containers/TabNav'
 
 const styles = {
   container: {
-    maxWidth: 1200,
+    maxWidth: 1440,
     margin: 'auto',
     //marginTop: 100,
   },

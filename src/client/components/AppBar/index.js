@@ -39,23 +39,23 @@ class AppBar extends React.Component {
             <MenuItem
               leftIcon={<Profile />}
               primaryText="Perfil"
-              onClick={() => navigate('perfil')}
+              onClick={() => navigate('/perfil')}
             />
             <Divider />
             <MenuItem
               leftIcon={<Add />}
               primaryText="Projetos"
-              onClick={() => navigate('meus-projetos')}
+              onClick={() => navigate('/meus-projetos')}
             />
             <MenuItem
               leftIcon={<Add />}
               primaryText="Novo Projeto"
-              onClick={() => navigate('novo-projeto')}
+              onClick={() => navigate('/novo-projeto')}
             />
             <MenuItem
               leftIcon={<Help />}
               primaryText="Ajuda"
-              onClick={() => navigate('ajuda')}
+              onClick={() => navigate('/ajuda')}
             />
             <MenuItem
               leftIcon={<Logout />}

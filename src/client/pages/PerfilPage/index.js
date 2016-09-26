@@ -38,7 +38,7 @@ class Perfil extends React.Component {
     } = this.props
 
     return (
-      <Grid>
+      <Grid fluid>
         <Row>
           <Col xs={12} style={styles.titleContainer}>
             <h1 style={styles.title}>PERFIL</h1>

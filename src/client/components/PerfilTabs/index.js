@@ -86,7 +86,7 @@ class PerfilTabs extends React.Component {
           </Tabs>
 
         </div>
-        <div style={{ height: '100%', padding: 50 }}>
+        <div style={{ height: '100%', padding: 20 }}>
           {children}
         </div>
       </div>

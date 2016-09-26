@@ -49,5 +49,7 @@ export FullStar from 'material-ui/svg-icons/toggle/star'
 export EmptyStar from 'material-ui/svg-icons/toggle/star-border'
 export HalfStar from 'material-ui/svg-icons/toggle/star-half'
 
+export SetaDireita from 'material-ui/svg-icons/hardware/keyboard-arrow-right'
+export SetaBaixo from 'material-ui/svg-icons/hardware/keyboard-arrow-down'
 //  import ModeEdit from 'material-ui/svg-icons/editor/mode-edit';
 //  import Highlight from 'material-ui/svg-icons/editor/highlight';

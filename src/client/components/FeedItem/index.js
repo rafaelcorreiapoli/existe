@@ -5,43 +5,43 @@ const styles = {
   container: {
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'stretch'
+    alignItems: 'stretch',
   },
   imageContainer: {
-    width: 100
+    width: 100,
   },
   iconContainer: {
     width: 100,
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   textContainer: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     flexGrow: 1,
-    padding: 10
+    padding: 10,
   },
   dateContainer: {
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   image: {
-    display: 'block'
+    display: 'block',
   },
   title: {
     marginTop: 0,
     marginBottom: 20,
-    fontSize: 18
+    fontSize: 18,
   },
   subtitle: {
     margin: 0,
-    color: '#555'
+    color: '#555',
   },
   date: {
-    color: 'gray'
-  }
+    color: 'gray',
+  },
 }
 const FeedItem = ({
   image,
@@ -50,19 +50,19 @@ const FeedItem = ({
   subtitle,
   date,
   style,
-  ...props
+  ...props,
 }) => {
   return (
     <div style={[styles.container, style]} {...props}>
       <div style={styles.imageContainer}>
-        <img src={image} style={styles.image}/>
+        <img src={image} style={styles.image} />
       </div>
       <div style={styles.iconContainer}>
         {React.cloneElement(iconElement, {
           style: {
             width: 40,
-            height: 40
-          }
+            height: 40,
+          },
         })}
       </div>
       <div style={styles.textContainer}>
@@ -72,7 +72,6 @@ const FeedItem = ({
       <div style={styles.dateContainer}>
         <span style={styles.date}>{moment(date).fromNow()}</span>
       </div>
-
     </div>
   )
 }
