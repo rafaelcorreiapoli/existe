@@ -1,33 +1,6 @@
 import React, { PropTypes } from 'react'
 import ButtonPopover from '@components/ButtonPopover'
-import { Data, Trending, Usuarios, ComVagas, Likes } from '@resources/icons';
-
-const options = [{
-  icon: <Data />,
-  text: 'MAIS RECENTES',
-  value: 'recentes',
-},
-  {
-    icon: <Trending />,
-    text: 'TRENDING',
-    value: 'trending',
-  },
-  {
-    icon: <Usuarios />,
-    text: 'MAIS SEGUIDOS',
-    value: 'seguidores',
-  },
-  {
-    icon: <Likes />,
-    text: 'MAIS CURTIDOS',
-    value: 'curtidas',
-  },
-  {
-    icon: <ComVagas />,
-    text: 'COM VAGAS',
-    value: 'vagas',
-  }];
-
+import { FILTRO_ORDEM } from '@resources/options'
 
 const SelecionarOrdem = ({
   value,
@@ -38,7 +11,7 @@ const SelecionarOrdem = ({
       onChange={onChange}
       defaultText={'ORDENAR POR'}
       value={value}
-      options={options}
+      options={FILTRO_ORDEM}
     />
   )
 }

@@ -34,6 +34,7 @@ class Convites extends React.Component {
             body={<span>{lorem}</span>}
             hideSeguidores
             hideDeixarDeSeguir
+            hideColaboradores
           >
             <div>
               {

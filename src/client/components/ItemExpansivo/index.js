@@ -50,6 +50,10 @@ const styles = {
     marginLeft: 10,
     marginRight: 10,
   },
+  colaboradores: {
+    marginLeft: 10,
+    marginRight: 10,
+  },
   deixarDeSeguir: {
     marginLeft: 10,
     marginRight: 10,
@@ -69,9 +73,11 @@ class ItemExpansivo extends React.Component {
     subtitulo: PropTypes.string,
     imagem: PropTypes.string,
     seguidoresCount: PropTypes.number,
+    colaboradoresCount: PropTypes.number,
     data: PropTypes.object,
     hideSeguidores: PropTypes.bool,
     hideDeixarDeSeguir: PropTypes.bool,
+    hideColaboradores: PropTypes.bool,
     body: PropTypes.element,
 
     deixarDeSeguir: PropTypes.func,
@@ -120,10 +126,12 @@ class ItemExpansivo extends React.Component {
       subtitulo,
       imagem,
       seguidoresCount,
+      colaboradoresCount,
       deixarDeSeguir,
       data,
       children,
       hideSeguidores,
+      hideColaboradores,
       hideDeixarDeSeguir,
       body,
     } = this.props
@@ -151,26 +159,29 @@ class ItemExpansivo extends React.Component {
             {this.renderExpandidoToggle()}
             <VerticalDivider />
             {
-              !hideSeguidores &&
-                <div>
-                  <span style={styles.seguidores}>
-                    {seguidoresCount} SEGUIDORES
-                  </span>
-                  <VerticalDivider />
-                </div>
+              !hideColaboradores &&
+                <span style={styles.colaboradores}>
+                  {colaboradoresCount} COLABORADORES
+                </span>
             }
+            {!hideColaboradores && <VerticalDivider /> }
+            {
+              !hideSeguidores &&
+                <span style={styles.seguidores}>
+                  {seguidoresCount} SEGUIDORES
+                </span>
+            }
+            {!hideSeguidores && <VerticalDivider /> }
             {
               !hideDeixarDeSeguir &&
-                <div>
-                  <span style={styles.deixarDeSeguir} onClick={deixarDeSeguir}>
-                    DEIXAR DE SEGUIR
-                  </span>
-                  <VerticalDivider />
-                </div>
+                <span style={styles.deixarDeSeguir} onClick={deixarDeSeguir}>
+                  DEIXAR DE SEGUIR
+                </span>
             }
+            {!hideDeixarDeSeguir && <VerticalDivider /> }
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'row'}}>
+          <div style={{ display: 'flex', flexDirection: 'row' }}>
             <div style={styles.subtituloContainer}>
               <span style={styles.subtitulo}>
                 {subtitulo}

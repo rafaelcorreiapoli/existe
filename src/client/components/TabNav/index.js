@@ -26,22 +26,22 @@ class TabNav extends React.Component {
         >
           <Tab
             style={styles.tab}
-            value="/comunidade"
+            value="comunidade"
             label="Comunidade"
           />
           <Tab
-            value="/producoes"
+            value="producoes"
             style={styles.tab}
             label="Produções"
           />
           <Tab
             style={styles.tab}
-            value="/mural"
+            value="mural"
             label="Mural"
           />
           <Tab
             style={styles.tab}
-            value="/guia-de-precos"
+            value="guia-de-precos"
             label="Guia de preços"
           />
         </Tabs>

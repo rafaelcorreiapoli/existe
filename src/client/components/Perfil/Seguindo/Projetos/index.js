@@ -19,11 +19,12 @@ class Projetos extends React.Component {
           <ItemExpansivo
             key={i}
             badgeCount={projeto.feeds.length}
-            nome={projeto.nome}
-            nomeUsuario={projeto.nomeUsuario}
+            titulo={projeto.nome}
+            subtitulo={projeto.nomeUsuario}
             imagem={projeto.imagem}
             seguidoresCount={projeto.seguidoresCount}
             data={projeto.data}
+            hideColaboradores
           >
             {projeto.feeds.map((feed, j) => (
               <MiniFeedItem

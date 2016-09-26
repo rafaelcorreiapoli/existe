@@ -33,7 +33,7 @@ class ButtonPopover extends React.Component {
   };
 
   _flatOptions(options) {
-    let finalArray = [];
+    const finalArray = [];
     this._pushMenuItemsToArray(options, finalArray);
     return finalArray;
   }
@@ -50,14 +50,12 @@ class ButtonPopover extends React.Component {
   getOptionFromValue(value) {
     const { options } = this.props;
     const flattenArray = this._flatOptions(options);
-
     return flattenArray.find(option => {
       return option.value === value
     }) || {};
   }
 
   handleChange(value) {
-    console.log(value);
     const { onChange } = this.props;
     onChange(value)
     this.handleRequestClose();
@@ -73,16 +71,15 @@ class ButtonPopover extends React.Component {
     if (!item.noAction) {
       onClick = () => this.handleChange(item.value)
     }
-
-
     return (
       <MenuItem
         key={i}
         menuItems={item.menuItems && item.menuItems.map(this.renderMenuItem)}
         rightIcon={rightIcon}
         onClick={onClick}
-        primaryText={item.text}
-        leftIcon={item.icon} />
+        primaryText={item.label}
+        leftIcon={item.icon}
+      />
     );
   }
   render() {
@@ -94,40 +91,42 @@ class ButtonPopover extends React.Component {
       options,
       defaultText,
       onChange,
-      ...props
+      ...props,
     } = this.props
 
     const {
       open,
-      anchorEl
+      anchorEl,
     } = this.state
 
     const selectedOption = this.getOptionFromValue(value);
 
     const renderMenuItem = this.renderMenuItem;
 
-    const button = customButton ? customButton : RaisedButton ;
+    const button = customButton ? customButton : RaisedButton;
 
+    console.log(selectedOption)
     return (
       <div style={style} {...props}>
         {
           React.createElement(button, {
+            labelColor: 'black',
             onTouchTap: this.handleTouchTap,
-            label: selectedOption.text || defaultText,
+            label: selectedOption.label || defaultText,
             labelPosition: 'after',
             icon: selectedOption.icon,
-            style: customButtonStyle ? customButtonStyle : { width: 300 }
+            style: customButtonStyle || { width: 300 },
           })
         }
 
         <Popover
           open={open}
           anchorEl={anchorEl}
-          anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
-          targetOrigin={{horizontal: 'left', vertical: 'top'}}
+          anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
+          targetOrigin={{ horizontal: 'left', vertical: 'top' }}
           onRequestClose={this.handleRequestClose}
         >
-          <Menu style={{width: 300}} autoWidth={false} listStyle={{width: 300}} >
+          <Menu style={{ width: 300 }} autoWidth={false} listStyle={{ width: 300 }} >
             {
               options.map(renderMenuItem)
             }

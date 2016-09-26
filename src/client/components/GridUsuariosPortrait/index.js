@@ -13,6 +13,7 @@ class GridUsuariosPortrait extends React.Component {
     const {
       usuarios,
     } = this.props
+
     return (
       <Grid
         style={{ margin: 'auto' }}

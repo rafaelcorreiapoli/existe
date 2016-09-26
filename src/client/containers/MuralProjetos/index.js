@@ -1,49 +1,51 @@
-// import React from 'react';
-// import { connect } from 'react-redux'
-// import { setFiltroStatus } from '../../actions'
-//
-// import GridProjetos from '@components/GridProjetos'
-// import { getProjetosMural } from '../../selectors/projetos'
-//
-//
-//
-// const mapStateToProps = (state) => {
-//   return {
-//     projetos: getProjetosMural(state)
-//   }
-// }
-//
-// const mapDispatchToProps = (dispatch, ownProps) => {
-//   const { subscribe, unsubscribe } = ownProps
-//
-//   return {
-//     onComponentDidMount() {
-//       subscribe({
-//         name: 'projetos',
-//         publication: 'projetos',
-//       })
-//     }
-//   }
-// }
-// class MuralProjetos extends React.Component {
-//   componentDidMount() {
-//     const { onComponentDidMount, teste } = this.props
-//     onComponentDidMount();
-//   }
-//
-//   render() {
-//     return <GridProjetos {...this.props} />
-//   }
-// }
-//
-//
-// MuralProjetos = subscriber(connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(MuralProjetos))
-//
-// export default MuralProjetos
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux'
+import GridProjetos from '@components/GridProjetos'
+import { composeWithTracker } from 'react-komposer'
 
-export default () => (
-  <div>hi</div>
-)
+
+class MuralProjetos extends React.Component {
+  static propTypes = {
+    projetos: PropTypes.array,
+  }
+  render() {
+    const {
+      projetos,
+    } = this.props
+
+    return (
+      <GridProjetos
+        projetos={projetos}
+      />
+    )
+  }
+}
+
+const projeto = {
+  temVagas: true,
+  numeroColaboradores: 10,
+  nome: 'PROJETO 01',
+  nomeUsuario: 'USUARIO',
+  data: new Date(),
+  numeroUsers: 10,
+  numeroComentarios: 20,
+  numeroLikes: 30,
+  trending: true,
+  colaborando: true,
+  seguindo: true,
+  favoritou: false,
+  salvou: true,
+  marcado: true,
+  marcadoNovo: true,
+  convidado: true,
+  convidadoNovo: true,
+  status: 0,
+  image: 'http://placehold.it/400x400',
+}
+
+const composer = (props, onData) => {
+  onData(null, {
+    projetos: [projeto, projeto, projeto, projeto],
+  })
+}
+export default composeWithTracker(composer)(MuralProjetos)

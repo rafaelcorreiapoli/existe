@@ -4,7 +4,7 @@ import SelecionarCategoria from '@components/SelecionarCategoria'
 
 const mapStateToProps = (state) => {
   return {
-    value: state.mural.filtros.categoria,
+    value: state.mural.categoria,
   }
 }
 

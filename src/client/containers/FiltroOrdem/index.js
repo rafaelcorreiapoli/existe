@@ -4,7 +4,7 @@ import SelecionarOrdem from '@components/SelecionarOrdem'
 
 const mapStateToProps = (state) => {
   return {
-    value: state.mural.filtros.ordem,
+    value: state.mural.ordem,
   }
 }
 

@@ -4,7 +4,7 @@ import SelecionarStatus from '@components/SelecionarStatus'
 
 const mapStateToProps = (state) => {
   return {
-    value: state.mural.filtros.status,
+    value: state.mural.status,
   }
 }
 

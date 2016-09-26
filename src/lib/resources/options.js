@@ -1,3 +1,17 @@
+import React from 'react'
+import {
+  Todos,
+  ExisteOficial,
+  Independente,
+  Empresarial,
+  Troca,
+  Data,
+  Trending,
+  Usuarios,
+  ComVagas,
+  Likes,
+} from '@resources/icons';
+
 export const AREAS_E_FUNCOES = [{
   value: 'texto',
   label: 'Texto',
@@ -315,3 +329,56 @@ export const COR_CABELOS = [
     value: 'ruivo',
   },
 ]
+
+export const FILTRO_CATEGORIAS = [
+  {
+    label: 'TODOS',
+    icon: <Todos />,
+    value: 'todos',
+  },
+  {
+    label: 'EXISTE OFICIAL',
+    icon: <ExisteOficial />,
+    value: 'oficial',
+  },
+  {
+    label: 'EXISTE INDEPENDENTE',
+    icon: <Independente />,
+    value: 'independente',
+  },
+  {
+    label: 'EXISTE EMPRESARIAL',
+    icon: <Empresarial />,
+    value: 'empresarial',
+  },
+  {
+    label: 'EXISTE TROCA',
+    icon: <Troca />,
+    value: 'troca',
+  }]
+
+export const FILTRO_ORDEM = [{
+  icon: <Data />,
+  label: 'MAIS RECENTES',
+  value: 'recentes',
+},
+  {
+    icon: <Trending />,
+    label: 'TRENDING',
+    value: 'trending',
+  },
+  {
+    icon: <Usuarios />,
+    label: 'MAIS SEGUIDOS',
+    value: 'seguidores',
+  },
+  {
+    icon: <Likes />,
+    label: 'MAIS CURTIDOS',
+    value: 'curtidas',
+  },
+  {
+    icon: <ComVagas />,
+    label: 'COM VAGAS',
+    value: 'vagas',
+  }];

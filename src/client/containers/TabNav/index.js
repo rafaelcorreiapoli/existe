@@ -5,7 +5,7 @@ import TabNav from '@components/TabNav'
 
 const mapStateToProps = (state, { selectedTab }) => {
   console.log(selectedTab)
-  
+
   return {
     selectedTab,
   }

@@ -19,11 +19,12 @@ class Pessoas extends React.Component {
           <ItemExpansivo
             key={i}
             badgeCount={pessoa.feeds.length}
-            nome={pessoa.nome}
-            nomeUsuario={pessoa.nomeUsuario}
+            titulo={pessoa.nome}
+            subtitulo={pessoa.nomeUsuario}
             imagem={pessoa.imagem}
             seguidoresCount={pessoa.seguidoresCount}
             data={pessoa.data}
+            hideColaboradores
           >
             {pessoa.feeds.map((feed, j) => (
               <MiniFeedItem

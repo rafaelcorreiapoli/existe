@@ -1,15 +1,15 @@
 import React, { PropTypes } from 'react'
-import ProjetoCard from '../ProjetoCard';
+import ProjetoCard from '@components/ProjetoCard';
 import { CSSGrid , makeResponsive } from 'react-stonecutter';
 
 const Grid = makeResponsive(CSSGrid, { maxWidth: 1600 });
 
 const GridProjetos = ({
-  projetos
+  projetos,
 }) => {
   return (
     <Grid
-      style={{margin: 'auto'}}
+      style={{ margin: 'auto' }}
       component="div"
       columnWidth={300}
       gutterWidth={20}
@@ -19,10 +19,10 @@ const GridProjetos = ({
       easing="ease-out"
     >
       {
-        projetos.map(projeto => {
+        projetos.map((projeto, i) => {
           return (
-            <div style={{display: 'inline-flex', width: 300}} key={projeto.get('id')}>
-              <ProjetoCard {...projeto.toObject()} />
+            <div style={{ display: 'inline-flex', width: 300 }} key={i}>
+              <ProjetoCard {...projeto} />
             </div>
           )
         })
