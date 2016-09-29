@@ -44,6 +44,7 @@ export Comentarios from 'material-ui/svg-icons/communication/chat-bubble-outline
 
 export Adicionar from 'material-ui/svg-icons/content/add-circle-outline'
 export Deletar from 'material-ui/svg-icons/action/delete'
+export Close from 'material-ui/svg-icons/navigation/close'
 
 export FullStar from 'material-ui/svg-icons/toggle/star'
 export EmptyStar from 'material-ui/svg-icons/toggle/star-border'
@@ -51,5 +52,7 @@ export HalfStar from 'material-ui/svg-icons/toggle/star-half'
 
 export SetaDireita from 'material-ui/svg-icons/hardware/keyboard-arrow-right'
 export SetaBaixo from 'material-ui/svg-icons/hardware/keyboard-arrow-down'
+
+export Bookmark from 'material-ui/svg-icons/action/bookmark'
 //  import ModeEdit from 'material-ui/svg-icons/editor/mode-edit';
 //  import Highlight from 'material-ui/svg-icons/editor/highlight';

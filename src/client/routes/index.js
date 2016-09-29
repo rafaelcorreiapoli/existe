@@ -30,7 +30,7 @@ import * as Seguindo from '@components/Perfil/Seguindo'
 // import Colaborando from '@components/Perfil/Colaborando'
 import Favoritos from '@components/Perfil/Favoritos'
 // import Historico from '@components/Perfil/Historico'
-import Salvos from '@components/Perfil/Salvos'
+import * as Salvos from '@components/Perfil/Salvos'
 // import Seguidores from '@components/Perfil/Seguidores'
 
 import store from '../store'
@@ -108,11 +108,11 @@ const Routes = () => (
             <Route path="marcacoes" component={Notificacoes.Marcacoes} />
             <Route path="convites" component={Notificacoes.Convites} /> */}
           </Route>
-
           <Route path={"salvos"} component={Perfil.Salvos}>
             <IndexRedirect to="videos" />
             <Route path="videos" component={Salvos.Videos} />
             <Route path="projetos" component={Salvos.Projetos} />
+            <Route path="perfis" component={Salvos.Perfis} />
           </Route>
 
           <Route path={"historico"} component={Perfil.Historico} />

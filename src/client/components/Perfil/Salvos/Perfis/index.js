@@ -2,21 +2,21 @@ import React, { PropTypes } from 'react'
 import SalvosItem from '@components/SalvosItem'
 import { composeWithTracker } from 'react-komposer'
 
-class Projetos extends React.Component {
+class Perfis extends React.Component {
   static propTypes = {
-    projetos: PropTypes.array,
+    perfis: PropTypes.array,
   }
 
   render() {
     const {
-      projetos,
+      perfis,
     } = this.props
     return (
       <div>
-        {projetos.map((projeto, i) => (
+        {perfis.map((perfil, i) => (
           <SalvosItem
             key={i}
-            {...projeto}
+            {...perfil}
           />
         ))}
       </div>
@@ -26,12 +26,12 @@ class Projetos extends React.Component {
 
 const composer = (props, onData) => {
   onData(null, {
-    projetos: [{
-      titulo: 'PROJETO01',
+    perfis: [{
+      titulo: 'RAFAEL RIBEIRO CORREIA',
       subtitulo: 'rafaelribeirocorreia',
       imagem: 'http://placehold.it/400x400',
       data: new Date(),
     }],
   })
 }
-export default composeWithTracker(composer)(Projetos);
+export default composeWithTracker(composer)(Perfis);

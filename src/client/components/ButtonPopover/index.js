@@ -105,14 +105,14 @@ class ButtonPopover extends React.Component {
 
     const button = customButton ? customButton : RaisedButton;
 
-    console.log(selectedOption)
+    console.log()
     return (
       <div style={style} {...props}>
         {
           React.createElement(button, {
             labelColor: 'black',
             onTouchTap: this.handleTouchTap,
-            label: selectedOption.label || defaultText,
+            label: selectedOption.text || defaultText,
             labelPosition: 'after',
             icon: selectedOption.icon,
             style: customButtonStyle || { width: 300 },

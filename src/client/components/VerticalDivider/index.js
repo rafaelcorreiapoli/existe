@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 const styles = {
   divider: {
@@ -6,9 +6,16 @@ const styles = {
   }
 }
 class VerticalDivider extends React.Component {
+  static propTypes = {
+    style: PropTypes.object,
+  }
+
   render() {
+    const {
+      style,
+    } = this.props
     return (
-      <div style={styles.divider}>
+      <div style={Object.assign({}, styles.divider, style)}>
         |
       </div>
     )
