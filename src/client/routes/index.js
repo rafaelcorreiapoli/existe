@@ -68,7 +68,10 @@ const Routes = () => (
   <Router history={syncHistoryWithStore(browserHistory, store)}>
     <Route path="/" component={AppContainer}>
       <Route component={userIsAuthenticated(AuthenticatedLayout)}>
-        <IndexRoute component={BuscaPage} />
+        <IndexRedirect to="busca" />
+        <Route path="busca" component={BuscaPage}>
+
+        </Route>
         <Route path="atualizar-cadastro-pessoal" component={AtualizarCadastroPessoalPage} />
 
         <Route path="/comunidade" component={ComunidadePage} />
@@ -118,10 +121,10 @@ const Routes = () => (
           <Route path={"historico"} component={Perfil.Historico} />
 
 
-          <Route path={"avaliacoes"} component={Perfil.Avaliacoes}>
-            <IndexRedirect to="recebidas" />
+          <Route path={"avaliacoes/:filtro"} component={Perfil.Avaliacoes}>
+            {/* <IndexRedirect to="recebidas" />
             <Route path="recebidas" component={Avaliacoes.Recebidas} />
-            <Route path="feitas" component={Avaliacoes.Feitas} />
+            <Route path="feitas" component={Avaliacoes.Feitas} /> */}
           </Route>
 
           {/* <Route path={"favoritos"} component={Perfil.Favoritos}>

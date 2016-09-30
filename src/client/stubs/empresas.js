@@ -4,7 +4,6 @@ import { Empresas } from '@collections'
 //
 //  **STUBS**
 //
-console.log('calling stubs')
 Meteor.methods({
   'Empresas.methods.cadastro'(doc) {
     EmpresaSchema.validate(doc)

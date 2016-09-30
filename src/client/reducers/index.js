@@ -7,6 +7,7 @@ import login from '@ducks/login'
 import layout from '@ducks/layout'
 import user from '@ducks/user'
 import mural from '@ducks/mural'
+import busca from '@ducks/busca'
 
 const rootReducer = combineReducers({
   form: formReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   layout,
   user,
   mural,
+  busca,
 });
 
 export default rootReducer

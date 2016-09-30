@@ -59,7 +59,6 @@ class PerfilInfo extends React.Component {
   }
 
   render() {
-    console.log(avatarStyle)
     const {
       textoCount = 0,
       imagemCount = 0,

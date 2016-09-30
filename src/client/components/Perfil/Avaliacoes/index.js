@@ -1,11 +1,12 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
-
+import { composeWithTracker } from 'react-komposer'
 import PerfilTabs from '@components/PerfilTabs'
 
 export Feitas from './Feitas'
 export Recebidas from './Recebidas'
+import AvaliacaoItem from '@components/AvaliacaoItem'
 
 class Avaliacoes extends React.Component {
   static propTypes = {
@@ -14,7 +15,9 @@ class Avaliacoes extends React.Component {
     onRecebidasClick: PropTypes.func,
     onFeitasClick: PropTypes.func,
     children: PropTypes.node,
+    params: PropTypes.object,
     routes: PropTypes.array,
+    avaliacoes: PropTypes.array,
   }
   render() {
     const {
@@ -22,9 +25,11 @@ class Avaliacoes extends React.Component {
       feitasCount = 0,
       onRecebidasClick,
       onFeitasClick,
-      children,
       routes,
-      ...props,
+      avaliacoes,
+      params: {
+        filtro,
+      },
     } = this.props
 
     const tabs = [
@@ -46,9 +51,14 @@ class Avaliacoes extends React.Component {
       <PerfilTabs
         tabs={tabs}
         title={'Avaliações'}
-        activeTab={routes[routes.length - 1].path}
+        activeTab={filtro}
       >
-        {children}
+        {avaliacoes.map((projeto, i) => (
+          <AvaliacaoItem
+            key={i}
+            {...projeto}
+          />
+        ))}
       </PerfilTabs>
     )
   }
@@ -73,98 +83,63 @@ const mapDispatchToProps = (dispatch) => {
     },
   }
 }
+
+
+const composer = (props, onData) => {
+  const {
+    params: {
+      filtro,
+    },
+  } = props
+
+  onData(null, {
+    avaliacoes: filtro === 'recebidas' ? [] : [{
+      nome: 'PROJETO 01',
+      imagem: 'http://placehold.it/400x400',
+      avaliacoesCount: 10,
+      avaliacaoMedia: 5,
+      criadoEm: new Date(),
+      finalizadoEm: new Date(),
+      avaliacoesPorUsuario: [{
+        nome: 'RAFAEL',
+        nomeUsuario: 'rafa93br',
+        imagem: 'http://placehold.it/400x400',
+        funcao: 'ENGENHEIRO',
+        avaliacaoMedia: 4,
+        avaliacoesPorCategoria: [{
+          categoria: 'CALCULO',
+          avaliacao: 3,
+        }, {
+          categoria: 'FISICA',
+          avaliacao: 5,
+        }],
+      }],
+    }, {
+      nome: 'PROJETO 01',
+      imagem: 'http://placehold.it/400x400',
+      avaliacoesCount: 10,
+      avaliacaoMedia: 5,
+      criadoEm: new Date(),
+      finalizadoEm: new Date(),
+      avaliacoesPorUsuario: [{
+        nome: 'RAFAEL',
+        nomeUsuario: 'rafa93br',
+        imagem: 'http://placehold.it/400x400',
+        funcao: 'ENGENHEIRO',
+        avaliacaoMedia: 4,
+        avaliacoesPorCategoria: [{
+          categoria: 'CALCULO',
+          avaliacao: 3,
+        }, {
+          categoria: 'FISICA',
+          avaliacao: 5,
+        }],
+      }],
+    }],
+  })
+}
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Avaliacoes)
-
-
-// import React, { PropTypes } from 'react'
-// import { Tabs, Tab } from 'material-ui/Tabs';
-// import { connect } from 'react-redux'
-// import { push } from 'react-router-redux'
-// import { ACCENT } from '@resources/colors'
-//
-// export Feitas from './Feitas'
-// export Recebidas from './Recebidas'
-//
-// const styles = {
-//   title: {
-//     textAlign: 'center',
-//     marginTop: 30
-//   },
-//   titleContainer: {
-//     height: 120,
-//     display: 'flex',
-//     alignItems: 'center',
-//     justifyContent: 'center'
-//   },
-//   container: {
-//     width: '100%',
-//     display: 'flex',
-//     flexDirection: 'column',
-//   },
-//   header: {
-//     position: 'relative'
-//   },
-//   tabs: {
-//     height: 50,
-//     width: '100%'
-//   }
-// }
-//
-// const TabLabel = ({
-//   label,
-//   number
-// }) => (
-//   <div>
-//     {label}
-//     <span style={{color: ACCENT}}> ({number})</span>
-//   </div>
-// )
-// const Avaliacoes = ({
-//   feitasCount = 0,
-//   recebidasCount = 0,
-//   onFeitasClick,
-//   onRecebidasClick,
-//   children,
-//   routes,
-//   ...props
-// }) => {
-//   return (
-//     <div style={styles.container}>
-//       <div style={styles.header}>
-//         <div style={styles.titleContainer}>
-//           <h1 style={styles.title}>Avaliações</h1>
-//         </div>
-//         <Tabs style={{width: '100%'}} value={routes[routes.length - 1].path}>
-//           <Tab label={<TabLabel label={'Recebidas'} number={recebidasCount} />} onActive={onRecebidasClick} value="recebidas" />
-//           <Tab label={<TabLabel label={'Feitas'} number={feitasCount} />} onActive={onFeitasClick} value="feitas" />
-//         </Tabs>
-//       </div>
-//       <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%'}}>
-//         {children}
-//   )
-// }
-//
-//
-// const mapStateToProps = (state) => {
-//   return {
-//
-//   }
-// }
-//
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     onFeitasClick() {
-//       dispatch(push('/perfil/avaliacoes/feitas'))
-//     },
-//     onRecebidasClick() {
-//       dispatch(push('/perfil/avaliacoes/recebidas'))
-//     },
-//   }
-// }
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(Avaliacoes)
+)(composeWithTracker(composer)(Avaliacoes))

@@ -200,6 +200,24 @@ export const AREAS_E_FUNCOES = [{
 ],
 }]
 
+export const FILTRO_TIMES = [
+  {
+    label: 'Produtora',
+    value: 'produtora',
+  },
+  {
+    label: 'Agência',
+    value: 'agencia',
+  },
+  {
+    label: 'Coletivo',
+    value: 'coletivo',
+  },
+  {
+    label: 'Time de profissionais independentes',
+    value: 'time-de-profissionais-independentes',
+  },
+]
 export const TIPOS_EMPRESA = [
   {
     label: 'Produtora',
@@ -357,6 +375,60 @@ export const FILTRO_CATEGORIAS = [
     value: 'troca',
   }]
 
+export const FILTRO_SUBCATEGORIAS = [
+  {
+    label: 'LONGA',
+    value: 'longa',
+  },
+  {
+    label: 'CURTA',
+    value: 'curta',
+  },
+  {
+    label: 'DOCUMENTÁRIO',
+    value: 'documentario',
+  },
+  {
+    label: 'SÉRIE',
+    value: 'serie',
+  },
+  {
+    label: 'MINI-DOC',
+    value: 'mini-doc',
+  },
+  {
+    label: 'INSTITUCIONAL',
+    value: 'institucional',
+  },
+  {
+    label: 'COMERCIAL',
+    value: 'comercial',
+  },
+  {
+    label: 'TRAILER',
+    value: 'trailer',
+  },
+  {
+    label: 'TEASER',
+    value: 'teaser',
+  },
+  {
+    label: 'CLIPE',
+    value: 'clipe',
+  },
+  {
+    label: 'ENTREVISTA',
+    value: 'entrevista',
+  },
+  {
+    label: 'MAKING OF',
+    value: 'making-of',
+  },
+  {
+    label: 'OUTROS',
+    value: 'outros',
+  },
+]
 export const FILTRO_ORDEM = [{
   icon: <Data />,
   label: 'MAIS RECENTES',

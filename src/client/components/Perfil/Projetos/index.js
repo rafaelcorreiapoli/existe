@@ -159,6 +159,11 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const composer = (props, onData) => {
+  const {
+    params: {
+      filtro,
+    },
+  } = props
   onData(null, {
     projetos: [{
       nome: 'projeto 01',

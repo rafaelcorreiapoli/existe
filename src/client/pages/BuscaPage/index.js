@@ -1,13 +1,14 @@
 import React, { PropTypes } from 'react'
+import Busca from '@containers/Busca'
 
-const BuscaPage = ({
 
-}) => {
-  return (
-    <div>
-      Busca
-    </div>
-  )
+class BuscaPage extends React.Component {
+  render() {
+    return (
+      <Busca />
+    )
+  }
 }
+
 
 export default BuscaPage

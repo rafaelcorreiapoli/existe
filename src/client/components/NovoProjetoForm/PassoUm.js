@@ -1,16 +1,19 @@
 import React, { PropTypes } from 'react'
-import { reduxForm, Field } from 'redux-form'
+import { reduxForm, formValueSelector, Field } from 'redux-form'
 import Joi from 'joi-browser';
 import InputWrapper from '@components/ReduxFormWidgets/InputWrapper';
 import TextInput from '@components/ReduxFormWidgets/TextInput';
 import PaperSelect from '@components/ReduxFormWidgets/PaperSelect'
 import { RaisedButton } from 'material-ui';
 import validator from '@utils/validator'
+import { connect } from 'react-redux'
 
 import {
-  OPCOES_OBJETIVOS,
+  OPCOES_OBJETIVOS_EMPRESARIAL,
+  OPCOES_OBJETIVOS_INDEPENDENTE,
   OPCOES_CATEGORIA,
-  OPCOES_SUBCATEGORIA,
+  OPCOES_SUBCATEGORIA_EMPRESARIAL,
+  OPCOES_SUBCATEGORIA_INDEPENDENTE,
 } from './opcoes';
 
 
@@ -28,6 +31,8 @@ const PassoUm = ({
   handleSubmit,
   onSubmit,
   invalid,
+  opcoesSubcategoria,
+  opcoesObjetivo,
 }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} autoFill="false">
@@ -43,22 +48,22 @@ const PassoUm = ({
           name="segmentoAtuacao"
         />
         <Field
-          label="Objetivo"
-          component={PaperSelect}
-          name="objetivo"
-          options={OPCOES_OBJETIVOS}
-        />
-        <Field
           label="Categoria"
           component={PaperSelect}
           name="categoria"
           options={OPCOES_CATEGORIA}
         />
         <Field
+          label="Objetivo"
+          component={PaperSelect}
+          name="objetivo"
+          options={opcoesObjetivo}
+        />
+        <Field
           label="Subcategoria"
           component={PaperSelect}
           name="subcategoria"
-          options={OPCOES_SUBCATEGORIA}
+          options={opcoesSubcategoria}
         />
       </InputWrapper>
       <InputWrapper>
@@ -90,8 +95,30 @@ PassoUm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
 }
 
-export default reduxForm({
-  form: 'novoProjeto',
-  destroyOnUnmount: false,
-  validate,
-})(PassoUm)
+
+const PassoUmReduxForm = reduxForm(
+  {
+    form: 'novoProjeto',
+    destroyOnUnmount: false,
+    validate,
+  },
+)(PassoUm)
+
+const selector = formValueSelector('novoProjeto')
+export default connect(
+  state => {
+    const categoria = selector(state, 'categoria')
+
+    const opcoesSubcategoria = categoria === 'independente'
+      ? OPCOES_SUBCATEGORIA_INDEPENDENTE
+      : OPCOES_SUBCATEGORIA_EMPRESARIAL
+    const opcoesObjetivo = categoria === 'independente'
+      ? OPCOES_OBJETIVOS_INDEPENDENTE
+      : OPCOES_OBJETIVOS_EMPRESARIAL
+
+    return {
+      opcoesSubcategoria,
+      opcoesObjetivo,
+    }
+  }
+)(PassoUmReduxForm)

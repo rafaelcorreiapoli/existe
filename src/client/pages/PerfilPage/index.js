@@ -35,10 +35,7 @@ class Perfil extends React.Component {
     const {
       children,
       routes,
-    } = this.props
-
-    console.log(routes)
-    
+    } = this.props    
     return (
       <Grid fluid>
         <Row>

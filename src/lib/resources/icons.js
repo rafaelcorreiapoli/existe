@@ -21,6 +21,8 @@ export EmDesenvolvimento from 'material-ui/svg-icons/av/play-circle-outline'
 export EmProducao from 'material-ui/svg-icons/navigation/check'
 export EmPosProducao from 'material-ui/svg-icons/device/access-time'
 
+export Busca from 'material-ui/svg-icons/action/search'
+
 export ExisteOficial from 'material-ui/svg-icons/action/home'
 export Independente from 'material-ui/svg-icons/maps/directions'
 export Empresarial from 'material-ui/svg-icons/action/work'

@@ -8,7 +8,6 @@ const PerfilMenu = ({
   active,
   onMenuItemClick
 }) => {
-  console.log(onMenuItemClick)
   return (
     // <div style={{display:'flex'}}>
     <Menu listStyle={{paddingTop: 20, paddingBottom: 0, display: 'block'}} autoWidth={false}>
@@ -50,9 +49,9 @@ const PerfilMenu = ({
       />
       <CustomMenuItem
         label="Avaliação"
-        id={'avaliacoes'}
+        id={'avaliacoes/feitas'}
         onClick={onMenuItemClick}
-        active={active === 'avaliacoes'}
+        active={active === 'avaliacoes/:filtro'}
       />
       <CustomMenuItem
         label="Editar Perfil"
