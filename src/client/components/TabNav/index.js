@@ -26,6 +26,11 @@ class TabNav extends React.Component {
         >
           <Tab
             style={styles.tab}
+            value="busca"
+            label="Busca"
+            />
+          <Tab
+            style={styles.tab}
             value="comunidade"
             label="Comunidade"
           />
@@ -38,11 +43,6 @@ class TabNav extends React.Component {
             style={styles.tab}
             value="mural"
             label="Mural"
-          />
-          <Tab
-            style={styles.tab}
-            value="guia-de-precos"
-            label="Guia de preços"
           />
         </Tabs>
       </div>

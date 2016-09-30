@@ -8,17 +8,17 @@ import styles from './styles'
 
 
 const Subtitle = ({
-  numeroProjetos,
+  projetosCount,
   cidade,
   estado,
-  profissao,
+  funcao,
 }) => (
   <div styles={styles.row}>
     <CircleNumber
       style={{ marginRight: 10 }}
-      number={numeroProjetos}
+      number={projetosCount}
     />
-    <span style={styles.profissao}>{profissao}</span>
+    <span style={styles.funcao}>{funcao}</span>
     <span style={{ marginLeft: 10, marginRight: 10 }}>{'|'}</span>
     <span style={styles.cidade}>
       {cidade}, {estado}
@@ -26,10 +26,10 @@ const Subtitle = ({
   </div>
 )
 Subtitle.propTypes = {
-  numeroProjetos: PropTypes.number,
+  projetosCount: PropTypes.number,
   cidade: PropTypes.string,
   estado: PropTypes.string,
-  profissao: PropTypes.string,
+  funcao: PropTypes.string,
 }
 
 class UsuarioCard extends React.Component {
@@ -39,10 +39,10 @@ class UsuarioCard extends React.Component {
     area: PropTypes.string,
     cidade: PropTypes.string,
     estado: PropTypes.string,
-    profissao: PropTypes.string,
+    funcao: PropTypes.string,
     seguindo: PropTypes.bool,
     mediaAvaliacoes: PropTypes.number,
-    numeroProjetos: PropTypes.number,
+    projetosCount: PropTypes.number,
     numeroAvaliacoes: PropTypes.number,
     numeroSeguidores: PropTypes.number,
     mostrarAvaliacoes: PropTypes.bool,
@@ -59,12 +59,12 @@ class UsuarioCard extends React.Component {
       estado,
       seguindo,
       mediaAvaliacoes,
-      numeroProjetos,
+      projetosCount,
       numeroAvaliacoes,
       numeroSeguidores,
       mostrarAvaliacoes,
       mostrarSeguidores,
-      profissao,
+      funcao,
       style,
       ...props,
     } = this.props
@@ -86,8 +86,8 @@ class UsuarioCard extends React.Component {
             <Subtitle
               cidade={cidade}
               estado={estado}
-              numeroProjetos={numeroProjetos}
-              profissao={profissao}
+              projetosCount={projetosCount}
+              funcao={funcao}
             />
           }
         />
