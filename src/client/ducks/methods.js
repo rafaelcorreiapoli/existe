@@ -1,7 +1,8 @@
+import { Map } from 'immutable'
+
 const START_METHOD_REQUEST = 'methods/START_METHOD_REQUEST'
 const METHOD_SUCCESS = 'methods/METHOD_SUCCESS'
 const METHOD_ERROR = 'methods/METHOD_ERROR'
-import { Map } from 'immutable'
 
 
 export const call = (method, params) => (dispatch, getState, Meteor) => (
@@ -32,11 +33,9 @@ export const call = (method, params) => (dispatch, getState, Meteor) => (
       return reject(err)
     }
 
-    console.log(typeof method)
     if (typeof method === 'string') {
       Meteor.call(method, params, cb)
     } else if (typeof method === 'object' && typeof method.call === 'function') {
-      console.log('calling ', method)
       method.call(params, cb)
     }
   })
@@ -46,9 +45,9 @@ export const getMethodState = (state, method) => {
   const map = state.methods.get(method)
 
   return {
-    loading: map && map.get('loading') || false,
-    success: map && map.get('success') || false,
-    error: map && map.get('error') || false,
+    loading: map ? map.get('loading') : false,
+    success: map ? map.get('success') : false,
+    error: map ? map.get('error') : false,
   }
 }
 

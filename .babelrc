@@ -5,25 +5,32 @@
     "react"
   ],
   "plugins": [
-    ["module-resolver", {
-      "root": ["src"],
-      "alias": {
-        "@collections": "lib/collections",
-        "@models": "lib/models",
-        "@schemas": "lib/schemas",
-        "@methods": "server/methods",
-        "@resources": "lib/resources",
-        "@ducks": "client/ducks",
-        "@components": "client/components",
-        "@containers": "client/containers",
-        "@pages": "client/pages",
-        "@helpers": "client/helpers",
-        "@selectors": "client/selectors",
-        "@config": "client/config",
-        "@config_server": "server/config",
-        "@utils": "client/utils",
-        "@stubs": "client/stubs"
+    [
+      "module-resolver",
+      {
+        "root": [
+          "./src"
+        ],
+        "alias": {
+          "@collections": "lib/collections",
+          "@models": "lib/models",
+          "@schemas": "lib/schemas",
+          "@methods": "server/methods",
+          "@resources": "lib/resources",
+          "@ducks": "client/ducks",
+          "@components": "client/components",
+          "@containers": "client/containers",
+          "@hocs": "client/hocs",
+          "@pages": "client/pages",
+          "@helpers": "client/helpers",
+          "@selectors": "client/selectors",
+          "@config": "client/config",
+          "@config_server": "server/config",
+          "@utils": "client/utils",
+          "@stubs": "client/stubs"
+        }
       }
-    }]
+    ],
+    "babel-root-slash-import"
   ]
 }

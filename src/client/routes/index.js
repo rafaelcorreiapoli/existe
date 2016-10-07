@@ -1,15 +1,15 @@
 import React, { PropTypes } from 'react'
+import { UserAuthWrapper } from 'redux-auth-wrapper'
 import { Router, IndexRoute, Route, browserHistory, IndexRedirect } from 'react-router'
 import { syncHistoryWithStore, replace } from 'react-router-redux'
 
-import AppContainer from '@containers/AppContainer';
+import AppContainer from '@containers/AppContainer'
 import AuthenticatedLayout from '@components/AuthenticatedLayout'
 import GuestLayout from '@components/GuestLayout'
 import WelcomePage from '@pages/WelcomePage'
 import RecuperarSenha from '@containers/RecuperarSenha'
 import Login from '@containers/Login'
 import BuscaPage from '@pages/BuscaPage'
-import { UserAuthWrapper } from 'redux-auth-wrapper'
 import { clearLogoutRequest } from '@ducks/login'
 import CadastroRapidoPage from '@pages/CadastroRapidoPage'
 import NovoProjetoPage from '@pages/NovoProjetoPage'
@@ -36,7 +36,7 @@ import * as Salvos from '@components/Perfil/Salvos'
 import store from '../store'
 
 const Loading = ({
-  children
+  children,
 }) => {
   return (
     <div>
@@ -69,9 +69,7 @@ const Routes = () => (
     <Route path="/" component={AppContainer}>
       <Route component={userIsAuthenticated(AuthenticatedLayout)}>
         <IndexRedirect to="busca" />
-        <Route path="busca" component={BuscaPage}>
-
-        </Route>
+        <Route path="busca" component={BuscaPage} />
         <Route path="atualizar-cadastro-pessoal" component={AtualizarCadastroPessoalPage} />
 
         <Route path="/comunidade" component={ComunidadePage} />
@@ -83,20 +81,20 @@ const Routes = () => (
         <Route path="/perfil" component={PerfilPage}>
           <IndexRedirect to="seguindo" />
 
-          <Route path={"seguindo"} component={Perfil.Seguindo} teste="x">
+          <Route path={'seguindo'} component={Perfil.Seguindo} teste="x">
             <IndexRedirect to="feed" />
             <Route path="feed" component={Seguindo.Feed} />
             <Route path="projetos" component={Seguindo.Projetos} />
             <Route path="pessoas" component={Seguindo.Pessoas} />
           </Route>
 
-          <Route path={"notificacoes"} component={Perfil.Notificacoes}>
+          <Route path={'notificacoes'} component={Perfil.Notificacoes}>
             <IndexRedirect to="marcacoes" />
             <Route path="marcacoes" component={Notificacoes.Marcacoes} />
             <Route path="convites" component={Notificacoes.Convites} />
           </Route>
 
-          <Route path={"projetos/:filtro"} component={Perfil.Projetos}>
+          <Route path={'projetos/:filtro'} component={Perfil.Projetos}>
             {/* <IndexRedirect to="meus" /> */}
             {/* <Route path={"meus"} component={PerfilProjetos} />
             <Route path={"marcacoes"} component={PerfilProjetos} />
@@ -106,22 +104,22 @@ const Routes = () => (
             <Route path="convites" component={Notificacoes.Convites} /> */}
           </Route>
 
-          <Route path={"seguidores"} component={Perfil.Seguidores}>
+          <Route path={'seguidores'} component={Perfil.Seguidores}>
             {/* <IndexRedirect to="marcacoes" />
             <Route path="marcacoes" component={Notificacoes.Marcacoes} />
             <Route path="convites" component={Notificacoes.Convites} /> */}
           </Route>
-          <Route path={"salvos"} component={Perfil.Salvos}>
+          <Route path={'salvos'} component={Perfil.Salvos}>
             <IndexRedirect to="videos" />
             <Route path="videos" component={Salvos.Videos} />
             <Route path="projetos" component={Salvos.Projetos} />
             <Route path="perfis" component={Salvos.Perfis} />
           </Route>
 
-          <Route path={"historico"} component={Perfil.Historico} />
+          <Route path={'historico'} component={Perfil.Historico} />
 
 
-          <Route path={"avaliacoes/:filtro"} component={Perfil.Avaliacoes}>
+          <Route path={'avaliacoes/:filtro'} component={Perfil.Avaliacoes}>
             {/* <IndexRedirect to="recebidas" />
             <Route path="recebidas" component={Avaliacoes.Recebidas} />
             <Route path="feitas" component={Avaliacoes.Feitas} /> */}
@@ -135,7 +133,7 @@ const Routes = () => (
 
           <Route path={"seguidores"} component={Perfil.Seguidores} />
           <Route path={"colaborando"} component={Perfil.Colaborando} /> */}
-          <Route path={"editar"} component={Perfil.Editar} />
+          <Route path={'editar'} component={Perfil.Editar} />
         </Route>
 
         <Route path="/usuario/:userId" component={UsuarioPage}>
@@ -163,7 +161,6 @@ const Routes = () => (
         </Route>
       </Route>
     </Route>
-
 
 
       {/* <Route component={Authenticated}>

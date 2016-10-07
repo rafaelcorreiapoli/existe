@@ -1,43 +1,26 @@
 import React, { PropTypes } from 'react'
-import { connect } from 'react-redux'
-import { reduxForm, FieldArray } from 'redux-form';
+import { reduxForm, FieldArray, Field } from 'redux-form';
 import Joi from 'joi-browser';
 import {
   RaisedButton,
   FlatButton,
 } from 'material-ui'
-import _ from 'lodash'
-
 import InputWrapper from '@components/ReduxFormWidgets/InputWrapper';
-import TextInputArray from '@components/ReduxFormWidgets/TextInputArray';
-import { deserializeFormErrors } from '@utils/form_errors';
-
-
-import { PAGAMENTO_PREFERENCIAL } from '@resources/options'
-
-
-const langFactory = (str) => {
-  return { language: { any: { required: str } } }
-}
+import BuscarUsuario from '@components/ReduxFormWidgets/BuscarUsuario';
+import Row from '@components/Row'
+import RemoveButton from '@components/RemoveButton'
+import validator from '@utils/validator'
 
 const schema = Joi.object().keys({
   usuarios: Joi.array()
     .items(
         Joi.string()
         .required()
-        .options(langFactory('!!Coloque o nome do usuário'))
       )
     .sparse(),
 });
-const validate = values => {
-  const interestingValues = _.pick(values, [
-    'usuarios',
-  ])
 
-  const result = Joi.validate(interestingValues, schema, { abortEarly: false });
-  return deserializeFormErrors(result, ['usuarios'])
-}
-
+const validate = values => validator(values, schema)
 
 class PassoQuatro extends React.Component {
   static propTypes = {
@@ -45,6 +28,7 @@ class PassoQuatro extends React.Component {
     onSubmit: PropTypes.func,
     onPrevious: PropTypes.func,
     invalid: PropTypes.bool,
+    array: PropTypes.object,
   }
   render() {
     const {
@@ -52,6 +36,9 @@ class PassoQuatro extends React.Component {
       onSubmit,
       onPrevious,
       invalid,
+      array: {
+        push,
+      },
     } = this.props
 
     return (
@@ -61,7 +48,31 @@ class PassoQuatro extends React.Component {
             label="Usuários"
             name="usuarios"
             itemLabel="Usuário"
-            component={TextInputArray}
+            component={usuarios => (
+              <div>
+                <RaisedButton
+                  primary
+                  onTouchTap={() => push('usuarios', {})}
+                  label="Adicionar"
+                />
+                {usuarios.fields.map((usuario, i) => (
+                  <Row v="center" key={i}>
+                    <Field
+                      name={`${usuario}`}
+                      component={BuscarUsuario}
+                      searchId={`busca_${i}`}
+                    />
+                    <RemoveButton
+                      onTouchTap={() => {
+                        console.log('removing ', i)
+                        usuarios.fields.remove(i)
+                      }}
+                    />
+                  </Row>
+
+                ))}
+              </div>
+            )}
           />
         </InputWrapper>
         <InputWrapper>

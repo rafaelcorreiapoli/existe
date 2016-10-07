@@ -3,14 +3,12 @@ import Joi from 'joi-browser';
 import { reduxForm, Field } from 'redux-form'
 import { RaisedButton } from 'material-ui'
 import _ from 'lodash'
-
 import InputWrapper from '@components/ReduxFormWidgets/InputWrapper';
 import TextInput from '@components/ReduxFormWidgets/TextInput';
 import DateInput from '@components/ReduxFormWidgets/DateInput';
-import SectionHeader from '@components/ReduxFormWidgets/SectionHeader'
 import { deserializeFormErrors } from '@utils/form_errors';
 import { telefone, celular, cpf } from '@utils/patterns'
-import language from '@config/joi'
+
 import {
   urlRegex,
   passwordRegex,
@@ -18,7 +16,7 @@ import {
   celularRegex,
   cpfRegex,
 } from '@utils/regex';
-
+import validator from '@utils/validator'
 
 const schema = Joi.object().keys({
   email: Joi.string()
@@ -54,17 +52,18 @@ const schema = Joi.object().keys({
   .required(),
 });
 
-const validate = values => {
-  const interestingValues = _.pick(values, [
-    'email',
-    'username',
-    'password',
-    'profile',
-  ])
-  interestingValues.profile = interestingValues.profile || {}
-  const result = Joi.validate(interestingValues, schema, { abortEarly: false, language });
-  return deserializeFormErrors(result)
-}
+const validate = values => validator(values, schema)
+// const validate = values => {
+//   const interestingValues = _.pick(values, [
+//     'email',
+//     'username',
+//     'password',
+//     'profile',
+//   ])
+//   interestingValues.profile = interestingValues.profile || {}
+//   const result = Joi.validate(interestingValues, schema, { abortEarly: false, language });
+//   return deserializeFormErrors(result)
+// }
 
 class PassoUm extends React.Component {
   static propTypes = {
