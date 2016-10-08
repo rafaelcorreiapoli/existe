@@ -47,6 +47,7 @@ class UsuarioPage extends React.Component {
               mostrarSeguidores
               userId={params.userId}
               style={{ paddingRight: 40 }}
+              seguindoHighlighted
             />
 
             <UsuarioMenu

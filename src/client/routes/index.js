@@ -145,6 +145,9 @@ const Routes = () => (
           <Route path="historico" component={Usuario.Historico} />
           <Route path="avaliacoes" component={Usuario.Avaliacoes} />
           <Route path="seguidores" component={Usuario.Seguidores} />
+          <Route path="seguindo" component={Usuario.Seguindo} />
+          <Route path="formacao" component={Usuario.Formacao} />
+          <Route path="habilidades" component={Usuario.Habilidades} />
         </Route>
 
         <Route path="/novo-projeto" component={NovoProjetoPage} />

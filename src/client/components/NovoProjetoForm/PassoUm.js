@@ -35,7 +35,7 @@ const PassoUm = ({
   opcoesObjetivo,
 }) => {
   return (
-    <form onSubmit={handleSubmit(onSubmit)} autoFill="false">
+    <form onSubmit={handleSubmit(onSubmit)}>
       <InputWrapper>
         <Field
           label="Nome do Cliente"

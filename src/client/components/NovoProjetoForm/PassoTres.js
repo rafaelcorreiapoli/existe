@@ -7,6 +7,8 @@ import TextInput from '@components/ReduxFormWidgets/TextInput';
 import TextInputArray from '@components/ReduxFormWidgets/TextInputArray';
 import { RaisedButton, FlatButton } from 'material-ui';
 import validator from '@utils/validator'
+import Dropzone from 'react-dropzone'
+import AutoUpload from '@components/AutoUpload'
 
 const langFactory = (str) => {
   return { language: { any: { required: str } } }
@@ -27,66 +29,120 @@ const schema = Joi.object({
 });
 
 const validate = values => validator(values, schema)
-const PassoTres = ({
-  handleSubmit,
-  onSubmit,
-  invalid,
-  onPrevious,
-}) => {
-  return (
-    <form onSubmit={handleSubmit(onSubmit)} autoFill="false">
-      <InputWrapper>
-        <Field
-          label="Quanto você espera gastar?"
-          component={TextInput}
-          type="number"
-          step="any"
-          name="esperaGastar"
-        />
-        <Field
-          label="Capa do Projeto"
-          component={TextInput}
-          name="capa"
-        />
-        <Field
-          label="Nome do Projeto"
-          component={TextInput}
-          name="nome"
-        />
-        <Field
-          label="Descrição do Projeto"
-          component={TextInput}
-          name="descricao"
-        />
-        <FieldArray
-          label="Links"
-          itemLabel="Link"
-          component={TextInputArray}
-          name="links"
-        />
-        <FieldArray
-          label="Arquivos"
-          itemLabel="Arquivo"
-          component={TextInputArray}
-          name="arquivos"
-        />
-      </InputWrapper>
-      <InputWrapper>
-        <FlatButton
-          label="Voltar"
-          onTouchTap={onPrevious}
-          style={{ marginRight: 12 }}
-        />
-        <RaisedButton
-          label={'Próximo'}
-          disabled={invalid}
-          primary
-          type="submit"
-        />
-      </InputWrapper>
-    </form>
-  )
+
+class PassoTres extends React.Component {
+  render() {
+    const {
+      handleSubmit,
+      onSubmit,
+      invalid,
+      onPrevious,
+      array: {
+        push,
+      },
+    } = this.props
+
+    return (
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <InputWrapper>
+          <Field
+            label="Quanto você espera gastar?"
+            component={TextInput}
+            type="number"
+            step="any"
+            name="esperaGastar"
+          />
+          <Field
+            label="Capa do Projeto"
+            component={TextInput}
+            name="capa"
+          />
+          <Field
+            label="Nome do Projeto"
+            component={TextInput}
+            name="nome"
+          />
+          <Field
+            label="Descrição do Projeto"
+            component={TextInput}
+            name="descricao"
+          />
+          <FieldArray
+            label="Links"
+            itemLabel="Link"
+            component={TextInputArray}
+            name="links"
+          />
+          {/* <FieldArray
+            name="arquivos"
+            component={arquivos => (
+              <div>
+                <RaisedButton
+                  primary
+                  label="Adicionar"
+                  onTouchTap={() => arquivos.fields.push({})}
+                />
+                {
+                  arquivos.fields.map((arquivo, i) => (
+                    <Field
+                      key={i}
+                      name={`${arquivo}`}
+                      component={Upload}
+                      onRemove={() => arquivos.fields.remove(i)}
+                    />
+                  ))
+                }
+              </div>
+            )}
+          />
+          <hr /> */}
+          <FieldArray
+            name="arks"
+            component={arks => (
+              <div>
+                <Dropzone
+                  onDrop={files => {
+                    files.forEach(file => arks.fields.push({
+                      preview: file.preview,
+                      status: 5,
+                      progress: 0,
+                      file,
+                    }))
+                  }}
+                />
+                {
+                  arks.fields.map((ark, i) => (
+                    <Field
+                      key={i}
+                      name={`${ark}`}
+                      component={AutoUpload}
+                      onRemove={() => arks.fields.remove(i)}
+                    />
+                  ))
+                }
+              </div>
+            )}
+          />
+
+        </InputWrapper>
+        <InputWrapper>
+          <FlatButton
+            label="Voltar"
+            onTouchTap={onPrevious}
+            style={{ marginRight: 12 }}
+          />
+          <RaisedButton
+            label={'Próximo'}
+            disabled={invalid}
+            primary
+            type="submit"
+          />
+        </InputWrapper>
+      </form>
+    )
+  }
 }
+
 
 
 PassoTres.propTypes = {
@@ -97,10 +153,10 @@ PassoTres.propTypes = {
 const PassoTresRedux = reduxForm({
   form: 'novoProjeto',
   destroyOnUnmount: false,
-  validate,
+  //  validate,
 })(PassoTres)
 
-
-export default connect(
-  state => ({ ...state.form.novoProjeto.values })
-)(PassoTresRedux)
+export default PassoTresRedux
+// export default connect(
+//   state => ({ ...state.form.novoProjeto.values })
+// )(PassoTresRedux)

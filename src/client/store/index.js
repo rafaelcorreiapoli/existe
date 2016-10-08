@@ -7,7 +7,7 @@ import rootReducer from '../reducers';
 import { Meteor } from 'meteor/meteor'
 const routerMiddleware = createRouterMiddleware(browserHistory)
 const loggerMiddleware = createLogger({
-  predicate: (getState, action) => !/redux-form|immutable-collection/.test(action.type),
+  predicate: (getState, action) => !/immutable-collection/.test(action.type),
 });
 import Immutable from 'immutable'
 

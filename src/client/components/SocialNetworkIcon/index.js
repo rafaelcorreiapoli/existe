@@ -48,7 +48,7 @@ const SocialNetworkIcon = ({
   // return icon
   return (
 
-    <IconButton tooltip={label} onClick={onClick} labelColor="black">
+    <IconButton tooltip={label} onClick={onClick}>
       {icon}
     </IconButton>
   )

@@ -7,6 +7,7 @@ import AutoComplete from 'material-ui/AutoComplete'
 import { List, ListItem } from 'material-ui/List'
 import ListaUsuarios from '@components/ListaUsuarios'
 
+
 class BuscaUsuarioInput extends React.Component {
   static propTypes = {
     usuarios: PropTypes.array,
@@ -51,8 +52,8 @@ class BuscaUsuarioInput extends React.Component {
     } = this.props
 
     this.setState({
-      showList: true,
       anchorEl: e.currentTarget,
+      showList: true,
     })
 
     setTexto(e.target.value)
@@ -62,15 +63,25 @@ class BuscaUsuarioInput extends React.Component {
     })
   }
 
-  handleFocus() {
+  handleFocus(e) {
     const {
       value,
       setTexto,
     } = this.props
-    this.setState({ showList: true })
+    this.setState({
+      anchorEl: e.currentTarget,
+      showList: true
+    })
     setTexto(value.nomeCompleto)
   }
-  
+
+  componentDidMount() {
+    //  console.log(this.anchorEl)
+    // this.setState({
+    //   anchorEl: this.anchorEl
+    // })
+  }
+
   render() {
     const {
       usuarios = [],
@@ -98,6 +109,8 @@ class BuscaUsuarioInput extends React.Component {
           value={value.nomeCompleto ? value.nomeCompleto : controlledTexto}
           onChange={this.handleChange}
           onFocus={this.handleFocus}
+          ref={a => this.anchorEl = a && a.getInputNode()}
+          //  onBlur={() => setTimeout(this.setState({showList: false}), 1000)}
         />
         {
           (this.state.anchorEl) &&

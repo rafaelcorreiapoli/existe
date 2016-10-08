@@ -40,7 +40,7 @@ export Favorito from 'material-ui/svg-icons/toggle/star-border';
 export Salvo from 'material-ui/svg-icons/content/save'
 export Marcacao from 'react-icons/lib/fa/tags'
 export Convite from 'material-ui/svg-icons/communication/mail-outline'
-
+export Visualizacoes from 'material-ui/svg-icons/image/remove-red-eye'
 
 export Comentarios from 'material-ui/svg-icons/communication/chat-bubble-outline'
 
@@ -56,5 +56,14 @@ export SetaDireita from 'material-ui/svg-icons/hardware/keyboard-arrow-right'
 export SetaBaixo from 'material-ui/svg-icons/hardware/keyboard-arrow-down'
 
 export Bookmark from 'material-ui/svg-icons/action/bookmark'
+
+export Pause from 'material-ui/svg-icons/av/pause'
+export Play from 'material-ui/svg-icons/av/play-arrow'
+export Replay from 'material-ui/svg-icons/av/replay'
+export Error from 'material-ui/svg-icons/alert/error'
+export Cancel from 'material-ui/svg-icons/navigation/cancel'
+export Remove from 'material-ui/svg-icons/action/delete'
+export Check from 'material-ui/svg-icons/navigation/check'
+
 //  import ModeEdit from 'material-ui/svg-icons/editor/mode-edit';
 //  import Highlight from 'material-ui/svg-icons/editor/highlight';

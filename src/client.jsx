@@ -14,7 +14,7 @@ import 'client/boot'
 //
 //  Config
 //
-import 'client/config/accounts'
+//  import 'client/config/accounts'
 
 //
 // Stubs

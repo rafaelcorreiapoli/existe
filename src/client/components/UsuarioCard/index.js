@@ -4,7 +4,53 @@ import { Usuarios } from '@resources/icons';
 import CircleNumber from '@components/CircleNumber';
 import RatingStars from '@components/RatingStars';
 import UsuarioAvatar from '@components/UsuarioAvatar'
-import styles from './styles'
+import { ACCENT } from '@resources/colors'
+
+const styles = {
+  row: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  seguindoRow: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
+  title: {
+    width: '100%',
+    marginBottom: 10,
+    textAlign: 'center',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+  },
+  profissao: {
+    fontSize: 14,
+    textTransform: 'uppercase',
+  },
+  cidade: {
+    fontSize: 14,
+  },
+  seguindoContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  seguindoText: {
+    fontSize: 12,
+    color: 'gray',
+  },
+  seguindoCount: {
+    fontSize: 16,
+    marginBottom: 5,
+    color: 'gray',
+  },
+  seguindoHighlighted: {
+    color: 'black',
+  },
+}
 
 
 const Subtitle = ({
@@ -13,7 +59,7 @@ const Subtitle = ({
   estado,
   funcao,
 }) => (
-  <div styles={styles.row}>
+  <div style={styles.row}>
     <CircleNumber
       style={{ marginRight: 10 }}
       number={projetosCount}
@@ -45,8 +91,11 @@ class UsuarioCard extends React.Component {
     projetosCount: PropTypes.number,
     numeroAvaliacoes: PropTypes.number,
     numeroSeguidores: PropTypes.number,
+    numeroSeguindo: PropTypes.number,
     mostrarAvaliacoes: PropTypes.bool,
     mostrarSeguidores: PropTypes.bool,
+    seguidoresHighlighted: PropTypes.bool,
+    seguindoHighlighted: PropTypes.bool,
     style: PropTypes.object,
   }
 
@@ -62,15 +111,19 @@ class UsuarioCard extends React.Component {
       projetosCount,
       numeroAvaliacoes,
       numeroSeguidores,
+      numeroSeguindo,
       mostrarAvaliacoes,
       mostrarSeguidores,
+      seguidoresHighlighted,
+      seguindoHighlighted,
       funcao,
       style,
       ...props,
     } = this.props
 
+    console.log(seguidoresHighlighted, seguindoHighlighted)
     return (
-      <Card style={Object.assign({}, { width: '100%' }, style)} zDepth={0} {...props}>
+      <Card style={Object.assign({}, { width: '100%' }, style)} zDepth={0}>
         <CardMedia>
           <UsuarioAvatar
             image={foto}
@@ -102,10 +155,38 @@ class UsuarioCard extends React.Component {
           }
           {
             mostrarSeguidores ?
-              <div style={styles.row}>
-                <span>{numeroSeguidores}</span>
+              <div style={styles.seguindoRow}>
+                <div style={styles.seguindoContainer}>
+                  <span
+                    style={Object.assign(
+                      {},
+                      styles.seguindoCount,
+                      seguindoHighlighted ? styles.seguindoHighlighted : {}
+                    )}
+                  >
+                    {numeroSeguindo || 0}
+                  </span>
+                  <span style={styles.seguindoText}>
+                    seguindo
+                  </span>
+                </div>
+                <div style={styles.seguindoContainer}>
+                  <span
+                    style={Object.assign(
+                      {},
+                      styles.seguindoCount,
+                      seguidoresHighlighted ? styles.seguindoHighlighted : {}
+                    )}
+                  >
+                    {numeroSeguidores || 0}
+                  </span>
+                  <span style={styles.seguindoText}>
+                    seguidores
+                  </span>
+                </div>
+                {/* <span>{numeroSeguidores}</span>
                 <Usuarios style={{ marginLeft: 20, marginRight: 20 }} />
-                <span>Seguidores</span>
+                <span>Seguidores</span> */}
               </div>
               : null
           }

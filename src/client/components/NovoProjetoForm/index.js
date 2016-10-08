@@ -24,7 +24,7 @@ const styles = {
     flexDirection: 'column',
   },
 }
-class CadastroPessoalForm extends React.Component {
+class NovoProjetoForm extends React.Component {
   static propTypes = {
     onSubmit: PropTypes.func,
     stepIndex: PropTypes.number,
@@ -86,4 +86,4 @@ class CadastroPessoalForm extends React.Component {
 }
 
 
-export default stepperEnchancer(CadastroPessoalForm);
+export default stepperEnchancer(NovoProjetoForm);

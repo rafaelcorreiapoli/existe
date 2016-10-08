@@ -1,17 +1,19 @@
 import React, { PropTypes } from 'react'
-import { CSSGrid, makeResponsive } from 'react-stonecutter';
+import { CSSGrid, makeResponsive, measureItems, layout } from 'react-stonecutter';
 import UsuarioPortrait from '@components/UsuarioPortrait'
 
-const Grid = makeResponsive(CSSGrid, { maxWidth: '100%' });
+const Grid = makeResponsive(measureItems(CSSGrid), { maxWidth: 900 });
 
 class GridUsuariosPortrait extends React.Component {
   static propTypes = {
     usuarios: PropTypes.array,
+    hideUserInfo: PropTypes.bool,
   }
 
   render() {
     const {
       usuarios,
+      hideUserInfo,
     } = this.props
 
     return (
@@ -21,7 +23,8 @@ class GridUsuariosPortrait extends React.Component {
         columnWidth={150}
         gutterWidth={20}
         gutterHeight={20}
-        itemHeight={160}
+        // itemHeight={160}
+        layout={layout.pinterest}
         duration={200}
         easing="ease-out"
       >
@@ -29,7 +32,10 @@ class GridUsuariosPortrait extends React.Component {
           usuarios.map((usuario, i) => {
             return (
               <div style={{ display: 'inline-flex', width: 150 }} key={i}>
-                <UsuarioPortrait {...usuario} />
+                <UsuarioPortrait
+                  hideUserInfo={hideUserInfo}
+                  {...usuario}
+                />
               </div>
             )
           })

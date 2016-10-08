@@ -81,10 +81,10 @@ class CadastroEmpresarialForm extends React.Component {
             </Step>
           </Stepper>
           <div>
-            {stepIndex === 3 && <PassoUm onSubmit={handleNext} />}
+            {stepIndex === 0 && <PassoUm onSubmit={handleNext} />}
             {stepIndex === 1 && <PassoDois onSubmit={handleNext} onPrevious={handlePrev} />}
             {stepIndex === 2 && <PassoTres onSubmit={handleNext} onPrevious={handlePrev} />}
-            {stepIndex === 0 && <PassoQuatro onSubmit={handleNext} onPrevious={handlePrev} />}
+            {stepIndex === 3 && <PassoQuatro onSubmit={handleNext} onPrevious={handlePrev} />}
             {stepIndex === 4 && <Concluir
               onSubmit={() => onSubmit(values)}
               cadastroRapidoLoading={cadastroRapidoLoading}

@@ -3,7 +3,7 @@ import { Provider } from 'react-redux'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import store from '../../store';
 import Routes from '../../routes'
-import muiTheme from '@config/theme'
+import muiTheme from '@config/theme.js'
 import MeteorProvider from '@components/MeteorProvider'
 
 

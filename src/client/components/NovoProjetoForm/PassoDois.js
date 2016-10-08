@@ -36,7 +36,7 @@ const PassoDois = ({
   onPrevious,
 }) => {
   return (
-    <form onSubmit={handleSubmit(onSubmit)} autoFill="false">
+    <form onSubmit={handleSubmit(onSubmit)}>
       <InputWrapper>
         <Field
           label="Público"

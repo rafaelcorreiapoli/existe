@@ -1,4 +1,7 @@
 {
+  "public": {
+    "filesDDPUrl": "http://localhost:4000"
+  },
   "services": {
     "facebook": {
       "appId": "1215728311791052",

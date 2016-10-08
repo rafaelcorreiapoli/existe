@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { composeWithTracker } from 'react-komposer'
 import GridUsuariosPortrait from '@components/GridUsuariosPortrait'
-import { Seguindo } from '@resources/icons'
+import { Seguindo as SeguindoIcon } from '@resources/icons'
 
 const styles = {
   container: {
@@ -23,7 +23,7 @@ const styles = {
     fontSize: 20,
   },
 }
-class Seguidores extends React.Component {
+class Seguindo extends React.Component {
   static propTypes = {
     seguidores: PropTypes.array,
     seguidoresCount: PropTypes.number,
@@ -39,8 +39,8 @@ class Seguidores extends React.Component {
       <div style={styles.container}>
         <div style={styles.titleRow}>
           <span style={styles.text}>{seguidoresCount}</span>
-          <Seguindo style={styles.icon} />
-          <span style={styles.text}>SEGUIDORES</span>
+          <SeguindoIcon style={styles.icon} />
+          <span style={styles.text}>SEGUINDO</span>
         </div>
         <GridUsuariosPortrait
           usuarios={seguidores}
@@ -124,4 +124,4 @@ const composer = (props, onData) => {
     ],
   })
 }
-export default composeWithTracker(composer)(Seguidores)
+export default composeWithTracker(composer)(Seguindo)
