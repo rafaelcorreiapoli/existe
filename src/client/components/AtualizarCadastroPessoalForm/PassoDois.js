@@ -8,38 +8,27 @@ import TextInputArray from '@components/ReduxFormWidgets/TextInputArray';
 import SelectInput from '@components/ReduxFormWidgets/SelectInput';
 import FuncoesCheckTable from '@components/ReduxFormWidgets/FuncoesCheckTable';
 import SectionHeader from '@components/ReduxFormWidgets/SectionHeader'
-import language from '@config/joi'
+import FileUpload from '@components/ReduxFormWidgets/FileUpload'
+
+import validator from '@utils/validator'
 import { EXPRESSOES_ARTISTICAS, COR_CABELOS, COR_OLHOS, AREAS_E_FUNCOES } from '@resources/options'
-import { deserializeFormErrors } from '@utils/form_errors';
 import {
   RaisedButton,
   FlatButton,
 } from 'material-ui'
-import _ from 'lodash';
 
 const langFactory = (str) => {
   return { language: { any: { required: str } } }
 }
 
-const isAtorOuAtriz = (funcoes) => (
+const isAtorOuAtriz = funcoes => (
   (funcoes && funcoes.exerce &&
   (funcoes.exerce.indexOf('ator') !== -1 || funcoes.exerce.indexOf('atriz') !== -1)) ||
   (funcoes && funcoes.toparia &&
   (funcoes.toparia.indexOf('ator') !== -1 || funcoes.toparia.indexOf('atriz') !== -1))
 )
-const validate = values => {
-  const interestingValues = _.pick(values, [
-    'portfolio',
-    'curriculo',
-    'profissao',
-    'empregador',
-    'funcoes',
-    'referencias',
-    'questionario',
-    'ator',
-  ])
 
-
+const validate = (values) => {
   const atorOuAtriz = isAtorOuAtriz(values.funcoes)
 
   const altura = Joi.number().label('Altura').required();
@@ -73,7 +62,7 @@ const validate = values => {
       .label('Portfólio')
       .sparse(),
     curriculo: Joi
-      .string()
+      .object()
       .required()
       .label('Currículo'),
     profissao: Joi
@@ -124,9 +113,7 @@ const validate = values => {
     ator,
   });
 
-  const result = Joi.validate(interestingValues, schema, { abortEarly: false, language });
-
-  return deserializeFormErrors(result, [
+  return validator(values, schema, [
     'portfolio',
     'referencias.fotos',
     'referencias.videos',
@@ -167,7 +154,7 @@ class PassoDois extends React.Component {
           />
           <Field
             label="Currículo"
-            component={TextInput}
+            component={FileUpload}
             name="curriculo"
           />
           <Field
@@ -313,7 +300,7 @@ const PassoDoisRedux = reduxForm(
 
 const selector = formValueSelector('cadastroPessoal')
 export default connect(
-  state => {
+  (state) => {
     const funcoes = selector(state, 'funcoes')
     const atorOuAtriz = isAtorOuAtriz(funcoes)
 
@@ -331,10 +318,10 @@ export default connect(
           toparia: [],
           exerce: [],
         },
-        ator: {
-          corCabelo: 'castanho-claro',
-          corOlhos: 'azul',
-        },
+        // ator: {
+        //   corCabelo: 'castanho-claro',
+        //   corOlhos: 'azul',
+        // },
         ...state.form.cadastroPessoal.values,
       },
       atorOuAtriz,

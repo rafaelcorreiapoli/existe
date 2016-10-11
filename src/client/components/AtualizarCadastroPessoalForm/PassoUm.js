@@ -5,11 +5,10 @@ import { RaisedButton } from 'material-ui'
 import InputWrapper from '@components/ReduxFormWidgets/InputWrapper';
 import TextInput from '@components/ReduxFormWidgets/TextInput';
 import DateInput from '@components/ReduxFormWidgets/DateInput';
-import { deserializeFormErrors } from '@utils/form_errors';
-import language from '@config/joi'
+import FileUpload from '@components/ReduxFormWidgets/FileUpload';
 import { telefone, celular, cpf } from '@utils/patterns'
-import _ from 'lodash'
 import SectionHeader from '@components/ReduxFormWidgets/SectionHeader'
+import validator from '@utils/validator'
 import {
   urlRegex,
   telefoneRegex,
@@ -30,6 +29,9 @@ const schema = Joi.object().keys({
   // .required()
   // .label('Senha'),
   profile: Joi.object({
+    foto: Joi.object()
+    .required()
+    .label('Foto'),
     nomeCompleto: Joi.string()
     .required()
     .label('Nome completo'),
@@ -77,108 +79,110 @@ const schema = Joi.object().keys({
   }),
 });
 
-const validate = values => {
-  const interestingValues = _.pick(values, [
-    'profile',
-  ])
-
-  const result = Joi.validate(interestingValues, schema, { abortEarly: false, language });
-  return deserializeFormErrors(result)
-}
+const validate = values => validator(values, schema)
 
 
-const PassoUm = ({
-  handleSubmit,
-  onSubmit,
-  invalid,
-}) => {
-  return (
-    <form onSubmit={handleSubmit(onSubmit)} autoFill="false">
-      <InputWrapper>
-        <SectionHeader text={'Perfil'} />
-        <Field
-          label="Nome Completo"
-          component={TextInput}
-          name="profile.nomeCompleto"
-        />
-        <Field
-          label="Data de Nascimento"
-          component={DateInput}
-          name="profile.dataNascimento"
-        />
-        <Field
-          label="CPF"
-          normalize={cpf}
-          component={TextInput}
-          name="profile.cpf"
-        />
-        <Field
-          label="Biografia"
-          component={TextInput}
-          name="profile.bio"
-          rows={3}
-          rowsMax={3}
-          multiLine
-        />
-      </InputWrapper>
-      <InputWrapper>
-        <SectionHeader text={'Contato'} />
-        <Field
-          label="Site Pessoal"
-          component={TextInput}
-          name="profile.sitePessoal"
-        />
-        <Field
-          label="E-mail"
-          component={TextInput}
-          name="profile.email"
-        />
-        <Field
-          label="Celular"
-          component={TextInput}
-          normalize={celular}
-          name="profile.celular"
-        />
-        <Field
-          label="Telefone"
-          component={TextInput}
-          normalize={telefone}
-          name="profile.telefone"
-        />
-      </InputWrapper>
-      <InputWrapper>
-        <SectionHeader text={'Redes Sociais'} />
-        <Field
-          label="Facebook"
-          component={TextInput}
-          name="profile.social.facebook"
-        />
-        <Field
-          label="Twitter"
-          component={TextInput}
-          name="profile.social.twitter"
-        />
-        <Field
-          label="Instagram"
-          component={TextInput}
-          name="profile.social.instagram"
-        />
-      </InputWrapper>
+class PassoUm extends React.Component {
+  static propTypes = {
+    handleSubmit: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
+    invalid: PropTypes.bool,
+  }
 
-      <RaisedButton
-        label={'Próximo'}
-        disabled={invalid}
-        primary
-        type="submit"
-      />
+  render() {
+    const {
+      handleSubmit,
+      onSubmit,
+      invalid,
+    } = this.props
 
-    </form>
-  )
-}
+    return (
+      <form onSubmit={handleSubmit(onSubmit)} autoFill="false">
+        <InputWrapper>
+          <SectionHeader text={'Perfil'} />
+          <Field
+            label="Foto"
+            component={FileUpload}
+            name="profile.foto"
+          />
+          <Field
+            label="Nome Completo"
+            component={TextInput}
+            name="profile.nomeCompleto"
+          />
+          <Field
+            label="Data de Nascimento"
+            component={DateInput}
+            name="profile.dataNascimento"
+          />
+          <Field
+            label="CPF"
+            normalize={cpf}
+            component={TextInput}
+            name="profile.cpf"
+          />
+          <Field
+            label="Biografia"
+            component={TextInput}
+            name="profile.bio"
+            rows={3}
+            rowsMax={3}
+            multiLine
+          />
+        </InputWrapper>
+        <InputWrapper>
+          <SectionHeader text={'Contato'} />
+          <Field
+            label="Site Pessoal"
+            component={TextInput}
+            name="profile.sitePessoal"
+          />
+          <Field
+            label="E-mail"
+            component={TextInput}
+            name="profile.email"
+          />
+          <Field
+            label="Celular"
+            component={TextInput}
+            normalize={celular}
+            name="profile.celular"
+          />
+          <Field
+            label="Telefone"
+            component={TextInput}
+            normalize={telefone}
+            name="profile.telefone"
+          />
+        </InputWrapper>
+        <InputWrapper>
+          <SectionHeader text={'Redes Sociais'} />
+          <Field
+            label="Facebook"
+            component={TextInput}
+            name="profile.social.facebook"
+          />
+          <Field
+            label="Twitter"
+            component={TextInput}
+            name="profile.social.twitter"
+          />
+          <Field
+            label="Instagram"
+            component={TextInput}
+            name="profile.social.instagram"
+          />
+        </InputWrapper>
 
-PassoUm.propTypes = {
-  // fields: PropTypes.object.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
+        <RaisedButton
+          label={'Próximo'}
+          disabled={invalid}
+          primary
+          type="submit"
+        />
+      </form>
+    )
+  }
 }
 
 export default reduxForm({

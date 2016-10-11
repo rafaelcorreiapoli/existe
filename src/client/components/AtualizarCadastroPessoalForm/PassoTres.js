@@ -3,21 +3,19 @@ import { reduxForm, Field } from 'redux-form';
 import Joi from 'joi-browser';
 import InputWrapper from '@components/ReduxFormWidgets/InputWrapper';
 import SelectInput from '@components/ReduxFormWidgets/SelectInput'
-import { deserializeFormErrors } from '@utils/form_errors';
 import { PAGAMENTO_PREFERENCIAL } from '@resources/options'
+import validator from '@utils/validator'
+
 import {
   RaisedButton,
   FlatButton,
 } from 'material-ui'
 
 const schema = Joi.object().keys({
-  pagamentoPreferencial: Joi.string(),
+  pagamentoPreferencial: Joi.string().required(),
 });
 
-const validate = values => {
-  const result = Joi.validate(values, schema, { abortEarly: false });
-  return deserializeFormErrors(result)
-}
+const validate = values => validator(values, schema)
 
 
 class PassoTres extends React.Component {

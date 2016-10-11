@@ -29,6 +29,7 @@ const ReferenciasSchema = new SimpleSchema({
   },
   texto: {
     type: String,
+    optional: true,
   },
 })
 
@@ -76,6 +77,9 @@ const AtorSchema = new SimpleSchema({
 })
 
 const ProfileSchema = new SimpleSchema({
+  foto: {
+    type: String,
+  },
   nomeCompleto: {
     type: String,
   },
@@ -166,6 +170,7 @@ export default new SimpleSchema({
   },
   count: {
     type: Object,
+    optional: true,
   },
   'count.projetos': {
     type: Object,

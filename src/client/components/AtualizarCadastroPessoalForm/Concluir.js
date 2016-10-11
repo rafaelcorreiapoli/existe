@@ -58,10 +58,10 @@ class Concluir extends React.Component {
           blusa,
           calca,
           sapato,
-        },
+        } = {},
         corOlhos,
         corCabelo,
-      },
+      } = {},
       pagamentoPreferencial,
     } = values
     return (
@@ -79,7 +79,7 @@ class Concluir extends React.Component {
         <p><b>CPF: </b> {cpf}</p>
         <p><b>Bio: </b> {bio}</p>
         <p><b>Portfolio: </b> {portfolio}</p>
-        <p><b>Currículo: </b> {curriculo}</p>
+        {/* <p><b>Currículo: </b> {curriculo}</p> */}
         <p><b>Profissão: </b> {profissao}</p>
         <p><b>Empregador: </b> {empregador}</p>
         <p><b>Funções que exerce: </b> {exerce}</p>

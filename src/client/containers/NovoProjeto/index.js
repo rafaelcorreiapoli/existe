@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import NovoProjetoForm from '@components/NovoProjetoForm'
 import { call, getMethodState } from '@ducks/methods'
+import _ from 'lodash'
 
 const NOVO_PROJETO = 'Projetos.methods.insert'
 
@@ -16,7 +17,15 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onSubmit(values) {
     // Primeiro, criar o usuário
-    dispatch(call(NOVO_PROJETO, values))
+    const novoProjeto = {
+      ...values,
+      capa: values.capa.fileId,
+      arquivos: _.map(values.arquivos, 'fileId'),
+    }
+
+    console.log(novoProjeto)
+
+    dispatch(call(NOVO_PROJETO, novoProjeto))
     .then(res => {
       console.log(res)
     })

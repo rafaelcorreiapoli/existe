@@ -2,19 +2,13 @@ import React, { PropTypes } from 'react'
 import Joi from 'joi-browser';
 import { reduxForm, Field } from 'redux-form'
 import { RaisedButton } from 'material-ui'
-import _ from 'lodash'
 import InputWrapper from '@components/ReduxFormWidgets/InputWrapper';
 import TextInput from '@components/ReduxFormWidgets/TextInput';
 import DateInput from '@components/ReduxFormWidgets/DateInput';
-import { deserializeFormErrors } from '@utils/form_errors';
-import { telefone, celular, cpf } from '@utils/patterns'
-
+import { telefone, celular } from '@utils/patterns'
 import {
-  urlRegex,
-  passwordRegex,
   telefoneRegex,
   celularRegex,
-  cpfRegex,
 } from '@utils/regex';
 import validator from '@utils/validator'
 

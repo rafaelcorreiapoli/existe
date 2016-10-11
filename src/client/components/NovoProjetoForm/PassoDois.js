@@ -29,71 +29,76 @@ const schema = Joi.object({
 const validate = values => validator(values, schema)
 
 
-const PassoDois = ({
-  handleSubmit,
-  onSubmit,
-  invalid,
-  onPrevious,
-}) => {
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <InputWrapper>
-        <Field
-          label="Público"
-          component={TextInput}
-          name="publico"
-        />
-        <Field
-          label="Prazo de Entrega"
-          component={DateInput}
-          name="prazoEntrega"
-        />
-        <Field
-          label="Linguagem Visual"
-          component={PaperSelect}
-          name="linguagemVisual"
-          options={OPCOES_LINGUAGEM_VISUAL}
-        />
-        <Field
-          label="Procura"
-          component={PaperSelect}
-          name="procura"
-          options={OPCOES_PROCURA}
-        />
-        <Field
-          label="Meios de veiculação"
-          component={PaperSelect}
-          name="meiosVeiculacao"
-          options={OPCOES_MEIOS_VEICULACAO}
-        />
-        <Field
-          label="Tempo de duração do vídeo"
-          component={PaperSelect}
-          name="tempoDuracao"
-          options={OPCOES_TEMPO_DE_DURACAO}
-        />
-      </InputWrapper>
-      <InputWrapper>
-        <FlatButton
-          label="Voltar"
-          onTouchTap={onPrevious}
-          style={{ marginRight: 12 }}
-        />
-        <RaisedButton
-          label={'Próximo'}
-          disabled={invalid}
-          primary
-          type="submit"
-        />
-      </InputWrapper>
-    </form>
-  )
-}
+class PassoDois extends React.Component {
+  static propTypes = {
+    handleSubmit: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
+    invalid: PropTypes.bool,
+    onPrevious: PropTypes.func,
+  }
 
+  render() {
+    const {
+      handleSubmit,
+      onSubmit,
+      invalid,
+      onPrevious,
+    } = this.props
 
-PassoDois.propTypes = {
-  // fields: PropTypes.object.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
+    return (
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <InputWrapper>
+          <Field
+            label="Público"
+            component={TextInput}
+            name="publico"
+          />
+          <Field
+            label="Prazo de Entrega"
+            component={DateInput}
+            name="prazoEntrega"
+          />
+          <Field
+            label="Linguagem Visual"
+            component={PaperSelect}
+            name="linguagemVisual"
+            options={OPCOES_LINGUAGEM_VISUAL}
+          />
+          <Field
+            label="Procura"
+            component={PaperSelect}
+            name="procura"
+            options={OPCOES_PROCURA}
+          />
+          <Field
+            label="Meios de veiculação"
+            component={PaperSelect}
+            name="meiosVeiculacao"
+            options={OPCOES_MEIOS_VEICULACAO}
+          />
+          <Field
+            label="Tempo de duração do vídeo"
+            component={PaperSelect}
+            name="tempoDuracao"
+            options={OPCOES_TEMPO_DE_DURACAO}
+          />
+        </InputWrapper>
+        <InputWrapper>
+          <FlatButton
+            label="Voltar"
+            onTouchTap={onPrevious}
+            style={{ marginRight: 12 }}
+          />
+          <RaisedButton
+            label={'Próximo'}
+            disabled={invalid}
+            primary
+            type="submit"
+          />
+        </InputWrapper>
+      </form>
+    )
+  }
 }
 
 const PassoDoisRedux = reduxForm({

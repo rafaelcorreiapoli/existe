@@ -57,11 +57,11 @@ class Concluir extends React.Component {
               <p><b>tempoDuracao</b> {tempoDuracao} </p>
               <p><b>prazoEntrega</b> {prazoEntrega.toString()} </p>
               <p><b>esperaGastar</b> {esperaGastar} </p>
-              <p><b>capa</b> {capa} </p>
+              {/* <p><b>capa</b> {capa} </p> */}
               <p><b>nome</b> {nome} </p>
               <p><b>descricao</b> {descricao} </p>
               <p><b>links</b> {links} </p>
-              <p><b>arquivos</b> {arquivos} </p>
+              {/* <p><b>arquivos</b> {arquivos} </p> */}
             </div>
         }
         <h3>Cadastro do projeto</h3>

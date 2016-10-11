@@ -18,7 +18,16 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onSubmit(values) {
     // Primeiro, criar o usuário
-    dispatch(call(ATUALIZAR_CADASTRO_PESSOAL, values))
+    const novoUsuario = {
+      ...values,
+      curriculo: values.curriculo.fileId,
+      profile: {
+        ...values.profile,
+        foto: values.profile.foto.fileId,
+      },
+    }
+    console.log(novoUsuario)
+    dispatch(call(ATUALIZAR_CADASTRO_PESSOAL, novoUsuario))
     .then(res => {
       console.log(res)
     })

@@ -7,10 +7,9 @@ import TextInput from '@components/ReduxFormWidgets/TextInput';
 import SelectInput from '@components/ReduxFormWidgets/SelectInput';
 import FuncoesCheckTable from '@components/ReduxFormWidgets/FuncoesCheckTable';
 import SectionHeader from '@components/ReduxFormWidgets/SectionHeader'
-
+import FileUpload from '@components/ReduxFormWidgets/FileUpload'
 import { cnpjNormalizer } from '@utils/patterns'
 import validator from '@utils/validator'
-import _ from 'lodash'
 import { TIPOS_EMPRESA, AREAS_E_FUNCOES } from '@resources/options'
 import {
   urlRegex,
@@ -19,6 +18,7 @@ import {
 
 
 const schema = Joi.object({
+  logo: Joi.object().required(),
   tipoEmpresa: Joi.string()
   .required()
   .label('Tipo de empresa'),
@@ -46,21 +46,6 @@ const schema = Joi.object({
 
 const validate = values => validator(values, schema)
 
-  // const interestingValues = _.pick(values, [
-  //   'tipoEmpresa',
-  //   'areaAtuacao',
-  //   'site',
-  //   'endereco',
-  //   'cnpj',
-  //   'bio',
-  //   'funcoes',
-  // ])
-  //
-  // const result = Joi.validate(interestingValues, schema, { abortEarly: false, language });
-  // return deserializeFormErrors(result)
-
-
-
 class PassoUm extends React.Component {
   propTypes = {
     handleSubmit: PropTypes.func,
@@ -77,6 +62,11 @@ class PassoUm extends React.Component {
     return (
       <form onSubmit={handleSubmit(onSubmit)}>
         <InputWrapper>
+          <Field
+            label="Logo"
+            component={FileUpload}
+            name="logo"
+          />
           <Field
             label="Tipo de empresa"
             name="tipoEmpresa"
