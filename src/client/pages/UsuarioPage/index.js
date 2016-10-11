@@ -6,7 +6,7 @@ import { composeWithTracker } from 'react-komposer'
 
 import UsuarioMenu from '@components/UsuarioMenu'
 import UsuarioCard from '@components/UsuarioCard'
-
+import { push } from 'react-router-redux'
 import UsuarioInfoContainer from '@containers/UsuarioInfoContainer'
 
 const styles = {
@@ -47,7 +47,6 @@ class UsuarioPage extends React.Component {
               mostrarSeguidores
               userId={params.userId}
               style={{ paddingRight: 40 }}
-              seguindoHighlighted
             />
 
             <UsuarioMenu
@@ -74,5 +73,9 @@ class UsuarioPage extends React.Component {
     )
   }
 }
+
+// const mapDispatchToProps = dispatch => ({
+//
+// })
 
 export default UsuarioPage

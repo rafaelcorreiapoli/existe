@@ -12,12 +12,12 @@ const styles = {
   imagem: {
     width: 100,
     height: 100,
-    marginLeft: 25,
-    marginRight: 25,
+    // marginLeft: 25,
+    // marginRight: 25,
     display: 'block',
   },
   nome: {
-    width: 150,
+    width: 100,
     marginTop: 10,
     marginBottom: 10,
     whiteSpace: 'nowrap',
@@ -26,7 +26,7 @@ const styles = {
     textAlign: 'center',
   },
   funcao: {
-    width: 150,
+    width: 100,
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
     overflow: 'hidden',

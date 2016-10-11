@@ -3,26 +3,40 @@ import { composeWithTracker } from 'react-komposer'
 import GridUsuariosPortrait from '@components/GridUsuariosPortrait'
 import PerfilTabs from '@components/PerfilTabs'
 
+const styles = {
+  seguidoresCount: {
+    // color: '#',
+    display: 'block',
+    textAlign: 'center',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    paddingBottom: 10,
+  },
+}
 
 class Seguidores extends React.Component {
   static propTypes = {
     seguidores: PropTypes.array,
+    seguidoresCount: PropTypes.number,
   }
 
   render() {
     const {
       seguidores,
+      seguidoresCount,
     } = this.props
     return (
       <PerfilTabs
-        tabs={[{
-          label: '',
-          value: 'seguidores',
-          count: seguidores.length,
-          onClick: () => {},
-        }]}
+        tabs={[]}
         title={'Seguidores'}
-        activeTab={'seguidores'}
+        // activeTab={'seguidores'}
+        customElement={
+          <span style={styles.seguidoresCount}>
+            {seguidoresCount}
+          </span>
+        }
       >
         <div>
           <GridUsuariosPortrait
@@ -37,6 +51,7 @@ class Seguidores extends React.Component {
 
 const composer = (props, onData) => {
   onData(null, {
+    seguidoresCount: 120,
     seguidores: [
       {
         nome: 'RAFAEL',

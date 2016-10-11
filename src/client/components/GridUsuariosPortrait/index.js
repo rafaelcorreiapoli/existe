@@ -20,7 +20,7 @@ class GridUsuariosPortrait extends React.Component {
       <Grid
         style={{ margin: 'auto' }}
         component="div"
-        columnWidth={150}
+        columnWidth={100}
         gutterWidth={20}
         gutterHeight={20}
         // itemHeight={160}
@@ -31,7 +31,7 @@ class GridUsuariosPortrait extends React.Component {
         {
           usuarios.map((usuario, i) => {
             return (
-              <div style={{ display: 'inline-flex', width: 150 }} key={i}>
+              <div style={{ display: 'inline-flex', width: 100 }} key={i}>
                 <UsuarioPortrait
                   hideUserInfo={hideUserInfo}
                   {...usuario}

@@ -10,13 +10,6 @@ export const STATUS_UPLOADING = 3
 export const STATUS_ABORTED = 4
 export const STATUS_IDLE = 5;
 
-const styles = {
-  image: {
-    display: 'block',
-    width: 100,
-    height: 100,
-  },
-}
 class AutoUpload extends React.Component {
   static propTypes = {
     input: PropTypes.shape({
@@ -25,8 +18,11 @@ class AutoUpload extends React.Component {
         progress: PropTypes.number,
         status: PropTypes.number,
         fileId: PropTypes.string,
+        file: PropTypes.object,
       }),
     }),
+    onRemove: PropTypes.func,
+    style: PropTypes.object,
   }
 
   constructor(props) {
@@ -38,15 +34,10 @@ class AutoUpload extends React.Component {
     }
   }
 
-
-  componentWillReceiveProps(nextProps) {
-    console.log(nextProps)
-  }
   startUpload(file) {
     const {
       input: {
         onChange,
-        value,
       },
     } = this.props
 
@@ -62,15 +53,21 @@ class AutoUpload extends React.Component {
     this.upload.on('start', (error) => {
       //  console.log('start!')
       //  console.log(this.props)
-      onChange({
-        ...this.props.input.value,
-        status: STATUS_UPLOADING,
-      })
+      if (!error) {
+        onChange({
+          ...this.props.input.value,
+          status: STATUS_UPLOADING,
+        })
+      } else {
+        onChange({
+          ...this.props.input.value,
+          status: STATUS_ERROR,
+        })
+      }
     });
 
     this.upload.on('end', (error, fileObj) => {
-       console.log('end!')
-      //  console.log(this.props)
+      console.log('end!')
       if (error) {
         onChange({
           ...this.props.input.value,
@@ -139,7 +136,7 @@ class AutoUpload extends React.Component {
   }
 
 
-  renderUpload() {
+  render() {
     const {
       input: {
         value: {
@@ -148,6 +145,8 @@ class AutoUpload extends React.Component {
           status,
         },
       },
+      style,
+      ...props,
     } = this.props
 
     //  console.log(progress, preview, status )
@@ -155,31 +154,15 @@ class AutoUpload extends React.Component {
       <UploadImageProgress
         preview={preview}
         progress={progress}
-        height={100}
-        width={100}
-        style={{ width: 100, height: 100 }}
+        height={200}
+        width={200}
+        style={Object.assign({}, { width: 200, height: 200 }, style)}
         uploading={status === STATUS_UPLOADING}
         success={status === STATUS_SUCCESS}
         error={status === STATUS_ERROR}
         onRemove={this.handleRemove}
+        {...props}
       />
-    )
-  }
-
-  render() {
-    const {
-      input: {
-        value: {
-          status = STATUS_IDLE,
-        },
-      },
-    } = this.props
-
-    //  console.log(status)
-    return (
-      <div>
-        {this.renderUpload()}
-      </div>
     )
   }
 }

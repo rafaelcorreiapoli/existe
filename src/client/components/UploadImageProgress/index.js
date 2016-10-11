@@ -5,7 +5,7 @@ import { IconButton } from 'material-ui'
 const styles = {
   container: {
     position: 'relative',
-    display: 'block',
+    display: 'inline-block',
     backgroundColor: '#d3d3d3',
   },
   overlay: {

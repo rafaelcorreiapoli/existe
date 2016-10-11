@@ -30,8 +30,7 @@ class GridPortfolio extends React.Component {
             <div style={{ width: 200 }} key={i}>
               <PortfolioCard
                 {...portfolio}
-                />
-
+              />
             </div>
           ))
         }

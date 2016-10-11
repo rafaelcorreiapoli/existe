@@ -34,6 +34,7 @@ const PassoUm = ({
   opcoesSubcategoria,
   opcoesObjetivo,
 }) => {
+  console.log(invalid)
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <InputWrapper>

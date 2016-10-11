@@ -5,6 +5,7 @@ import CircleNumber from '@components/CircleNumber';
 import RatingStars from '@components/RatingStars';
 import UsuarioAvatar from '@components/UsuarioAvatar'
 import { ACCENT } from '@resources/colors'
+import FlatButton from 'material-ui/FlatButton'
 
 const styles = {
   row: {
@@ -40,15 +41,19 @@ const styles = {
   },
   seguindoText: {
     fontSize: 12,
-    color: 'gray',
+    //  color: 'black',
   },
   seguindoCount: {
     fontSize: 16,
     marginBottom: 5,
+    //  color: 'black',
+  },
+  highlighted: {
     color: 'gray',
   },
-  seguindoHighlighted: {
-    color: 'black',
+  avaliacoesContainer: {
+    textAlign: 'center',
+    marginBottom: 15,
   },
 }
 
@@ -80,6 +85,7 @@ Subtitle.propTypes = {
 
 class UsuarioCard extends React.Component {
   static propTypes = {
+    _id: PropTypes.string,
     foto: PropTypes.string,
     nome: PropTypes.string,
     area: PropTypes.string,
@@ -96,11 +102,16 @@ class UsuarioCard extends React.Component {
     mostrarSeguidores: PropTypes.bool,
     seguidoresHighlighted: PropTypes.bool,
     seguindoHighlighted: PropTypes.bool,
+    avaliacoesHighlighted: PropTypes.bool,
     style: PropTypes.object,
+    onAvaliacoesClick: PropTypes.func,
+    onSeguidoresClick: PropTypes.func,
+    onSeguindoClick: PropTypes.func,
   }
 
   render() {
     const {
+      _id,
       foto,
       nome,
       area,
@@ -116,12 +127,16 @@ class UsuarioCard extends React.Component {
       mostrarSeguidores,
       seguidoresHighlighted,
       seguindoHighlighted,
+      avaliacoesHighlighted,
+      onAvaliacoesClick,
+      onSeguindoClick,
+      onSeguidoresClick,
       funcao,
       style,
       ...props,
     } = this.props
 
-    console.log(seguidoresHighlighted, seguindoHighlighted)
+
     return (
       <Card style={Object.assign({}, { width: '100%' }, style)} zDepth={0}>
         <CardMedia>
@@ -147,43 +162,53 @@ class UsuarioCard extends React.Component {
         <CardActions>
           {
             mostrarAvaliacoes ?
-              <div style={{ textAlign: 'center', marginBottom: 15 }}>
-                <RatingStars rating={mediaAvaliacoes} style={{ marginBottom: 5 }} />
-                <span>{numeroAvaliacoes} AVALIAÇÕES</span>
+              <div
+                style={Object.assign({},
+                  styles.avaliacoesContainer,
+                  avaliacoesHighlighted && styles.highlighted,
+                )}
+              >
+                <RatingStars
+                  rating={mediaAvaliacoes}
+                  style={{ marginBottom: 5 }}
+                  color={avaliacoesHighlighted ? 'gray' : 'black'}
+                />
+                <FlatButton
+                  onTouchTap={() => onAvaliacoesClick(_id)}
+                  label={`${numeroAvaliacoes} AVALIAÇÕES`}
+                />
               </div>
               : null
           }
           {
             mostrarSeguidores ?
               <div style={styles.seguindoRow}>
-                <div style={styles.seguindoContainer}>
-                  <span
-                    style={Object.assign(
-                      {},
-                      styles.seguindoCount,
-                      seguindoHighlighted ? styles.seguindoHighlighted : {}
-                    )}
-                  >
-                    {numeroSeguindo || 0}
-                  </span>
+                <div
+                  style={Object.assign({},
+                  styles.seguindoContainer,
+                  seguindoHighlighted ? styles.highlighted : {})}
+                >
+                  <FlatButton
+                    onTouchTap={() => onSeguindoClick(_id)}
+                    label={`${numeroSeguindo || 0}`}
+                  />
                   <span style={styles.seguindoText}>
                     seguindo
                   </span>
                 </div>
-                <div style={styles.seguindoContainer}>
-                  <span
-                    style={Object.assign(
-                      {},
-                      styles.seguindoCount,
-                      seguidoresHighlighted ? styles.seguindoHighlighted : {}
-                    )}
-                  >
-                    {numeroSeguidores || 0}
-                  </span>
+                <span
+                  style={Object.assign({},
+                  styles.seguindoContainer,
+                  seguidoresHighlighted ? styles.highlighted : {})}
+                >
+                  <FlatButton
+                    onTouchTap={() => onSeguidoresClick(_id)}
+                    label={`${numeroSeguidores || 0}`}
+                  />
                   <span style={styles.seguindoText}>
                     seguidores
                   </span>
-                </div>
+                </span>
                 {/* <span>{numeroSeguidores}</span>
                 <Usuarios style={{ marginLeft: 20, marginRight: 20 }} />
                 <span>Seguidores</span> */}

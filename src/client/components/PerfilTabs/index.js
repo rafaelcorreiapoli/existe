@@ -13,21 +13,24 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+
   },
   container: {
-    height: 118,
+
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
+
   },
   header: {
+    height: 118,
     position: 'relative',
+    borderBottom: '1px solid #e5e5e5',
   },
   tabs: {
     width: '100%',
     paddingLeft: 20,
     paddingRight: 20,
-    borderBottom: '1px solid #e5e5e5',
   },
   tab: {
     fontSize: '10pt',
@@ -56,6 +59,7 @@ class PerfilTabs extends React.Component {
     children: PropTypes.node,
     title: PropTypes.string,
     activeTab: PropTypes.string,
+    customElement: PropTypes.element,
   }
 
   render() {
@@ -64,6 +68,7 @@ class PerfilTabs extends React.Component {
       children,
       title,
       activeTab,
+      customElement,
     } = this.props
 
     return (
@@ -73,18 +78,23 @@ class PerfilTabs extends React.Component {
             <h1 style={styles.title}>{title}</h1>
           </div>
 
-          <Tabs style={styles.tabs} value={activeTab}>
-            {
-              tabs.map((tab, i) => (
-                <Tab
-                  key={i}
-                  style={styles.tab}
-                  label={<TabLabel label={tab.label} number={tab.count} />}
-                  onActive={tab.onClick} value={tab.value}
-                />
-              ))
-            }
-          </Tabs>
+          {
+            tabs.length > 0 &&
+              <Tabs style={styles.tabs} value={activeTab}>
+                {
+                  tabs.map((tab, i) => (
+                    <Tab
+                      key={i}
+                      style={styles.tab}
+                      label={<TabLabel label={tab.label} number={tab.count} />}
+                      onActive={tab.onClick} value={tab.value}
+                    />
+                  ))
+                }
+              </Tabs>
+          }
+
+          {customElement ? customElement : null}
 
         </div>
         <div style={{ height: '100%', padding: 20 }}>

@@ -14,7 +14,7 @@ export Imagem from 'material-ui/svg-icons/image/camera-alt'
 export Audio from 'material-ui/svg-icons/image/camera-alt'
 export Cena from 'material-ui/svg-icons/editor/highlight'
 export Producao from 'material-ui/svg-icons/toggle/star-border'
-
+export Upload from 'material-ui/svg-icons/file/file-upload'
 export Todos from 'material-ui/svg-icons/action/language'
 export EmCriacao from 'material-ui/svg-icons/av/loop'
 export EmDesenvolvimento from 'material-ui/svg-icons/av/play-circle-outline'

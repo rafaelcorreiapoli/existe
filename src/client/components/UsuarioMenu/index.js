@@ -77,13 +77,13 @@ class UsuarioMenu extends React.Component {
           active={active === 'historico'}
           style={styles.menuItem}
         />
-        <CustomMenuItem
+        {/* <CustomMenuItem
           label="Avaliações"
           id={'avaliacoes'}
           onClick={onMenuItemClick}
           active={active === 'avaliacoes'}
           style={styles.menuItem}
-        />
+        /> */}
         {/* <CustomMenuItem
           label="Seguidores"
           id={'seguidores'}
