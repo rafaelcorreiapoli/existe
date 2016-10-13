@@ -87,6 +87,9 @@ export default new SimpleSchema({
     type: String, // [criacao, desenvolviemnto, producao, pos-producao]
     optional: true,
   },
+  criadorUsuario: {
+    type: String,
+  },
   area: {
     type: String, // Esta é uma das 5 áreas do Existe?
     optional: true,

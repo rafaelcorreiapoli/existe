@@ -9,12 +9,12 @@ const opt = AREAS_E_FUNCOES.map(area => {
     value: area.value,
     label: area.label,
     icon: getIcon(area.value, true),
-    noAction: true,
+    noAction: area.funcoes && area.funcoes.length,
     menuItems: area.funcoes,
   }
 })
 
-const SelecionarArea = ({
+const SelecionarFuncao = ({
   value,
   onChange,
   style,
@@ -34,4 +34,4 @@ const SelecionarArea = ({
   )
 }
 
-export default SelecionarArea
+export default SelecionarFuncao

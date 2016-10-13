@@ -4,6 +4,9 @@ import { SetaDireita } from '@resources/icons'
 import UsuariosCarousel from '@components/UsuariosCarousel'
 
 const styles = {
+  container: {
+    padding: 10,
+  },
   area: {
     fontSize: 20,
   },
@@ -11,6 +14,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+    marginBottom: 10,
   },
 }
 class ComunidadeArea extends React.Component {
@@ -39,7 +43,7 @@ class ComunidadeArea extends React.Component {
     }
 
     return (
-      <div>
+      <div style={styles.container}>
         <div style={styles.areaContainer}>
           <span style={Object.assign({}, styles.area, areaColor)}>
             {labels[area]}

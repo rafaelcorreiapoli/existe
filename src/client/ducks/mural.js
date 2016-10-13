@@ -1,13 +1,13 @@
-export const SET_FILTRO_AREA = 'mural/SET_FILTRO_AREA'
+export const SET_FILTRO_FUNCAO = 'mural/SET_FILTRO_FUNCAO'
 export const SET_FILTRO_CATEGORIA = 'mural/SET_FILTRO_CATEGORIA'
 export const SET_FILTRO_ORDEM = 'mural/SET_FILTRO_ORDEM'
 export const SET_FILTRO_STATUS = 'mural/SET_FILTRO_STATUS'
 
 const initialState = {
-  categoria: '',
-  ordem: '',
-  status: '',
-  area: '',
+  categoria: undefined,
+  ordem: 'recentes',
+  status: undefined,
+  funcao: undefined,
 }
 export function setFiltroCategoria(categoria) {
   return {
@@ -36,21 +36,21 @@ export function setFiltroStatus(status) {
   }
 }
 
-export function setFiltroArea(area) {
+export function setFiltroFuncao(funcao) {
   return {
-    type: SET_FILTRO_AREA,
+    type: SET_FILTRO_FUNCAO,
     payload: {
-      area,
+      funcao,
     },
   }
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case SET_FILTRO_AREA:
+    case SET_FILTRO_FUNCAO:
       return {
         ...state,
-        area: action.payload.area,
+        funcao: action.payload.funcao,
       }
     case SET_FILTRO_CATEGORIA:
       return {

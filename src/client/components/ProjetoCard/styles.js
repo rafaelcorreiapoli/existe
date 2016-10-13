@@ -8,6 +8,10 @@ const styles = {
   iconsContainer: {
 
   },
+  imagem: {
+    width: 268,
+    height: 268,
+  },
   mainContainer: {
     minWidth: 0,
     flexGrow: 1,
@@ -15,41 +19,41 @@ const styles = {
     borderRadius: 4,
     borderStyle: 'solid',
     borderColor: '#d3d3d3',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   topAreaContainer: {
     display: 'flex',
     padding: '8px 10px 8px 10px',
     alignItems: 'center',
-    flexDirection : 'row',
+    flexDirection: 'row',
     borderWidth: 0,
     borderBottomWidth: 2,
     borderColor: '#d3d3d3',
-    borderStyle: 'solid'
+    borderStyle: 'solid',
   },
   bottomAreaContainer: {
     padding: '8px 10px 8px 10px',
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   footerAreaContainer: {
     display: 'flex',
     justifyContent: 'space-between',
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   image: {
     width: '100%',
-    height: 'auto'
+    height: 'auto',
   },
   colaboradores: {
     numero: {
       marginLeft: 10,
-      marginRight: 10
+      marginRight: 10,
     },
     texto: {
-      //marginLeft: 10
-      textTransform: 'uppercase'
-    }
+      // marginLeft: 10
+      textTransform: 'uppercase',
+    },
   },
   projeto: {
     nome: {
@@ -57,7 +61,7 @@ const styles = {
       textOverflow: 'ellipsis',
       overflow: 'hidden',
       marginBottom: 5,
-      whiteSpace: 'nowrap'
+      whiteSpace: 'nowrap',
     },
     row: {
       display: 'flex',
@@ -66,12 +70,12 @@ const styles = {
       marginBottom: 5,
     },
     usuario: {
-      color: '#d3d3d3'
+      color: '#d3d3d3',
     },
     data: {
-      alignSelf: 'flex-end'
-    }
-  }
+      alignSelf: 'flex-end',
+    },
+  },
 }
 
 export default styles;

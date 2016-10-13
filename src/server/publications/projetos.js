@@ -15,4 +15,32 @@ export default function () {
     check(projectId, String)
     return Projetos.find({ _id: projectId })
   })
+
+
+  Meteor.publish('Projetos.mural', ({ categoria, status, funcao, sort }) => {
+    console.log('categoria: ', categoria)
+    console.log('status: ', status)
+    console.log('funcao: ', funcao)
+    console.log('sort: ', sort)
+
+    const query = Object.assign({},
+      categoria ? { categoria } : null,
+      status ? { status } : null,
+      funcao ? {
+        vagas: {
+          $elemMatch: {
+            funcao,
+            livres: {
+              $gt: 0,
+            },
+          },
+        },
+      } : null
+    )
+    console.log(query)
+    const res = Projetos.find(query, {
+      sort,
+    })
+    return res
+  })
 }

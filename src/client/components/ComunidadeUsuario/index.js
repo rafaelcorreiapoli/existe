@@ -6,6 +6,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    width: 150,
   },
   imagemContainer: {
 
@@ -21,6 +22,7 @@ const styles = {
   },
   footerRow: {
     alignItems: 'center',
+    whiteSpace: 'nowrap',
   },
   nome: {
     textAlign: 'center',
@@ -35,6 +37,7 @@ class ComunidadeUsuario extends React.Component {
     nome: PropTypes.string,
     funcao: PropTypes.string,
     projetosCount: PropTypes.number,
+    style: PropTypes.object,
   }
   render() {
     const {
@@ -42,12 +45,13 @@ class ComunidadeUsuario extends React.Component {
       nome,
       funcao,
       projetosCount,
+      style,
     } = this.props
 
     return (
-      <div style={styles.container}>
+      <div style={Object.assign({}, styles.container, style)}>
         <div style={styles.imagemContainer}>
-          <img src={imagem} style={styles.imagem} />
+          <img src={imagem} style={styles.imagem} alt={nome} />
         </div>
         <div style={styles.infoContainer}>
           <span style={styles.nome}>{nome}</span>

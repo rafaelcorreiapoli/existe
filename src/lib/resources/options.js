@@ -198,6 +198,9 @@ export const AREAS_E_FUNCOES = [{
       label: 'Eletricista',
     },
 ],
+}, {
+    value: undefined,
+  label: 'Todos',
 }]
 
 export const FILTRO_TIMES = [
@@ -352,7 +355,7 @@ export const FILTRO_CATEGORIAS = [
   {
     label: 'TODOS',
     icon: <Todos />,
-    value: 'todos',
+    value: undefined,
   },
   {
     label: 'EXISTE OFICIAL',

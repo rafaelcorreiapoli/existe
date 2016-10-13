@@ -1,12 +1,11 @@
 import React, { PropTypes } from 'react'
-import FiltroArea from '@containers/FiltroArea';
+import FiltroFuncao from '@containers/FiltroFuncao';
 import FiltroCategoria from '@containers/FiltroCategoria';
 import FiltroOrdem from '@containers/FiltroOrdem';
 import FiltroStatus from '@containers/FiltroStatus';
 import MuralProjetos from '@containers/MuralProjetos';
 import BotaoNovoProjeto from '@components/BotaoNovoProjeto';
 import SelecionarAreaHint from '@components/SelecionarAreaHint';
-import { Grid } from 'react-flexbox-grid'
 
 
 class MuralPage extends React.Component {
@@ -15,7 +14,7 @@ class MuralPage extends React.Component {
       <div style={{ maxWidth: 1600, margin: 'auto' }}>
         <div style={{ display: 'flex' }}>
           <SelecionarAreaHint />
-          <FiltroArea />
+          <FiltroFuncao />
           <FiltroStatus />
         </div>
 

@@ -14,7 +14,7 @@ const GridProjetos = ({
       columnWidth={300}
       gutterWidth={20}
       gutterHeight={30}
-      itemHeight={325}
+      itemHeight={392}
       duration={200}
       easing="ease-out"
     >

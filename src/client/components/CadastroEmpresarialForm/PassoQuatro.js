@@ -14,7 +14,7 @@ import validator from '@utils/validator'
 const schema = Joi.object().keys({
   usuarios: Joi.array()
     .items(
-        Joi.string()
+        Joi.object()
         .required()
       )
     .sparse(),

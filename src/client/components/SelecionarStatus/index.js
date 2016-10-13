@@ -19,7 +19,7 @@ const SelecionarStatus = ({
     >
       <Tab
         icon={<Todos />}
-        label="TODOS PROJETOS" value={'todos'}
+        label="TODOS PROJETOS" value={undefined}
       />
       <Tab
         icon={<EmCriacao />}
@@ -35,7 +35,7 @@ const SelecionarStatus = ({
       />
       <Tab
         icon={<EmPosProducao />}
-        label="EM PÓS-PRODUÇÃO" value={'pos_producao'}
+        label="EM PÓS-PRODUÇÃO" value={'pos-producao'}
       />
     </Tabs>
   )

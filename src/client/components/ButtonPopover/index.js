@@ -39,7 +39,7 @@ class ButtonPopover extends React.Component {
   }
 
   _pushMenuItemsToArray(menuItems, array) {
-    menuItems.forEach(menuItem => {
+    menuItems.forEach((menuItem) => {
       array.push(menuItem);
       if (menuItem.menuItems) {
         this._pushMenuItemsToArray(menuItem.menuItems, array);
@@ -50,7 +50,7 @@ class ButtonPopover extends React.Component {
   getOptionFromValue(value) {
     const { options } = this.props;
     const flattenArray = this._flatOptions(options);
-    return flattenArray.find(option => {
+    return flattenArray.find((option) => {
       return option.value === value
     }) || {};
   }
@@ -71,6 +71,7 @@ class ButtonPopover extends React.Component {
     if (!item.noAction) {
       onClick = () => this.handleChange(item.value)
     }
+
     return (
       <MenuItem
         key={i}
@@ -105,14 +106,13 @@ class ButtonPopover extends React.Component {
 
     const button = customButton ? customButton : RaisedButton;
 
-    console.log()
     return (
       <div style={style} {...props}>
         {
           React.createElement(button, {
             labelColor: 'black',
             onTouchTap: this.handleTouchTap,
-            label: selectedOption.text || defaultText,
+            label: selectedOption.label || defaultText,
             labelPosition: 'after',
             icon: selectedOption.icon,
             style: customButtonStyle || { width: 300 },

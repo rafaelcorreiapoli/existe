@@ -9,15 +9,16 @@ const styles = {
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: 28,
-    height: 28,
+    width: 24,
+    height: 24,
     borderRadius: '50%',
     borderWidth: 2,
     borderStyle: 'solid',
     borderColor: 'black',
   },
   text: {
-    fontSize: '10pt',
+    fontSize: 14,
+    fontWeight: 'bold',
   },
 }
 const CircleNumber = ({

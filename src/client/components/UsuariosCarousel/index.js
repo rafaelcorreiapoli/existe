@@ -5,6 +5,7 @@ const styles = {
   container: {
     display: 'flex',
     flexDirection: 'row',
+    // justifyContent: 'space-between'
   },
 }
 class UsuariosCarousel extends React.Component {
@@ -28,6 +29,7 @@ class UsuariosCarousel extends React.Component {
               mostrarAvaliacoes={false}
               style={{
                 width: 150,
+                marginRight: 10,
               }}
             />
           ))
