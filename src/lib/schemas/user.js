@@ -3,12 +3,15 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema'
 const SocialSchema = new SimpleSchema({
   facebook: {
     type: String,
+    optional: true,
   },
   twitter: {
     type: String,
+    optional: true,
   },
   instagram: {
     type: String,
+    optional: true,
   },
 })
 const FuncoesSchema = new SimpleSchema({
@@ -79,33 +82,43 @@ const AtorSchema = new SimpleSchema({
 const ProfileSchema = new SimpleSchema({
   foto: {
     type: String,
+    optional: true,
   },
   nomeCompleto: {
     type: String,
+    optional: true,
   },
   dataNascimento: {
     type: Date,
+    optional: true,
   },
   sitePessoal: {
     type: String,
+    optional: true,
   },
   email: {
     type: String,
+    optional: true,
   },
   celular: {
     type: String,
+    optional: true,
   },
   telefone: {
     type: String,
+    optional: true,
   },
   social: {
     type: SocialSchema,
+    optional: true,
   },
   cpf: {
     type: String,
+    optional: true,
   },
   bio: {
     type: String,
+    optional: true,
   },
 })
 const EmailSchema = new SimpleSchema({
@@ -140,9 +153,11 @@ export default new SimpleSchema({
   },
   portfolio: {
     type: [String],
+    optional: true,
   },
   curriculo: {
     type: String,
+    optional: true,
   },
   profissao: {
     type: String,
@@ -154,12 +169,15 @@ export default new SimpleSchema({
   },
   funcoes: {
     type: FuncoesSchema,
+    optional: true,
   },
   referencias: {
     type: ReferenciasSchema,
+    optional: true,
   },
   questionario: {
     type: QuestionarioSchema,
+    optional: true,
   },
   ator: {
     type: AtorSchema,
@@ -167,6 +185,7 @@ export default new SimpleSchema({
   },
   pagamentoPreferencial: {
     type: String,
+    optional: true,
   },
   count: {
     type: Object,
@@ -195,5 +214,13 @@ export default new SimpleSchema({
   },
   'count.seguidores': {
     type: Number,
+  },
+  area: {
+    type: String,
+    optional: true,
+  },
+  funcao: {
+    type: String,
+    optional: true,
   },
 })

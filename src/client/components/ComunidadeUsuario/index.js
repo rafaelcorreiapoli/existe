@@ -21,14 +21,19 @@ const styles = {
     padding: 10,
   },
   footerRow: {
+    display: 'flex',
     alignItems: 'center',
     whiteSpace: 'nowrap',
   },
   nome: {
     textAlign: 'center',
+    whiteSpace: 'nowrap',
   },
   funcao: {
     marginLeft: 5,
+    width: 150 - 5 - 28,
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
   },
 }
 class ComunidadeUsuario extends React.Component {

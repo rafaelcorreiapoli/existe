@@ -16,6 +16,7 @@
           "@models": "lib/models",
           "@schemas": "lib/schemas",
           "@methods": "server/methods",
+          "@seeds": "server/seeds",
           "@resources": "lib/resources",
           "@ducks": "client/ducks",
           "@components": "client/components",

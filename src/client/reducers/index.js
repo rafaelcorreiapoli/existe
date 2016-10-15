@@ -9,6 +9,7 @@ import user from '@ducks/user'
 import mural from '@ducks/mural'
 import busca from '@ducks/busca'
 import buscaUsuario from '@ducks/buscaUsuario'
+import comunidade from '@ducks/comunidade'
 
 const rootReducer = combineReducers({
   form: formReducer,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   mural,
   busca,
   buscaUsuario,
+  comunidade
 });
 
 export default rootReducer

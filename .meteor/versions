@@ -114,6 +114,7 @@ standard-minifier-css@1.2.0
 standard-minifier-js@1.2.0
 templating@1.2.13
 templating-tools@1.0.4
+tmeasday:publish-counts@0.8.0
 tracker@1.1.0
 twitter@1.1.11
 ui@1.0.11

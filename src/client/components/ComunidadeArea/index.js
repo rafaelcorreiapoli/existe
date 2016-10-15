@@ -21,12 +21,22 @@ class ComunidadeArea extends React.Component {
   static propTypes = {
     area: PropTypes.string,
     usuarios: PropTypes.array,
+    usuariosCount: PropTypes.number,
+    onPageChange: PropTypes.func,
+    page: PropTypes.number,
+    pageSize: PropTypes.number,
+    loading: PropTypes.bool,
   }
 
   render() {
     const {
       area,
       usuarios,
+      usuariosCount,
+      onPageChange,
+      page,
+      pageSize,
+      loading,
     } = this.props
 
     const color = getColorForArea(area)
@@ -54,7 +64,12 @@ class ComunidadeArea extends React.Component {
 
         <div style={styles.usuariosContainer}>
           <UsuariosCarousel
+            loading={loading}
+            usuariosCount={usuariosCount}
             usuarios={usuarios}
+            onPageChange={onPageChange}
+            page={page}
+            pageSize={pageSize}
           />
         </div>
       </div>

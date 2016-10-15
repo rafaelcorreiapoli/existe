@@ -7,6 +7,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "chance": "^1.0.4",
     "classnames": "^2.2.5",
     "diacritic": "0.0.2",
     "flexboxgrid": "^6.3.1",
