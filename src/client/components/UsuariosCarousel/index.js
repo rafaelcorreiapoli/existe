@@ -11,8 +11,8 @@ const styles = {
     // justifyContent: 'space-between'
   },
   mainContainer: {
-    minWidth: 800,
-    minHeight: 220,
+    minWidth: 1020,
+    minHeight: 290,
     alignItems: 'center',
     justifyContent: 'center',
     display: 'flex',
@@ -78,7 +78,6 @@ class UsuariosCarousel extends React.Component {
                       mostrarSeguidores={false}
                       mostrarAvaliacoes={false}
                       style={{
-                        width: 150,
                         marginRight: 10,
                       }}
                     />

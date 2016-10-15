@@ -1,6 +1,10 @@
+/**
+ * DEPRECATED
+ */
 import React, { PropTypes } from 'react'
 import ComunidadeArea from '@components/ComunidadeArea'
 import Divider from 'material-ui/Divider'
+import UsuariosPorArea from '@containers/UsuariosPorArea'
 
 const styles = {
   container: {
@@ -9,25 +13,30 @@ const styles = {
   },
 }
 class Comunidade extends React.Component {
-  static propTypes = {
-    usuariosPorArea: PropTypes.object,
-    onPageChange: PropTypes.func,
-    textoPage: PropTypes.number,
-    imagemPage: PropTypes.number,
-    audioPage: PropTypes.number,
-    cenaPage: PropTypes.number,
-    producaoPage: PropTypes.number,
-  }
-
   render() {
-    const {
-      usuariosPorArea,
-      onPageChange,
-    } = this.props
-
     return (
       <div style={styles.container}>
-        <ComunidadeArea
+        <UsuariosPorArea
+          area={'texto'}
+          pageSize={5}
+        />
+        <UsuariosPorArea
+          area={'imagem'}
+          pageSize={5}
+        />
+        <UsuariosPorArea
+          area={'audio'}
+          pageSize={5}
+        />
+        <UsuariosPorArea
+          area={'cena'}
+          pageSize={5}
+        />
+        <UsuariosPorArea
+          area={'producao'}
+          pageSize={5}
+        />
+        {/* <ComunidadeArea
           area="texto"
           pageSize={5}
           onPageChange={page => onPageChange('texto', page)}
@@ -73,7 +82,7 @@ class Comunidade extends React.Component {
           onPageChange={page => onPageChange('producao', page)}
           {...usuariosPorArea.producao}
         />
-        <Divider />
+        <Divider /> */}
       </div>
     )
   }

@@ -1,3 +1,6 @@
+/**
+ * DEPRECATED
+ */
 import { connect } from 'react-redux'
 import { composeWithTracker } from 'react-komposer'
 import Comunidade from '@components/Comunidade'

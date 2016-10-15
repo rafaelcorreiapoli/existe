@@ -1,10 +1,12 @@
 /**
  * DEPRECATED
  */
+
 import React, { PropTypes } from 'react'
 import { getColorForArea } from '@utils/get_color'
 import { SetaDireita } from '@resources/icons'
 import UsuariosCarousel from '@components/UsuariosCarousel'
+import IconButton from 'material-ui/IconButton'
 
 const styles = {
   container: {
@@ -20,7 +22,7 @@ const styles = {
     marginBottom: 10,
   },
 }
-class ComunidadeArea extends React.Component {
+class UsuariosPorArea extends React.Component {
   static propTypes = {
     area: PropTypes.string,
     usuarios: PropTypes.array,
@@ -29,6 +31,7 @@ class ComunidadeArea extends React.Component {
     page: PropTypes.number,
     pageSize: PropTypes.number,
     loading: PropTypes.bool,
+    onClickTitle: PropTypes.func,
   }
 
   render() {
@@ -40,6 +43,7 @@ class ComunidadeArea extends React.Component {
       page,
       pageSize,
       loading,
+      onClickTitle,
     } = this.props
 
     const color = getColorForArea(area)
@@ -61,7 +65,12 @@ class ComunidadeArea extends React.Component {
           <span style={Object.assign({}, styles.area, areaColor)}>
             {labels[area]}
           </span>
-          <SetaDireita color={color} />
+          <IconButton
+            tooltip="Ver mais"
+            onTouchTap={onClickTitle}
+          >
+            <SetaDireita color={color} />
+          </IconButton>
         </div>
 
 
@@ -80,4 +89,4 @@ class ComunidadeArea extends React.Component {
   }
 }
 
-export default ComunidadeArea;
+export default UsuariosPorArea;

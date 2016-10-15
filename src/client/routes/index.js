@@ -19,6 +19,7 @@ import ComunidadePage from '@pages/ComunidadePage'
 import ProducoesPage from '@pages/ProducoesPage'
 import MuralPage from '@pages/MuralPage'
 import GuiaDePrecosPage from '@pages/GuiaDePrecosPage'
+import ComunidadeArea from '@pages/ComunidadeArea'
 import * as Usuario from '@components/Usuario'
 import UsuarioPage from '@pages/UsuarioPage'
 import * as Perfil from '@components/Perfil'
@@ -73,6 +74,7 @@ const Routes = () => (
         <Route path="atualizar-cadastro-pessoal" component={AtualizarCadastroPessoalPage} />
 
         <Route path="/comunidade" component={ComunidadePage} />
+        <Route path="/comunidade/:area" component={ComunidadeArea} />
         <Route path="/producoes" component={ProducoesPage} />
         <Route path="/mural" component={MuralPage} />
         <Route path="/guia-de-precos" component={GuiaDePrecosPage} />

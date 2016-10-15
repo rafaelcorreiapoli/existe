@@ -1,19 +1,20 @@
 import React, { PropTypes } from 'react'
 import CircleNumber from '@components/CircleNumber'
+import { getFuncaoLabelByValue } from '@utils/labels'
 
 const styles = {
   container: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    width: 150,
+    width: 200,
   },
   imagemContainer: {
 
   },
   imagem: {
-    width: 150,
-    height: 150,
+    width: 200,
+    height: 200,
   },
   infoContainer: {
     display: 'flex',
@@ -24,16 +25,21 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     whiteSpace: 'nowrap',
+    justifyContent: 'center',
   },
   nome: {
     textAlign: 'center',
     whiteSpace: 'nowrap',
+    fontSize: 20,
+    marginTop: 5,
+    marginBottom: 10,
   },
   funcao: {
     marginLeft: 5,
-    width: 150 - 5 - 28,
+    maxWidth: 200 - 5 - 28,
     overflow: 'hidden',
     textOverflow: 'ellipsis',
+    textAlign: 'center',
   },
 }
 class ComunidadeUsuario extends React.Component {
@@ -65,7 +71,7 @@ class ComunidadeUsuario extends React.Component {
               number={projetosCount}
               borderColor="black"
             />
-            <span style={styles.funcao}>{funcao}</span>
+            <span style={styles.funcao}>{getFuncaoLabelByValue(funcao)}</span>
           </div>
         </div>
       </div>
