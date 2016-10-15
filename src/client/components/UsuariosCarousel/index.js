@@ -10,16 +10,26 @@ const styles = {
     alignItems: 'center',
     // justifyContent: 'space-between'
   },
-  usersRow: {
-    display: 'flex',
-    flexDirection: 'row',
+  mainContainer: {
     minWidth: 800,
     minHeight: 220,
     alignItems: 'center',
     justifyContent: 'center',
+    display: 'flex',
+  },
+  usersRow: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '100%',
   },
   iconButton: {
     marginTop: -60,
+  },
+  loadingContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    display: 'flex',
   },
 }
 class UsuariosCarousel extends React.Component {
@@ -52,24 +62,29 @@ class UsuariosCarousel extends React.Component {
           <SetaEsquerda />
         </IconButton>
 
-        <div style={styles.usersRow}>
-
+        <div style={styles.mainContainer}>
           {
             loading ?
-              <MDSpinner />
+              // <div style={styles.loadingContainer}>
+                <MDSpinner />
+              // </div>
             :
-            usuarios.map((usuario, i) => (
-              <ComunidadeUsuario
-                key={i}
-                {...usuario}
-                mostrarSeguidores={false}
-                mostrarAvaliacoes={false}
-                style={{
-                  width: 150,
-                  marginRight: 10,
-                }}
-              />
-            ))
+              <div style={styles.usersRow}>
+                {
+                  usuarios.map((usuario, i) => (
+                    <ComunidadeUsuario
+                      key={i}
+                      {...usuario}
+                      mostrarSeguidores={false}
+                      mostrarAvaliacoes={false}
+                      style={{
+                        width: 150,
+                        marginRight: 10,
+                      }}
+                    />
+                  ))
+                }
+              </div>
           }
         </div>
         <IconButton

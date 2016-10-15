@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import ComunidadeArea from '@components/ComunidadeArea'
+import Divider from 'material-ui/Divider'
 
 const styles = {
   container: {
@@ -32,6 +33,7 @@ class Comunidade extends React.Component {
           onPageChange={page => onPageChange('texto', page)}
           {...usuariosPorArea.texto}
         />
+        <Divider />
         <ComunidadeArea
           area="imagem"
           usuarios={usuariosPorArea.imagem.usuarios}
@@ -41,6 +43,7 @@ class Comunidade extends React.Component {
           onPageChange={page => onPageChange('imagem', page)}
           {...usuariosPorArea.imagem}
         />
+        <Divider />
         <ComunidadeArea
           area="audio"
           usuarios={usuariosPorArea.audio.usuarios}
@@ -50,6 +53,7 @@ class Comunidade extends React.Component {
           onPageChange={page => onPageChange('audio', page)}
           {...usuariosPorArea.audio}
         />
+        <Divider />
         <ComunidadeArea
           area="cena"
           usuarios={usuariosPorArea.cena.usuarios}
@@ -59,6 +63,7 @@ class Comunidade extends React.Component {
           onPageChange={page => onPageChange('cena', page)}
           {...usuariosPorArea.cena}
         />
+        <Divider />
         <ComunidadeArea
           area="producao"
           usuarios={usuariosPorArea.producao.usuarios}
@@ -68,6 +73,7 @@ class Comunidade extends React.Component {
           onPageChange={page => onPageChange('producao', page)}
           {...usuariosPorArea.producao}
         />
+        <Divider />
       </div>
     )
   }
