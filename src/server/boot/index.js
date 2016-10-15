@@ -1,7 +1,8 @@
 import { Meteor } from 'meteor/meteor'
 import { Accounts } from 'meteor/accounts-base'
 import { Roles } from 'meteor/alanning:roles'
-import { seedUsers } from '@seeds'
+import { seedUsers, seedProjetos } from '@seeds'
+import { Projetos } from '@collections'
 
 const ROLES = ['admin', 'editor', 'researcher', 'viewer'];
 const ADMIN_EMAIL = 'admin@admin.com';
@@ -36,8 +37,10 @@ Meteor.startup(() => {
   });
 
 
-  Meteor.users.remove({})
+  // Meteor.users.remove({})
+  // Projetos.remove({})
   // if (Meteor.users.find().count() === 1) {
-    seedUsers(100)
+  // seedUsers(100)
+  // seedProjetos(100)
   // }
 })

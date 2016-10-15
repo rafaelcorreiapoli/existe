@@ -31,6 +31,20 @@ const VagasDoProjeto = new SimpleSchema({
     type: Number,
   },
 })
+const CountSchema = new SimpleSchema({
+  colaboradores: {
+    type: Number,
+  },
+  seguidores: {
+    type: Number,
+  },
+  comentarios: {
+    type: Number,
+  },
+  likes: {
+    type: Number,
+  },
+})
 export default new SimpleSchema({
   objetivo: {
     type: String,
@@ -83,7 +97,7 @@ export default new SimpleSchema({
   arquivos: {
     type: [String],
   },
-  estado: {
+  status: {
     type: String, // [criacao, desenvolviemnto, producao, pos-producao]
     optional: true,
   },
@@ -99,7 +113,11 @@ export default new SimpleSchema({
     optional: true,
   },
   vagas: {
-    type: VagasDoProjeto,
+    type: [VagasDoProjeto],
+    optional: true,
+  },
+  count: {
+    type: CountSchema,
     optional: true,
   },
 })

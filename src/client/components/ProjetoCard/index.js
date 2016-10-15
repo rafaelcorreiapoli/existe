@@ -52,7 +52,7 @@ class ProjetoCard extends React.Component {
     convidado: PropTypes.bool,
     convidadoNovo: PropTypes.bool,
     status: PropTypes.string,
-    imagem: PropTypes.string,
+    capa: PropTypes.string,
     categoria: PropTypes.string,
   }
 
@@ -82,7 +82,7 @@ class ProjetoCard extends React.Component {
       convidado,
       convidadoNovo,
       status,
-      imagem,
+      capa,
       categoria,
     } = this.props
 
@@ -174,7 +174,7 @@ class ProjetoCard extends React.Component {
 
         </div>
         {/* <div style={styles.mainContainer}>
-          <Image src={imagem} style={styles.imagem}/>
+          <Image src={capa} style={styles.capa}/>
           <div style={styles.topAreaContainer}>
           <Icon name={iconStatus} />
           <span style={styles.colaboradores.numero}>{countColaboradores}</span>
@@ -220,7 +220,7 @@ class ProjetoCard extends React.Component {
               </div>
             }
           >
-            <img src={imagem} alt={nome} style={styles.imagem} />
+            <img src={capa} alt={nome} style={styles.capa} />
           </CardMedia>
           <CardTitle
             title={nome}

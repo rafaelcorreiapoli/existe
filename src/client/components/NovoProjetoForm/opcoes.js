@@ -279,6 +279,25 @@ export const OPCOES_PROCURA = [
   },
 ]
 
+export const OPCOES_STATUS = [
+  {
+    label: 'Criação',
+    value: 'criacao',
+  },
+  {
+    label: 'Desenvolvimento',
+    value: 'desenvolvimento',
+  },
+  {
+    label: 'Produção',
+    value: 'producao',
+  },
+  {
+    label: 'Pós produção',
+    value: 'pos-producao',
+  },
+]
+
 export const OPCOES_CATEGORIA = [
   {
     label: 'Independente',

@@ -99,7 +99,7 @@ const composer = (props, onData) => {
       status: projeto.status,
       categoria: projeto.categoria,
       subcategoria: projeto.subcategoria,
-      imagem: 'http://placehold.it/400x400',
+      // imagem: 'http://placehold.it/400x400',
       criadorUsuario: projeto.criadorUsuario,
       criadorId: projeto.criadorId,
       data: projeto.createdAt || new Date(),
@@ -117,7 +117,7 @@ const composer = (props, onData) => {
       marcadoNovo: true,
       convidado: true,
       convidadoNovo: true,
-
+      capa: projeto.capa,
     }))
 
     onData(null, {
