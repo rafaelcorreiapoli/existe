@@ -4,20 +4,32 @@ import GridProjetos from '@components/GridProjetos'
 import { composeWithTracker } from 'react-komposer'
 import { Meteor } from 'meteor/meteor'
 import { Projetos } from '@collections'
+import MDSpinner from 'react-md-spinner'
 
 class MuralProjetos extends React.Component {
   static propTypes = {
     projetos: PropTypes.array,
+    loading: PropTypes.bool,
   }
   render() {
     const {
       projetos,
+      loading,
     } = this.props
 
     return (
-      <GridProjetos
-        projetos={projetos}
-      />
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', minHeight: 814 }}>
+        {
+          loading ?
+            <MDSpinner style={{ alignSelf: 'center' }} />
+          :
+            <GridProjetos
+              projetos={projetos}
+              loading={loading}
+            />
+        }
+      </div>
+
     )
   }
 }
@@ -127,6 +139,10 @@ const composer = (props, onData) => {
 
     onData(null, {
       projetos,
+    })
+  } else {
+    onData(null, {
+      loading: true,
     })
   }
 }

@@ -1,12 +1,14 @@
 import React, { PropTypes } from 'react'
 import Divider from 'material-ui/Divider'
-import UsuariosPorArea, { UsuariosPorAreaGrid } from '@containers/UsuariosPorArea'
-import ComunidadeUsuario from '@components/ComunidadeUsuario'
+import UsuariosPorArea from '@containers/UsuariosPorArea'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import AreaTitle from '@components/AreaTitle'
 import { Grid, Row, Col } from 'react-flexbox-grid/lib/index'
 import FiltroComunidade from '@containers/FiltroComunidade'
+import BuscaInput from '@components/BuscaInput'
+import PageTitle from '@components/PageTitle'
+
 import {
   getExpandedForArea,
   setExpandedArea,
@@ -69,8 +71,20 @@ class ComunidadePage extends React.Component {
     return (
       <Grid fluid>
         <Row>
+          <Col xs={12}>
+            <PageTitle
+              title="Comunidade"
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12}>
+            <BuscaInput />
+          </Col>
+        </Row>
+        <Row>
           <Col xs={3}>
-            <h3>Filtros</h3>
+            <h2>Filtros</h2>
             <FiltroComunidade />
           </Col>
           <Col xs={9}>

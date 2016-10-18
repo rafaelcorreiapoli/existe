@@ -12,14 +12,16 @@ const styles = {
     // justifyContent: 'space-between'
   },
   mainContainer: {
-    minWidth: 1020,
+    // minWidth: 1020,
     minHeight: 290,
+    flexGrow: 1,
     alignItems: 'center',
     justifyContent: 'center',
     display: 'flex',
   },
   usersRow: {
     display: 'flex',
+
     flexDirection: 'row',
     alignItems: 'center',
     width: '100%',

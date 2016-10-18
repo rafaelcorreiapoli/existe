@@ -9,7 +9,7 @@ const GridProjetos = ({
 }) => {
   return (
     <Grid
-      style={{ margin: 'auto' }}
+      // style={{ margin: 'auto' }}
       component="div"
       columnWidth={300}
       gutterWidth={20}
