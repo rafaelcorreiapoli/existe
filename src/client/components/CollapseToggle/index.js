@@ -8,25 +8,24 @@ import IconButton from 'material-ui/IconButton'
 class CollapseToggle extends React.Component {
   static propTypes = {
     collapse: PropTypes.bool,
+    expanded: PropTypes.bool,
     onToggle: PropTypes.func,
+    iconColor: PropTypes.string,
   }
   render() {
     const {
-      collapse,
       onToggle,
+      expanded,
+      iconColor,
     } = this.props
-
-    if (!collapse) {
-      return (
-        <IconButton onTouchTap={onToggle}>
-          <SetaDireita />
-        </IconButton>
-      )
-    }
-
     return (
-      <IconButton onTouchTap={onToggle}>
-        <SetaBaixo />
+      <IconButton onTouchTap={() => onToggle(!expanded)}>
+        {
+          expanded
+          ? <SetaBaixo color={iconColor} />
+        : <SetaDireita color={iconColor} />
+        }
+
       </IconButton>
     )
   }

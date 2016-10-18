@@ -3,6 +3,7 @@ import ComunidadeUsuario from '@components/ComunidadeUsuario'
 import IconButton from 'material-ui/IconButton'
 import { SetaEsquerda, SetaDireita } from '@resources/icons'
 import MDSpinner from 'react-md-spinner'
+
 const styles = {
   container: {
     display: 'flex',
@@ -22,6 +23,7 @@ const styles = {
     flexDirection: 'row',
     alignItems: 'center',
     width: '100%',
+    overflow: 'hidden',
   },
   iconButton: {
     marginTop: -60,
@@ -65,8 +67,8 @@ class UsuariosCarousel extends React.Component {
         <div style={styles.mainContainer}>
           {
             loading ?
-              // <div style={styles.loadingContainer}>
-                <MDSpinner />
+            // <div style={styles.loadingContainer}>
+              <MDSpinner />
               // </div>
             :
               <div style={styles.usersRow}>

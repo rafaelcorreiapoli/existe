@@ -7,27 +7,22 @@ import MuralProjetos from '@containers/MuralProjetos';
 import BotaoNovoProjeto from '@components/BotaoNovoProjeto';
 import SelecionarAreaHint from '@components/SelecionarAreaHint';
 import FiltroSubCategoria from '@containers/FiltroSubCategoria'
+import PageTitle from '@components/PageTitle'
 
 const styles = {
-  titleContainer: {
-    textAlign: 'center',
-    marginBottom: 0,
-  },
-  title: {
-    marginBottom: 0,
-  },
   filtroCategoriaContainer: {
     textAlign: 'center',
     marginBottom: 20,
-  }
+  },
 }
+
 class MuralPage extends React.Component {
   render() {
     return (
       <div style={{ maxWidth: 1600, margin: 'auto' }}>
-        <div style={styles.titleContainer}>
-          <h1 style={styles.title}>Mural</h1>
-        </div>
+        <PageTitle
+          title="Mural"
+        />
         <div style={styles.filtroCategoriaContainer}>
           <FiltroCategoria style={{ marginRight: 20 }} />
         </div>

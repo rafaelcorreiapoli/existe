@@ -198,10 +198,10 @@ export const AREAS_E_FUNCOES = [{
       label: 'Eletricista',
     },
   ] },
-  {
-    value: undefined,
-    label: 'Todos',
-  },
+  // {
+  //   value: undefined,
+  //   label: 'Todos',
+  // },
 ]
 
 export const FILTRO_TIMES = [

@@ -17,6 +17,7 @@ export default () => {
       limit,
       sort: {
         'status.lastLogin.date': -1,
+        'profile.nomeCompleto': -1,
       },
     })
   })

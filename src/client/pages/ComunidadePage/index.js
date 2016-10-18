@@ -1,81 +1,133 @@
 import React, { PropTypes } from 'react'
 import Divider from 'material-ui/Divider'
-import UsuariosPorArea from '@containers/UsuariosPorArea'
+import UsuariosPorArea, { UsuariosPorAreaGrid } from '@containers/UsuariosPorArea'
+import ComunidadeUsuario from '@components/ComunidadeUsuario'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import AreaTitle from '@components/AreaTitle'
+import { Grid, Row, Col } from 'react-flexbox-grid/lib/index'
+import FiltroComunidade from '@containers/FiltroComunidade'
+import {
+  getExpandedForArea,
+  setExpandedArea,
+} from '@ducks/comunidade'
 
 const styles = {
-  container: {
+  areasContainer: {
     display: 'flex',
     flexDirection: 'column',
   },
 }
 
-class ComunidadePage extends React.Component {
+class ConjuntoUsuariosPorArea extends React.Component {
   static propTypes = {
-    onClickTitle: PropTypes.func,
+    area: PropTypes.string,
+    expanded: PropTypes.bool,
+    onToggle: PropTypes.func,
   }
   render() {
     const {
-      onClickTitle,
+      area,
+      expanded,
+      onToggle,
     } = this.props
     return (
-      <div style={styles.container}>
+      <div>
         <AreaTitle
-          area="texto"
-          onClickTitle={() => onClickTitle('texto')}
+          expanded={expanded}
+          area={area}
+          onToggle={onToggle}
         />
         <UsuariosPorArea
-          area={'texto'}
-          pageSize={5}
+          area={area}
+          pageSize={expanded ? 12 : 4}
+          viewMode={expanded ? 'grid' : 'carousel'}
         />
-        <Divider />
-        <AreaTitle
-          area="imagem"
-          onClickTitle={() => onClickTitle('imagem')}
-        />
-        <UsuariosPorArea
-          area={'imagem'}
-          pageSize={5}
-        />
-        <Divider />
-        <AreaTitle
-          area="audio"
-          onClickTitle={() => onClickTitle('audio')}
-        />
-        <UsuariosPorArea
-          area={'audio'}
-          pageSize={5}
-        />
-        <Divider />
-        <AreaTitle
-          area="cena"
-          onClickTitle={() => onClickTitle('cena')}
-        />
-        <UsuariosPorArea
-          area={'cena'}
-          pageSize={5}
-        />
-        <Divider />
-        <AreaTitle
-          area="producao"
-          onClickTitle={() => onClickTitle('producao')}
-        />
-        <UsuariosPorArea
-          area={'producao'}
-          pageSize={5}
-        />
-        <Divider />
       </div>
     )
   }
 }
+class ComunidadePage extends React.Component {
+  static propTypes = {
+    onClickTitle: PropTypes.func,
+    expandedTexto: PropTypes.bool,
+    expandedImagem: PropTypes.bool,
+    expandedAudio: PropTypes.bool,
+    expandedCena: PropTypes.bool,
+    expandedProducao: PropTypes.bool,
+  }
+  render() {
+    const {
+      onClickTitle,
+      expandedTexto,
+      expandedImagem,
+      expandedAudio,
+      expandedCena,
+      expandedProducao,
+      setExpandedArea
+    } = this.props
+    return (
+      <Grid fluid>
+        <Row>
+          <Col xs={3}>
+            <h3>Filtros</h3>
+            <FiltroComunidade />
+          </Col>
+          <Col xs={9}>
+            <div style={styles.areasContainer}>
+              <ConjuntoUsuariosPorArea
+                area={'texto'}
+                expanded={expandedTexto}
+                onToggle={expanded => setExpandedArea('texto', expanded)}
+              />
+              <Divider />
+              <ConjuntoUsuariosPorArea
+                area={'imagem'}
+                expanded={expandedImagem}
+                onToggle={expanded => setExpandedArea('imagem', expanded)}
+              />
+              <Divider />
+              <ConjuntoUsuariosPorArea
+                area={'audio'}
+                expanded={expandedAudio}
+                onToggle={expanded => setExpandedArea('audio', expanded)}
+              />
+              <Divider />
+              <ConjuntoUsuariosPorArea
+                area={'cena'}
+                expanded={expandedCena}
+                onToggle={expanded => setExpandedArea('cena', expanded)}
+              />
+              <Divider />
+              <ConjuntoUsuariosPorArea
+                area={'producao'}
+                expanded={expandedProducao}
+                onToggle={expanded => setExpandedArea('producao', expanded)}
+              />
+              <Divider />
+            </div>
+          </Col>
+        </Row>
+      </Grid>
+    )
+  }
+}
+
+const mapStateToProps = state => ({
+  expandedTexto: getExpandedForArea(state, 'texto'),
+  expandedImagem: getExpandedForArea(state, 'imagem'),
+  expandedAudio: getExpandedForArea(state, 'audio'),
+  expandedCena: getExpandedForArea(state, 'cena'),
+  expandedProducao: getExpandedForArea(state, 'producao'),
+})
 
 const mapDispatchToProps = dispatch => ({
   onClickTitle(area) {
     dispatch(push(`/comunidade/${area}`))
+  },
+  setExpandedArea(area, expanded) {
+    dispatch(setExpandedArea(area, expanded))
   }
 })
 
-export default connect(null, mapDispatchToProps)(ComunidadePage);
+export default connect(mapStateToProps, mapDispatchToProps)(ComunidadePage);

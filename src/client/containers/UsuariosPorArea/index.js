@@ -5,19 +5,26 @@ import UsuariosCarousel from '@components/UsuariosCarousel'
 import { Counts } from 'meteor/tmeasday:publish-counts'
 import GridUsuarios from '@components/GridUsuarios'
 import Loading from '@components/Loading'
+import UsuariosPorArea from '@components/UsuariosPorArea'
 
 import {
   setPage,
   getPageForArea,
+  getExpandedForArea,
+  setExpandedArea
 } from '@ducks/comunidade'
 
 const mapStateToProps = (state, ownProps) => ({
   page: getPageForArea(state, ownProps.area),
+  expanded: getExpandedForArea(state, ownProps.area),
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onPageChange(page) {
     dispatch(setPage(ownProps.area, page))
+  },
+  setExpandedArea(area, expanded) {
+    dispatch(setExpandedArea(area, expanded))
   },
 })
 
@@ -45,6 +52,7 @@ const composer = (props, onData) => {
       limit: pageSize,
       sort: {
         'status.lastLogin.date': -1,
+        'profile.nomeCompleto': -1,
       },
     })
 
@@ -68,7 +76,7 @@ const composer = (props, onData) => {
 
 export default connect(
   mapStateToProps, mapDispatchToProps
-)(composeWithTracker(composer, Loading)(UsuariosCarousel))
+)(composeWithTracker(composer, Loading)(UsuariosPorArea))
 
 export const UsuariosPorAreaGrid = connect(
   mapStateToProps, mapDispatchToProps

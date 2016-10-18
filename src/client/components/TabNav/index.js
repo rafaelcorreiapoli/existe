@@ -24,11 +24,11 @@ class TabNav extends React.Component {
           value={selectedTab}
           onChange={(value) => navigate(value)}
         >
-          <Tab
+          {/* <Tab
             style={styles.tab}
             value="busca"
             label="Busca"
-            />
+            /> */}
           <Tab
             style={styles.tab}
             value="comunidade"
