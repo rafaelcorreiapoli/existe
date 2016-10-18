@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import ProjetoCard from '@components/ProjetoCard';
 import { CSSGrid , makeResponsive } from 'react-stonecutter';
 
-const Grid = makeResponsive(CSSGrid, { maxWidth: 1600 });
+const Grid = makeResponsive(CSSGrid, { maxWidth: 1232 });
 
 const GridProjetos = ({
   projetos,
@@ -12,8 +12,8 @@ const GridProjetos = ({
       // style={{ margin: 'auto' }}
       component="div"
       columnWidth={300}
-      gutterWidth={20}
-      gutterHeight={30}
+      gutterWidth={10}
+      gutterHeight={10}
       itemHeight={392}
       duration={200}
       easing="ease-out"

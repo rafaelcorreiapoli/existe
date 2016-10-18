@@ -8,6 +8,8 @@ import BotaoNovoProjeto from '@components/BotaoNovoProjeto';
 import SelecionarAreaHint from '@components/SelecionarAreaHint';
 import FiltroSubCategoria from '@containers/FiltroSubCategoria'
 import PageTitle from '@components/PageTitle'
+import BuscaInput from '@components/BuscaInput'
+import { Grid, Row, Col } from 'react-flexbox-grid/lib/index'
 
 const styles = {
   filtroCategoriaContainer: {
@@ -19,26 +21,40 @@ const styles = {
 class MuralPage extends React.Component {
   render() {
     return (
-      <div style={{ maxWidth: 1600, margin: 'auto' }}>
-        <PageTitle
-          title="Mural"
-        />
-        <div style={styles.filtroCategoriaContainer}>
-          <FiltroCategoria style={{ marginRight: 20 }} />
-        </div>
-        <div style={{ display: 'flex' }}>
-          <SelecionarAreaHint />
-          <FiltroFuncao />
-          <FiltroStatus />
-        </div>
-
-        <div style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: 30, paddingBottom: 30 }}>
-          <BotaoNovoProjeto style={{ marginRight: 20 }} />
-          <FiltroSubCategoria style={{ marginRight: 20 }} />
-          <FiltroOrdem />
-        </div>
-        <MuralProjetos />
-      </div>
+      <Grid>
+        <Row>
+          <Col xs={12} style={{ alignItems: 'center', display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+            <PageTitle
+              title="Mural"
+            />
+            <FiltroCategoria />
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12}>
+            <BuscaInput />
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12} style={{ display: 'flex' }}>
+            <SelecionarAreaHint />
+            <FiltroFuncao />
+            <FiltroStatus />
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12} style={{ display: 'flex', marginTop: 30, justifyContent: 'flex-end' }}>
+            <BotaoNovoProjeto style={{ marginRight: 20 }} />
+            <FiltroSubCategoria style={{ marginRight: 20 }} />
+            <FiltroOrdem />
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12} style={{ marginTop: 30 }}>
+            <MuralProjetos />
+          </Col>
+        </Row>
+      </Grid>
     )
   }
 }
