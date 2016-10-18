@@ -32,7 +32,8 @@ export const seedUsers = (n) => {
     const nomeCompleto = chance.name();
     const u = {
       profile: {
-        foto: `http://eightbitavatar.herokuapp.com/?id=${x}&s=male&size=400`,
+        //foto: `http://eightbitavatar.herokuapp.com/?id=${x}&s=male&size=400`,
+        foto: `https://api.adorable.io/avatars/200/${x}.png`,
         nomeCompleto,
         nomeCompletoStripped: Diacritics.clean(nomeCompleto),
         dataNascimento: chance.birthday(),

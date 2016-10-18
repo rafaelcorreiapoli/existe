@@ -15,6 +15,9 @@ export default () => {
     return Meteor.users.find(selector, {
       skip,
       limit,
+      sort: {
+        'status.lastLogin.date': -1,
+      },
     })
   })
 }

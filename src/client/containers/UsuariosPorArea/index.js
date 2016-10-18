@@ -43,6 +43,9 @@ const composer = (props, onData) => {
     }, {
       skip: page * pageSize,
       limit: pageSize,
+      sort: {
+        'status.lastLogin.date': -1,
+      },
     })
 
     onData(null, {

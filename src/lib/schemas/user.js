@@ -136,6 +136,11 @@ const EmailSchema = new SimpleSchema({
   },
 })
 export default new SimpleSchema({
+  status: {
+    type: Object,
+    optional: true,
+    blackbox: true,
+  },
   username: {
     type: String,
     optional: true,
