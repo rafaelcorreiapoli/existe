@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react'
 import ButtonPopover from '@components/ButtonPopover';
 import { FILTRO_CATEGORIAS } from '@resources/options'
+import FlatButton from 'material-ui/FlatButton'
+import { ACCENT } from '@resources/colors'
 
 const SelecionarCategoria = ({
   value,
@@ -10,6 +12,8 @@ const SelecionarCategoria = ({
 }) => {
   return (
     <ButtonPopover
+      labelColor={ACCENT}
+      customButton={FlatButton}
       style={style}
       onChange={onChange}
       defaultText={'CATEGORIAS'}

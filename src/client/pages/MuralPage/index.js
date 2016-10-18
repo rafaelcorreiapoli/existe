@@ -6,12 +6,31 @@ import FiltroStatus from '@containers/FiltroStatus';
 import MuralProjetos from '@containers/MuralProjetos';
 import BotaoNovoProjeto from '@components/BotaoNovoProjeto';
 import SelecionarAreaHint from '@components/SelecionarAreaHint';
+import FiltroSubCategoria from '@containers/FiltroSubCategoria'
 
-
+const styles = {
+  titleContainer: {
+    textAlign: 'center',
+    marginBottom: 0,
+  },
+  title: {
+    marginBottom: 0,
+  },
+  filtroCategoriaContainer: {
+    textAlign: 'center',
+    marginBottom: 20,
+  }
+}
 class MuralPage extends React.Component {
   render() {
     return (
       <div style={{ maxWidth: 1600, margin: 'auto' }}>
+        <div style={styles.titleContainer}>
+          <h1 style={styles.title}>Mural</h1>
+        </div>
+        <div style={styles.filtroCategoriaContainer}>
+          <FiltroCategoria style={{ marginRight: 20 }} />
+        </div>
         <div style={{ display: 'flex' }}>
           <SelecionarAreaHint />
           <FiltroFuncao />
@@ -20,7 +39,7 @@ class MuralPage extends React.Component {
 
         <div style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: 30, paddingBottom: 30 }}>
           <BotaoNovoProjeto style={{ marginRight: 20 }} />
-          <FiltroCategoria style={{ marginRight: 20 }} />
+          <FiltroSubCategoria style={{ marginRight: 20 }} />
           <FiltroOrdem />
         </div>
         <MuralProjetos />

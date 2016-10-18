@@ -46,6 +46,7 @@ class MuralProjetos extends React.Component {
 
 const mapStateToProps = state => ({
   categoria: state.mural.categoria,
+  subcategoria: state.mural.subcategoria,
   ordem: state.mural.ordem,
   status: state.mural.status,
   funcao: state.mural.funcao,
@@ -54,6 +55,7 @@ const mapStateToProps = state => ({
 const composer = (props, onData) => {
   const {
     categoria,
+    subcategoria,
     status,
     funcao,
     ordem,
@@ -69,6 +71,7 @@ const composer = (props, onData) => {
   }
 
   const handler = Meteor.subscribe('Projetos.mural', {
+    subcategoria,
     categoria,
     status,
     funcao,
@@ -77,6 +80,7 @@ const composer = (props, onData) => {
 
   if (handler.ready()) {
     const query = Object.assign({},
+      subcategoria ? { subcategoria } : null,
       categoria ? { categoria } : null,
       status ? { status } : null,
       funcao ? {

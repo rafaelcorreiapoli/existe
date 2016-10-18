@@ -17,13 +17,15 @@ export default function () {
   })
 
 
-  Meteor.publish('Projetos.mural', ({ categoria, status, funcao, sort }) => {
+  Meteor.publish('Projetos.mural', ({ categoria, subcategoria, status, funcao, sort }) => {
     console.log('categoria: ', categoria)
+    console.log('subcategoria: ', subcategoria)
     console.log('status: ', status)
     console.log('funcao: ', funcao)
     console.log('sort: ', sort)
 
     const query = Object.assign({},
+      subcategoria ? { subcategoria } : null,
       categoria ? { categoria } : null,
       status ? { status } : null,
       funcao ? {
@@ -37,7 +39,6 @@ export default function () {
         },
       } : null
     )
-    console.log(query)
     const res = Projetos.find(query, {
       sort,
     })

@@ -92,6 +92,7 @@ class ButtonPopover extends React.Component {
       options,
       defaultText,
       onChange,
+      labelColor,
       ...props,
     } = this.props
 
@@ -110,7 +111,10 @@ class ButtonPopover extends React.Component {
       <div style={style} {...props}>
         {
           React.createElement(button, {
-            labelColor: 'black',
+            labelStyle: {
+              color: labelColor || 'black',
+            },
+            // textColor: 'black' || labelColor,
             onTouchTap: this.handleTouchTap,
             label: selectedOption.label || defaultText,
             labelPosition: 'after',
