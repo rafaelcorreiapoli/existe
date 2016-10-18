@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import BuscarUsuario from '@containers/BuscarUsuario'
+import BuscaUsuarioInput from '@components/BuscaUsuarioInput'
 
 export default class extends React.Component {
   static propTypes = {
@@ -15,7 +15,7 @@ export default class extends React.Component {
     } = this.props
 
     return (
-      <BuscarUsuario
+      <BuscaUsuarioInput
         {...props}
         onChange={input.onChange}
         value={input.value}

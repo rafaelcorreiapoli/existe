@@ -16,11 +16,11 @@ class GridUsuarios extends React.Component {
     usuarios: PropTypes.array,
     hideUserInfo: PropTypes.bool,
     renderElement: PropTypes.func,
+    onPageChange: PropTypes.func,
     columnWidth: PropTypes.number,
     page: PropTypes.number,
     pageSize: PropTypes.number,
     usuariosCount: PropTypes.number,
-    onPageChange: PropTypes.number,
   }
 
   render() {

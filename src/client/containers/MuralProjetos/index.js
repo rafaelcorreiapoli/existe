@@ -94,6 +94,7 @@ const composer = (props, onData) => {
 
     const projetos = Projetos.find(query, {
       sort,
+      limit: 10,
     }).fetch().map(projeto => ({
       nome: projeto.nome,
       status: projeto.status,

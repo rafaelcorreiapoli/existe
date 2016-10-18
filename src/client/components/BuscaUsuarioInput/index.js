@@ -1,52 +1,70 @@
 import React, { PropTypes } from 'react'
 import TextField from 'material-ui/TextField'
 import Popover from 'material-ui/Popover'
-import Menu from 'material-ui/Menu';
-import MenuItem from 'material-ui/MenuItem';
-import AutoComplete from 'material-ui/AutoComplete'
-import { List, ListItem } from 'material-ui/List'
 import ListaUsuarios from '@components/ListaUsuarios'
+import { Meteor } from 'meteor/meteor'
 
 
 class BuscaUsuarioInput extends React.Component {
   static propTypes = {
-    usuarios: PropTypes.array,
     onChange: PropTypes.func,
     texto: PropTypes.string,
     error: PropTypes.bool,
-    setTexto: PropTypes.func,
     value: PropTypes.object,
   }
   constructor(props) {
     super(props)
 
-    this.handleNewRequest = this.handleNewRequest.bind(this)
+    this.handleSelecionarUsuario = this.handleSelecionarUsuario.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleFocus = this.handleFocus.bind(this)
+    this.novaBusca = this.novaBusca.bind(this)
 
     this.state = {
       showList: true,
+      usuarios: [],
     }
   }
 
-  handleNewRequest(chosenRequest) {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.value.nomeCompleto !== this.props.value.nomeCompleto) {
+      this.novaBusca(nextProps.value.nomeCompleto)
+    }
+  }
+  novaBusca(texto) {
+    Meteor.call('Users.search', { texto }, (err, res) => {
+      if (err) {
+        this.setState({
+          error: err.toString(),
+        })
+      } else {
+        const usuarios = res.slice(0, 10).map(usuario => ({
+          _id: usuario._id,
+          email: usuario.profile.email,
+          nomeCompleto: usuario.profile.nomeCompleto,
+        }))
+        this.setState({
+          usuarios,
+        })
+      }
+    })
+  }
+  handleSelecionarUsuario(usuarioSelecionado) {
     const {
       onChange,
-      setTexto,
     } = this.props
 
     this.setState({
       showList: false,
     })
-    onChange(chosenRequest)
-    setTexto(chosenRequest.nomeCompleto)
+    onChange(usuarioSelecionado)
+    //  setTexto(chosenRequest.nomeCompleto)
   }
 
   handleChange(e) {
     e.preventDefault()
 
     const {
-      setTexto,
       value,
       onChange,
     } = this.props
@@ -56,7 +74,6 @@ class BuscaUsuarioInput extends React.Component {
       showList: true,
     })
 
-    setTexto(e.target.value)
     onChange({
       ...value,
       nomeCompleto: e.target.value,
@@ -64,33 +81,21 @@ class BuscaUsuarioInput extends React.Component {
   }
 
   handleFocus(e) {
-    const {
-      value,
-      setTexto,
-    } = this.props
     this.setState({
       anchorEl: e.currentTarget,
-      showList: true
+      showList: true,
     })
-    setTexto(value.nomeCompleto)
   }
 
-  componentDidMount() {
-    //  console.log(this.anchorEl)
-    // this.setState({
-    //   anchorEl: this.anchorEl
-    // })
-  }
 
   render() {
     const {
-      usuarios = [],
-      texto,
-      error,
       value,
     } = this.props
 
-    const controlledTexto = texto || ''
+    const {
+      usuarios,
+    } = this.state
     return (
       <div>
         {/* <AutoComplete
@@ -101,15 +106,15 @@ class BuscaUsuarioInput extends React.Component {
           dataSource={usuarios}
           value={'123'}
           dataSourceConfig={{ text: 'nomeCompleto', value: '_id' }}
-          onNewRequest={this.handleNewRequest}
+          onNewRequest={this.handleSelecionarUsuario}
           filter={f => f}
         /> */}
         <TextField
           name="busca"
-          value={value.nomeCompleto ? value.nomeCompleto : controlledTexto}
+          value={value.nomeCompleto || ''}
           onChange={this.handleChange}
           onFocus={this.handleFocus}
-          ref={a => this.anchorEl = a && a.getInputNode()}
+          ref={(a) => { this.anchorEl = a && a.getInputNode() }}
           //  onBlur={() => setTimeout(this.setState({showList: false}), 1000)}
         />
         {
@@ -123,7 +128,7 @@ class BuscaUsuarioInput extends React.Component {
             >
               <ListaUsuarios
                 usuarios={usuarios}
-                onClick={this.handleNewRequest}
+                onClick={this.handleSelecionarUsuario}
               />
             </Popover>
         }

@@ -1,4 +1,5 @@
 import { SimpleSchema } from 'meteor/aldeed:simple-schema'
+import Diacritics from 'diacritic'
 
 const SocialSchema = new SimpleSchema({
   facebook: {
@@ -85,6 +86,10 @@ const ProfileSchema = new SimpleSchema({
     optional: true,
   },
   nomeCompleto: {
+    type: String,
+    optional: true,
+  },
+  nomeCompletoStripped: {
     type: String,
     optional: true,
   },

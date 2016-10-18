@@ -60,11 +60,9 @@ class PassoQuatro extends React.Component {
                     <Field
                       name={`${usuario}`}
                       component={BuscarUsuario}
-                      searchId={`busca_${i}`}
                     />
                     <RemoveButton
                       onTouchTap={() => {
-                        console.log('removing ', i)
                         usuarios.fields.remove(i)
                       }}
                     />

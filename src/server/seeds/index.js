@@ -1,5 +1,7 @@
 import { Meteor } from 'meteor/meteor'
 import { Projetos } from '@collections'
+import Diacritics from 'diacritic'
+
 import _ from 'lodash'
 import Chance from 'chance'
 import {
@@ -27,10 +29,12 @@ const listAreas = AREAS_E_FUNCOES.map(area => area.value).filter(Boolean)
 export const seedUsers = (n) => {
   console.log(chance.phone({ country: 'uk' }))
   _.range(n).map((x) => {
+    const nomeCompleto = chance.name();
     const u = {
       profile: {
         foto: `http://eightbitavatar.herokuapp.com/?id=${x}&s=male&size=400`,
-        nomeCompleto: chance.name(),
+        nomeCompleto,
+        nomeCompletoStripped: Diacritics.clean(nomeCompleto),
         dataNascimento: chance.birthday(),
         cpf: chance.cpf(),
         bio: chance.paragraph(),

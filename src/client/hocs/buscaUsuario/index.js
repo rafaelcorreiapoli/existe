@@ -10,7 +10,7 @@ import {
 } from '@ducks/buscaUsuario'
 import { connect } from 'react-redux'
 
-export default (ComposedComponent, searchId) => {
+export default (ComposedComponent) => {
   const mapStateToProps = (state, ownProps) => ({
     usuarios: getUsuarios(state, ownProps.searchId),
     texto: getTexto(state, ownProps.searchId),

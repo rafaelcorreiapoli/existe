@@ -39,7 +39,9 @@ class FuncoesCheckTable extends React.Component {
         </TableHeader>
         <TableBody displayRowCheckbox={false}>
           {
+
             options.map(area => {
+              if (!area.value) return null;
               const headerRow =
               (<TableRow key={area.value} selectable={false} displayBorder={false}>
                 <TableRowColumn colSpan={3} style={{ display: 'flex', alignItems: 'center' }}>

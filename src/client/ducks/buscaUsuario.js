@@ -2,6 +2,7 @@ import {
   call,
 } from '@ducks/methods'
 import { Map, List } from 'immutable'
+import { Random } from 'meteor/random'
 
 const SET_TEXTO = 'buscaUsuario/SET_TEXTO'
 const SET_USUARIOS = 'buscaUsuarios/SET_USUARIOS'
@@ -13,13 +14,16 @@ export const getUsuarios = (state, searchId) => state.buscaUsuario.getIn([search
 export const getTexto = (state, searchId) => state.buscaUsuario.getIn([searchId, 'texto'])
 export const getError = (state, searchId) => state.buscaUsuario.getIn([searchId, 'error'])
 
-export const register = (searchId, type) => ({
-  type: REGISTER,
-  payload: {
-    searchId,
-    type,
-  },
-})
+export const register = (type) => {
+  const searchId = Random.id()
+  return {
+    type: REGISTER,
+    payload: {
+      searchId,
+      type,
+    },
+  }
+}
 
 export const unregister = searchId => ({
   type: UNREGISTER,
@@ -57,7 +61,7 @@ export const realizarBusca = searchId => (dispatch, getState) => {
   const texto = getTexto(state, searchId)
   dispatch(call('Users.search', { texto }))
   .then((res) => {
-    dispatch(setUsuarios(searchId, res.map(usuario => ({
+    dispatch(setUsuarios(searchId, res.slice(0, 10).map(usuario => ({
       _id: usuario._id,
       email: usuario.profile.email,
       nomeCompleto: usuario.profile.nomeCompleto,

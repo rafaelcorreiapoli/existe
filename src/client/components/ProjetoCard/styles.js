@@ -8,7 +8,7 @@ const styles = {
   iconsContainer: {
 
   },
-  imagem: {
+  capa: {
     width: 268,
     height: 268,
   },
