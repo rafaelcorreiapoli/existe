@@ -23,7 +23,7 @@ class MuralPage extends React.Component {
     return (
       <Grid>
         <Row>
-          <Col xs={12} style={{ alignItems: 'center', display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+          <Col xs={12} style={{ alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
             <PageTitle
               title="Mural"
             />
